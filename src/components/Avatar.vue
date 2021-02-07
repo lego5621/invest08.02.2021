@@ -1,0 +1,50 @@
+<template>
+    <v-menu 
+      offset-y
+      transition="slide-y-transition" 
+      :close-on-content-click="false"
+      rounded="lg"
+    >
+        <template v-slot:activator="{ on, attrs }">
+            <v-avatar
+            v-bind="attrs"
+            v-on="on"
+            size="34"
+          >
+             <img
+                src="https://avatars0.githubusercontent.com/u/9064066?v=4&s=460"
+                alt="John"
+              >
+          </v-avatar>
+        </template>
+        <v-list min-width="200">
+          <v-list-item to="/settings">
+            <v-list-item-title>Настройки</v-list-item-title>
+          </v-list-item>
+          <v-list-item to="/id">
+            <v-list-item-title >Профель</v-list-item-title>
+          </v-list-item>
+          <v-list-item>
+            <v-switch
+              v-model="$vuetify.theme.dark"
+              inset
+              label="Темная тема"
+              persistent-hint
+            ></v-switch>
+          </v-list-item>
+        </v-list>
+      </v-menu>
+</template>
+
+<script>
+  export default {
+    name: 'Avatar',
+    data: () => ({
+
+    }),
+  }
+</script>
+
+<style lang="css" scoped>
+
+</style>
