@@ -2,7 +2,7 @@
  <v-container class="pa-0">
     <v-card
         rounded="lg"
-        class="mx-auto mb-5 "
+        class="mx-auto mb-5 pb-3"
         elevation="0"
         v-for="(message, i) in messages"
         :key="i"
@@ -10,7 +10,7 @@
       <v-list-item three-line> 
         <v-list-item-content >
           <div class="d-flex justify-space-between text-no-wrap overflow" >
-            <router-link to="/single" class="block mr-10 ">
+            <router-link to="/single" class="block mr-10 text-decoration-none textLink--text">
                 <v-list-item-avatar
                   size="42"
                   class="ml-0"
@@ -24,7 +24,7 @@
                       v-else
                     >mdi-domain</v-icon>
                 </v-list-item-avatar>
-                <strong class="subtitle-1" >{{ message.name }}</strong>   
+                <strong class="subtitle-1 ">{{ message.name }}</strong>   
             </router-link>
             <strong class="align-self-center mr-10 subtitle-1">{{ message.excerpt }}</strong>
             <strong class="align-self-center mr-10 subtitle-1">{{ message.title }}</strong>
@@ -59,12 +59,6 @@
                     <th class="text-center">
                       ROA
                     </th>
-                    <th class="text-center">
-                     EV/EBIT
-                    </th>
-                    <th class="text-center">
-                      NetDebt/EBIT
-                    </th>
                   </tr>
                 </thead>
                 <tbody>
@@ -82,8 +76,6 @@
                     <td>{{ item.calories }}</td>
                     <td>{{ item.calories }}</td>
                     <td>{{ item.calories }}</td>
-                    <td>{{ item.calories }}</td>
-                    <td>{{ item.calories }}</td>
                   </tr>
                 </tbody>
               </template>
@@ -92,10 +84,6 @@
 
         </v-list-item-content>
       </v-list-item>
-  
-      <v-card-text  class="d-flex justify-space-between ">  
-
-      </v-card-text>
     </v-card>
 
 </v-container >

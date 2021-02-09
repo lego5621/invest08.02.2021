@@ -4,7 +4,6 @@
     class=" mb-5 pt-1 pb-1"
     elevation="0"
     min-height="400px"
-    min-width="800px"
   >
     <v-tabs  
       color="grey darken-1"
@@ -17,6 +16,9 @@
       </v-tab>
       <v-tab>
         Долг
+      </v-tab>
+      <v-tab>
+        Дивиденды
       </v-tab>
 
       <v-tab-item>

@@ -1,12 +1,53 @@
 <template>
-   <v-card
-    rounded="lg"
-    class=" mb-5 "
-    elevation="0"
-    min-height="400px"
+  <v-row 
+    class=" mb-3 "
   >
+    <v-col
+      cols="6"
+    >
+      <v-card
+        rounded="lg"
+        elevation="0"
+        min-height="200px"
+      >
+        
+      </v-card>
+    </v-col>
+    <v-col
+      cols="6"
+    >
+      <v-card
+        rounded="lg"
+        elevation="0"
+        min-height="200px"
+      >
+        
+      </v-card>
+    </v-col>
+    <v-col
+      cols="6"
+    >
+      <v-card
+        rounded="lg"
+        elevation="0"
+        min-height="200px"
+      >
+        
+      </v-card>
+    </v-col>
+    <v-col
+      cols="6"
+    >
+      <v-card
+        rounded="lg"
+        elevation="0"
+        min-height="200px"
+      >
+        
+      </v-card>
+    </v-col>  
     
-  </v-card>
+  </v-row>
 </template>
 
 <script>

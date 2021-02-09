@@ -26,8 +26,11 @@
           <strong class="subtitle-1" >{{ name }}</strong> 
         </div>  
         <strong class="align-self-center mr-10 subtitle-1">{{ excerpt }}</strong>
-        <strong class="align-self-center mr-10 subtitle-1">{{title }}</strong>
+        <strong class="align-self-center mr-10 subtitle-1">{{ title }}</strong>
         <strong class="align-self-center subtitle-1">{{ price }}</strong>
+      </div>
+      <div class=" mt-2 mb-2" >
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Accusamus sapiente iure ipsam, hic nulla cumque voluptatibus dolor rerum et examet consectetur adipisicing elit. Accusamus sapiente iure ipsam, hic nulla cumque voluptatibus dolor rerum et ex, rerum et ex!
       </div>
       <div class="d-flex justify-space-between text-no-wrap overflow mt-2 mb-2" > 
         <v-btn

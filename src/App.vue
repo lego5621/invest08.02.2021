@@ -30,7 +30,9 @@
     </v-app-bar>
 
     <v-main class="bacMain" >
-     <router-view></router-view>  
+      <transition name="moveInUp">
+        <router-view></router-view>  
+      </transition>
     </v-main>
   </v-app>
 </template>
@@ -54,6 +56,28 @@ import Avatar from '@/components/Avatar'
   .v-slide-group__prev--disabled{
     display: none !important;
   }
+
+
+
+  /* .moveInUp-enter-active{
+    opacity: 0;
+    transition: opacity 1s ease-in;
+  }
+
+  .moveInUp-enter-active{
+    animation: fadeIn 1s ease-in;
+  }
+  @keyframes fadeIn{
+    0%{
+  opacity: 0;
+    }
+    50%{
+  opacity: 0.5;
+    }
+    100%{
+  opacity: 1;
+    }
+  } */
 
 </style>
 

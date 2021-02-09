@@ -26,7 +26,7 @@
                 rounded="lg"
                 color="grey darken-1"
             >
-                {{ new Date().getFullYear() }} — <strong>Invest</strong>
+                {{ new Date().getFullYear() }} — <strong>Invest. All rights reserved.</strong>
             </v-col>
         </v-row>
     </v-footer>

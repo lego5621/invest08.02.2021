@@ -15,6 +15,7 @@
           <Chart></Chart>
           <SWOT></SWOT>
           <Reporting></Reporting>
+          <Multip></Multip>
           <Footer></Footer>
         </v-container>
       </v-col>
@@ -29,6 +30,7 @@ import Heder from '@/components/Reporting/ComponentsReporting/Heder'
 import Chart from '@/components/Reporting/ComponentsReporting/Chart'
 import SWOT from '@/components/Reporting/ComponentsReporting/SWOT'
 import Reporting from '@/components/Reporting/ComponentsReporting/Reporting'
+import Multip from '@/components/Reporting/ComponentsReporting/Multip'
   export default {
     components:{
       Footer,
@@ -37,6 +39,7 @@ import Reporting from '@/components/Reporting/ComponentsReporting/Reporting'
       Chart,
       SWOT,
       Reporting,
+      Multip,
     },
     name: 'ReportingSingle',
     data: () => ({
