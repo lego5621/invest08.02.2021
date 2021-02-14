@@ -9,14 +9,18 @@
         offset-xl="2"
       >
         <v-container class="pa-0">
-         
-
-          <Heder></Heder>
-          <Chart></Chart>
-          <SWOT></SWOT>
-          <Reporting></Reporting>
-          <Multip></Multip>
-          <Footer></Footer>
+          <Heder/>
+          <Result/>
+          <Chart/>
+          <Revenue/>
+          <Income/>
+          <NumberStocks/>
+          <EP/>
+          <ROA/>
+          <Retings/>
+          <Debit/>
+          <Divided/>
+          <Footer/>
         </v-container>
       </v-col>
     </v-row>
@@ -24,22 +28,35 @@
 </template>
 
 <script>
-import Footer from '@/components/Footer'
-import Card from '@/components/Reporting/Card'
-import Heder from '@/components/Reporting/ComponentsReporting/Heder'
-import Chart from '@/components/Reporting/ComponentsReporting/Chart'
-import SWOT from '@/components/Reporting/ComponentsReporting/SWOT'
-import Reporting from '@/components/Reporting/ComponentsReporting/Reporting'
-import Multip from '@/components/Reporting/ComponentsReporting/Multip'
+  import Footer from '@/components/Footer'
+  import Card from '@/components/Reporting/Card'
+  import Heder from '@/components/Reporting/ComponentsReporting/Heder'
+  import Result from '@/components/Reporting/ComponentsReporting/Result'
+  import Chart from '@/components/Reporting/ComponentsReporting/Chart'
+  import Revenue from '@/components/Reporting/ComponentsReporting/Revenue'
+  import Income from '@/components/Reporting/ComponentsReporting/Income'
+  import NumberStocks from '@/components/Reporting/ComponentsReporting/NumberStocks'
+  import EP from '@/components/Reporting/ComponentsReporting/EP'
+  import ROA from '@/components/Reporting/ComponentsReporting/ROA'
+  import Retings from '@/components/Reporting/ComponentsReporting/Retings'
+  import Debit from '@/components/Reporting/ComponentsReporting/Debit'
+  import Divided from '@/components/Reporting/ComponentsReporting/Divided'
+
   export default {
     components:{
       Footer,
       Card,
       Heder,
       Chart,
-      SWOT,
-      Reporting,
-      Multip,
+      Revenue,
+      Result,
+      Income,
+      NumberStocks,
+      EP,
+      ROA,
+      Retings,
+      Debit,
+      Divided,
     },
     name: 'ReportingSingle',
     data: () => ({

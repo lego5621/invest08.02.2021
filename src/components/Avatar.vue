@@ -40,8 +40,9 @@
   export default {
     name: 'Avatar',
     data: () => ({
-
+     
     }),
+
   }
 </script>
 

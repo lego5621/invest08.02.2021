@@ -29,42 +29,10 @@
         <strong class="align-self-center mr-10 subtitle-1">{{ title }}</strong>
         <strong class="align-self-center subtitle-1">{{ price }}</strong>
       </div>
-      <div class=" mt-2 mb-2" >
-        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Accusamus sapiente iure ipsam, hic nulla cumque voluptatibus dolor rerum et examet consectetur adipisicing elit. Accusamus sapiente iure ipsam, hic nulla cumque voluptatibus dolor rerum et ex, rerum et ex!
+      <div class=" mt-2 mb-2 tab15px">
+        ПАО «Газпро́м» — российская транснациональная энергетическая компания, более 50 % акций которой принадлежит государству. Является холдинговой компанией Группы «Газпром». Непосредственно ПАО «Газпром» осуществляет только продажу природного газа и сдаёт в аренду свою газотранспортную систему.
       </div>
-      <div class="d-flex justify-space-between text-no-wrap overflow mt-2 mb-2" > 
-        <v-btn
-          rounded
-          elevation="0"
-          small
-          class="mr-5"
-        >
-          Новости
-        </v-btn>
-        <v-btn
-          rounded
-          elevation="0"
-          small
-          class="mr-5"
-        >
-          Сайт компании
-        </v-btn>
-        <v-btn
-          rounded
-          elevation="0"
-          small
-          class="mr-5"
-        >
-          Отчетность
-        </v-btn>
-        <v-btn
-          rounded
-          elevation="0"
-          small
-        >
-          В портфель
-        </v-btn>
-      </div>
+      
     </v-list-item-content>
     </v-list-item>
   </v-card>
@@ -86,6 +54,10 @@
 <style lang="css" scoped>
   .overflow{
     overflow-x: auto;
+  }
+  .tab15px{ 
+    text-indent: 30px; 
+    line-height: 1.5;
   }
 </style>
 

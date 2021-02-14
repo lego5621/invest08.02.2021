@@ -4,54 +4,75 @@
     class="mx-auto mb-5 pa-4"
     elevation="0"
   >
-  <p class="text-h5">GAZP</p>
-    <v-sparkline
-      :value="value"
-      :gradient="gradient"
-      :smooth="radius || false"
-      :padding="padding"
-      :line-width="width"
-      :stroke-linecap="lineCap"
-      :gradient-direction="gradientDirection"
-      :fill="fill"
-      :type="type"
-      :auto-line-width="autoLineWidth"
-      auto-draw
-    ></v-sparkline>
+    <p class="text-h5 ">Волотильность: Низкая</p>
+    <LineChart :chartdata="chartdata" :options="options" class="height210px"/>
+    <div class="mt-4">
+      <p class="text-h6 mb-2">Что это значит:</p>
+       Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui sit, quasi accusamus quae sunt veritatis alias, necessitatibus recusandae dignissimos optio eligendi vitae illum. Eaque, maxime! Provident nihil impedit porro vel.
+    </div>
   </v-card>
 </template>
 
 <script>
-  const gradients = [
-      ['#222'],
-      ['#42b3f4'],
-      ['red', 'orange', 'yellow'],
-      ['purple', 'violet'],
-      ['#00c6ff', '#F0F', '#FF0'],
-      ['#f72047'],
-    ]
+  import LineChart from '@/components/Reporting/ComponentsReporting/LineChart'
 
-  export default {
+ export default {
+   components: {
+    LineChart,
+  },
     name: 'Chart',
     data: () => ({
-      width: 2,
-      radius: 15,
-      padding: 8,
-      lineCap: 'round',
-      gradient: gradients[5],
-      value: [4, 2, 5, 3, 5, 8, 3, 5, 4, 7, 3, 8, 5, 9, 10],
-      gradientDirection: 'top',
-      gradients,
-      fill: false,
-      type: 'trend',
-      autoLineWidth: false,
-    }),
+    chartdata: {
+      labels: ['2005', '2006', '2007', '2008', '2009','2010', '2011', '2012', '2013', '2014','2015', '2016', '2017', '2018', '2019'],
+      datasets: [
+        {
+          label: "",
+          data: [21, 12, 50, 33, 22, 50, 13, 39, 25, 32, 21, 43, 23, 59, 42],
+          backgroundColor: 'rgba(31, 69, 98, 0.65)',
+        }
+      ]
+    },
+    options: {
+      animation: {
+            duration: 2000,
+        },
+      responsive: true,
+      maintainAspectRatio: false,
+      legend: {
+        display: false
+      },
+      elements: {
+        point:{
+          radius: 1
+        }
+      },
+      scales: {
+        xAxes: [{
+            gridLines: {
+                color: "rgba(0, 0, 0, 0)",
+            },
+        }],
+        yAxes: [{
+            gridLines: {
+                color: "rgba(0, 0, 0, 0)",
+            },
+            ticks: {
+              beginAtZero: true,
+            },
+        }]
+    }
+    }
+  }),
+
   }
 </script>
 
 <style lang="css" scoped>
   .overflow{
     overflow-x: auto;
+  }
+  .height210px{
+    height: 210px !important;
   }
 </style>
 

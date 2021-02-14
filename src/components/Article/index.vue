@@ -18,7 +18,7 @@
             >
               <v-col class="d-flex">
                 <v-text-field
-                  label="Название или тикер компании"
+                  label="Введите название статьи"
                   outlined
                   dense
                   hide-details
@@ -26,7 +26,7 @@
                   color="grey darken-1"
                 ></v-text-field>
                 <v-btn 
-                  depressed  
+                  depressed
                   class="h-40 ml-2" 
                   color="secondary"
                   @click="expand = !expand"
@@ -47,41 +47,30 @@
                   class="mx-auto secondary mt-2"
                 ></v-card>
               </v-expand-transition>
-            </v-row>
+            </v-row >
+              <v-col
+                cols="12"
+                class="pa-0 pt-2"
+              >
+                <v-chip
+                  link
+                  class="ma-1"
+                  label
+                >
+                  Избранное
+                </v-chip>                
+                <v-chip
+                  link
+                  class="ma-1"
+                  v-for="(i) in title"
+                  :key="i"
+                >
+                  {{ i }}
+                </v-chip>                
+              </v-col>
           </v-sheet>
 
-          <v-sheet
-            rounded="lg"
-            class="mb-6"
-          >
-            <v-row
-              no-gutters 
-            >
-              <v-col
-                cols="12"
-              >
-                <v-tabs  color="grey darken-1" class="pl-1 pr-1">
-                  <v-tab>Лента</v-tab>
-                  <v-tab>Все Разборы</v-tab>
-                  <v-tab>Для вас</v-tab>
-                  <v-tab>Мои Разборы</v-tab>
-                </v-tabs>
-              </v-col>
-              <v-col
-                cols="12"
-                class="d-flex justify-end "
-              >
-                <v-btn
-                  elevation="0"
-                  class="ma-2"
-                  color="secondary"
-                >
-                  Новый разбор компании
-                </v-btn>
-              </v-col>
-            </v-row>
-            
-          </v-sheet>
+
           <Card></Card>
           <Footer></Footer>
         </v-container>
@@ -92,7 +81,7 @@
 
 <script>
 import Footer from '@/components/Footer'
-import Card from '@/components/Analysis/Card'
+import Card from '@/components/Article/Card'
   export default {
     components:{
       Footer,
@@ -100,7 +89,8 @@ import Card from '@/components/Analysis/Card'
     },
     name: 'Analysis',
     data: () => ({
-    expand: false,
+      expand: false,
+      title:["Пенсия", "Инвестиции", "Управление деньгами", "Бюджет"]
     }),
   }
 </script>

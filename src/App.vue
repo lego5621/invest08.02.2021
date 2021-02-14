@@ -12,20 +12,21 @@
         color="grey darken-1"
       >
         <v-tab to="/" >
-          Отчетность
+          Компании  
         </v-tab>
-        <!-- <v-tab to="/analysis">
+        <!-- <v-tab to="/">
           Разбор Компаний
         </v-tab> -->
         <v-tab to="/idea">
           Идеи
         </v-tab>
-        <v-tab to="/people">
-          Пользователи
+        <v-tab to="/article">
+          Статьи
         </v-tab>
         <v-tab to="/portfolio">
           Портфель
         </v-tab>
+
       </v-tabs>
     </v-app-bar>
 
@@ -55,6 +56,9 @@ import Avatar from '@/components/Avatar'
   }
   .v-slide-group__prev--disabled{
     display: none !important;
+  }
+  html {
+    scroll-behavior: smooth;
   }
 
 

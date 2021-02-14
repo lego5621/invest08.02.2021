@@ -47,40 +47,20 @@
                   class="mx-auto secondary mt-2"
                 ></v-card>
               </v-expand-transition>
-            </v-row>
-          </v-sheet>
-          <v-sheet
-            rounded="lg"
-            class="mb-6"
-          >
-            <v-row
-              no-gutters 
-            >
+            </v-row >
               <v-col
                 cols="12"
+                class="pr-0 pl-0 pb-0"
               >
-                <v-tabs  color="grey darken-1" class="pl-1 pr-1">
-                  <v-tab>Лента</v-tab>
+                <v-tabs color="grey darken-1" class="pl-1 pr-1">
                   <v-tab>Все идеи</v-tab>
-                  <v-tab>Для вас</v-tab>
-                  <v-tab>Мои идеи</v-tab>
+                  <v-tab>Краткосрочные</v-tab>
+                  <v-tab>Долгосрочные</v-tab>
+                  <v-tab>Авторы</v-tab>
                 </v-tabs>
               </v-col>
-              <v-col
-                cols="12"
-                class="d-flex justify-end "
-              >
-                <v-btn
-                  elevation="0"
-                  class="ma-2"
-                  color="secondary"
-                >
-                  Новая идея
-                </v-btn>
-               </v-col>
-            </v-row>
-            
           </v-sheet>
+
 
           <Card></Card>
           <Footer></Footer>
