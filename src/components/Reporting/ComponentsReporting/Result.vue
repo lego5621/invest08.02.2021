@@ -8,7 +8,7 @@
     <v-list-item-content >
       <div class=" mt-2 mb-2" >
         <p class="text-h5 mb-2">Резюме:</p>
-        <p class="tab15px mb-2">Lorem ipsum dolor sit amet, consectetur  <a href="#debit" class="text-decoration-none textLinkResult--text ">inciderint</a> adipisicing elit. At ducimus nisi necessitatibus. Maiores  veritatis pariatur, quaerat suscipit officia animi facere nemo nobis impedit ipsum odio quae neque consectetur placeat. Officiis?</p>
+        <p class="tab15px mb-2">Lorem ipsum dolor sit amet,  consectetur  <a href="#debit"  class="text-decoration-none textLinkResult--text ">inciderint</a> adipisicing elit. At ducimus nisi necessitatibus. Maiores  veritatis pariatur, quaerat suscipit officia animi facere nemo nobis impedit ipsum odio quae neque consectetur placeat. Officiis?</p>
   
         <p  class="tab15px  mb-2">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Adipisci officiis accusantium voluptatibus magnam perspiciatis sit <a href="#income" class="text-decoration-none  textLinkResult--text">inciderint</a> a mollitia hic dicta vitae. Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae, ducimus! Lorem ipsum dolor sit, amet consectetur adipisicing elit. Exercitationem, alias.</p>
          
@@ -54,14 +54,14 @@
 </template>
 
 <script>
+
   export default {
-    name: 'Header',
+    name: 'Result',
     data: () => ({
-      avatar: 'https://turbologo.ru/blog/wp-content/uploads/2020/02/gazprom-znak.png.webp',
-      name: 'Газпром',
-      title: 'Нефте газ',
-      excerpt: 'Россия',
-      price:'42$'
+        duration: 300,
+        offset: 0,
+        easing: 'easeInOutCubic',
+        selector: '#debit'
     }),
   }
 </script>

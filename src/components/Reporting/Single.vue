@@ -20,6 +20,7 @@
           <Retings/>
           <Debit/>
           <Divided/>
+          <Analysts/>
           <Footer/>
         </v-container>
       </v-col>
@@ -41,6 +42,7 @@
   import Retings from '@/components/Reporting/ComponentsReporting/Retings'
   import Debit from '@/components/Reporting/ComponentsReporting/Debit'
   import Divided from '@/components/Reporting/ComponentsReporting/Divided'
+  import Analysts from '@/components/Reporting/ComponentsReporting/Analysts'
 
   export default {
     components:{
@@ -57,6 +59,7 @@
       Retings,
       Debit,
       Divided,
+      Analysts,
     },
     name: 'ReportingSingle',
     data: () => ({

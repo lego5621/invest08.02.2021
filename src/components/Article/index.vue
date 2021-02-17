@@ -25,29 +25,8 @@
                   class="flex-grow-1"
                   color="grey darken-1"
                 ></v-text-field>
-                <v-btn 
-                  depressed
-                  class="h-40 ml-2" 
-                  color="secondary"
-                  @click="expand = !expand"
-                >
-                  Скринер
-                </v-btn>
               </v-col>
             </v-row>
-            <v-row
-              no-gutters 
-              class="mt-0"
-            >
-              <v-expand-transition>
-                <v-card
-                  v-show="expand"
-                  height="200"
-                  width="100%"
-                  class="mx-auto secondary mt-2"
-                ></v-card>
-              </v-expand-transition>
-            </v-row >
               <v-col
                 cols="12"
                 class="pa-0 pt-2"
@@ -57,6 +36,9 @@
                   class="ma-1"
                   label
                 >
+                  <v-icon class="mr-1">
+                    mdi-star-outline
+                  </v-icon>
                   Избранное
                 </v-chip>                
                 <v-chip
@@ -72,6 +54,14 @@
 
 
           <Card></Card>
+            <div class="text-center mb-4">
+              <v-pagination
+                v-model="page"
+                :length="15"
+                :total-visible="7"
+                color="textLinkResult"
+              ></v-pagination>
+            </div>
           <Footer></Footer>
         </v-container>
       </v-col>
@@ -90,12 +80,18 @@ import Card from '@/components/Article/Card'
     name: 'Analysis',
     data: () => ({
       expand: false,
-      title:["Пенсия", "Инвестиции", "Управление деньгами", "Бюджет"]
+            page: 1,
+      title:["Пенсия", "Инвестиции", "Управление деньгами", "Бюджет", "Иследования","Право и Закон","Ведение бизнеса в Казахстане"]
     }),
   }
 </script>
 
-<style lang="css" scoped>
+<style lang="css" >
+
+.v-pagination__item, .v-pagination__navigation{
+  box-shadow: none !important;
+  outline: none !important;
+}
 
 </style>
 

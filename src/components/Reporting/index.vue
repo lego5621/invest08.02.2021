@@ -52,6 +52,15 @@
 
 
           <Card></Card>
+            <div class="text-center mb-4">
+              <v-pagination
+                v-model="page"
+                :length="15"
+                :total-visible="7"
+                color="textLinkResult"
+                elevation="0"
+              ></v-pagination>
+            </div>
           <Footer></Footer>
         </v-container>
       </v-col>
@@ -70,6 +79,7 @@ import Card from '@/components/Reporting/Card'
     name: 'Analysis',
     data: () => ({
       expand: false,
+      page: 1,
     }),
   }
 </script>

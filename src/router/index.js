@@ -5,6 +5,7 @@ import Idea from '@/components/Idea/index'
 import Single from '@/components/Reporting/Single'
 import Template from '@/components/Reporting/ComponentsReporting/SWOT/Template'
 import Article from '@/components/Article/index'
+import Portfolio from '@/components/Portfolio/index'
 
 
 Vue.use(VueRouter)
@@ -15,6 +16,7 @@ const routes = [
   { path: '/single', component: Single },
   { path: '/template', component: Template },
   { path: '/article', component: Article },
+  { path: '/portfolio', component: Portfolio },
 ]
 
 const router = new VueRouter({

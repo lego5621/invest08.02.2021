@@ -21,12 +21,10 @@
           <v-list-item to="/settings">
             <v-list-item-title>Настройки</v-list-item-title>
           </v-list-item>
-          <v-list-item to="/id">
-            <v-list-item-title >Профель</v-list-item-title>
-          </v-list-item>
-          <v-list-item>
+          <v-list-item > 
             <v-switch
               v-model="$vuetify.theme.dark"
+              v-on:click="toggle_dark_mode"
               inset
               label="Темная тема"
               persistent-hint
@@ -42,6 +40,12 @@
     data: () => ({
      
     }),
+    methods: {
+        toggle_dark_mode: function () {
+            localStorage.setItem("dark_theme", this.$vuetify.theme.dark.toString());
+        }
+    },
+
 
   }
 </script>

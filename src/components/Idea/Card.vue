@@ -4,7 +4,7 @@
         rounded="lg"
         class="mx-auto mb-5 "
         elevation="0"
-        v-for="(message, i) in messages"
+        v-for="(idea, i) in ideas"
         :key="i"
     >
       <v-list-item three-line> 
@@ -15,61 +15,33 @@
                   size="42"
               >
                 <img
-                    v-if="message.avatar"
+                    v-if="idea.avatar"
                     alt="Avatar"
-                    :src= message.avatar
+                    :src= idea.avatar
                   >
                   <v-icon
                     v-else
                   >mdi-account</v-icon>
               </v-list-item-avatar>
-              <strong class="subtitle-1">{{ message.name }}</strong>   
+              <strong class="subtitle-1">{{ idea.name }}</strong>   
             </div>
-            <strong class="align-self-center mr-10 subtitle-1">{{ message.excerpt }}</strong>
-            <strong class="align-self-center mr-10 subtitle-1">{{ message.price }}</strong>
+            <strong class="align-self-center mr-10 subtitle-1">{{ idea.profit }} за {{ idea.tameProfit }} дня</strong>
+            <strong class="align-self-center mr-10 subtitle-1">{{ idea.price }}</strong>
              <div class="align-self-center">
               <v-rating
                 background-color="grey darken-1"
-                color="purple"
+                color="textLinkResult"
                 length="5"
-                :value=message.rating
+                :value=idea.rating
                 readonly
               ></v-rating>
             </div>
           </div>
-          <!-- <div class="d-flex justify-space-around justify-sm-space-between flex-wrap mb-2">
-            <div class="mr-4">
-              <v-list-item-avatar
-                  size="42"
-              >
-                <img
-                    v-if="message.avatar"
-                    alt="Avatar"
-                    :src= message.avatar
-                  >
-                  <v-icon
-                    v-else
-                  >mdi-domain</v-icon>
-              </v-list-item-avatar>
-              <strong v-html="message.name"></strong>   
-            </div>
-            <strong v-html="message.price" class="align-self-center mr-4"></strong>
-            <strong v-html="message.excerpt" class="align-self-center mr-4"></strong>
-            <div class="align-self-center">
-              <v-rating
-                background-color="grey darken-1"
-                color="purple"
-                length="5"
-                :value=message.rating
-                readonly
-              ></v-rating>
-            </div>
-          </div> -->
           <v-list-item-title class="headline text-wrap mb-2">
-            <strong>Газпром</strong>: <strong v-html="message.heading"></strong>
+            <strong>{{ idea.company }}</strong>: <strong>{{ idea.heading }}</strong>
           </v-list-item-title>
           <v-list-item-subtitle>
-            {{message.text}}
+            {{idea.text}}
           </v-list-item-subtitle>
 
         </v-list-item-content>
@@ -88,77 +60,93 @@
     name: 'Card_Analysis',
     
     data: () => ({
-        messages: [
+        ideas: [
           {
             avatar: 'https://avatars0.githubusercontent.com/u/9064066?v=4&s=460',
             name: 'Ivan Ivanov',
-            title: 'Нефте газ',
-            excerpt: '12% за 62 дня',
-            price:'Бесплатно',
+            company:"Schweizerische Nationalbank",
+            profit: '12%',
+            tameProfit:'62',
+            price:'Краткосрочная',
             heading: 'Discover the innovative world of Apple and shop everything iPhone',
-            text:'Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur tenetur perspiciatis recusandae, ad delectus eos vel necessitatibus totam voluptas modi excepturi asperiores vero, eaque animi dolor voluptates praesentium, unde accusantium.'
+            text:'Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur tenetur perspiciatis recusandae, ad delectus eos vel necessitatibus totam voluptas modi excepturi asperiores vero, eaque animi dolor voluptates praesentium, unde accusantium.',
+            rating: 2,
           },
           {
             avatar: 'https://avatars0.githubusercontent.com/u/9064066?v=4&s=460',
             name: 'Averyanov Oleg',
-            title: 'Нефте газ',
-            excerpt: '12% за 62 дня',
-            price:'Бесплатно',
+            company:"Yandex",
+            profit: '12%',
+            tameProfit:'62',
+            price:'Долгосрочная',
             heading: 'Discover the innovative world of Apple and shop everything iPhone',
-            text:'Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur tenetur perspiciatis recusandae, ad delectus eos vel necessitatibus totam voluptas modi excepturi asperiores vero, eaque animi dolor voluptates praesentium, unde accusantium.'
+            text:'Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur tenetur perspiciatis recusandae, ad delectus eos vel necessitatibus totam voluptas modi excepturi asperiores vero, eaque animi dolor voluptates praesentium, unde accusantium.',
+            rating: 3,
           },
           {
             avatar: 'https://avatars0.githubusercontent.com/u/9064066?v=4&s=460',
-            name: 'Мосбиржа',
-            title: 'Банковский сектор',
-            excerpt: '12% за 62 дня',
-            price:'Подписка',
+            name: 'Averyanov Oleg',
+            company:"Мосбиржа",
+            profit: '12%',
+            tameProfit:'62',
+            price:'Долгосрочная',
             heading: 'Discover the innovative world of Apple and shop everything iPhone',
-            text:'Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur tenetur perspiciatis recusandae, ad delectus eos vel necessitatibus totam voluptas modi excepturi asperiores vero, eaque animi dolor voluptates praesentium, unde accusantium.'
+            text:'Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur tenetur perspiciatis recusandae, ad delectus eos vel necessitatibus totam voluptas modi excepturi asperiores vero, eaque animi dolor voluptates praesentium, unde accusantium.',
+            rating: 5,
           },
           {
-            name: 'Schweizerische Nationalbank',
-            title: 'Банковский сектор',
-            excerpt: '12% за 62 дня',
-            price:'Бесплатно',
+            name: 'Averyanov Oleg',
+            company:"Schweizerische Nationalbank",
+            profit: '12%',
+            tameProfit:'62',
+            price:'Краткосрочная',
             heading: 'Discover the innovative world of Apple and shop everything iPhone',
-            text:'Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur tenetur perspiciatis recusandae, ad delectus eos vel necessitatibus totam voluptas modi excepturi asperiores vero, eaque animi dolor voluptates praesentium, unde accusantium.'
-          },
-          {
-            avatar: 'https://avatars0.githubusercontent.com/u/9064066?v=4&s=460',
-            name: 'Alaska Air Group Inc',
-            title: 'Аэропорт',
-            excerpt: '12% за 62 дня',
-            price:'Бесплатно',
-            heading: 'Discover the innovative world of Apple and shop everything iPhone',
-            text:'Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur tenetur perspiciatis recusandae, ad delectus eos vel necessitatibus totam voluptas modi excepturi asperiores vero, eaque animi dolor voluptates praesentium, unde accusantium.'
+            text:'Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur tenetur perspiciatis recusandae, ad delectus eos vel necessitatibus totam voluptas modi excepturi asperiores vero, eaque animi dolor voluptates praesentium, unde accusantium.',
+            rating: 4,
           },
           {
             avatar: 'https://avatars0.githubusercontent.com/u/9064066?v=4&s=460',
-            name: 'Yandex',
-            title: 'IT',
-            excerpt: '12% за 62 дня',
-            price:'Подписка',
+            name: 'Averyanov Oleg',
+            company:"Alaska Air Group Inc",
+            profit: '12%',
+            tameProfit:'62',
+            price:'Краткосрочная',
             heading: 'Discover the innovative world of Apple and shop everything iPhone',
-            text:'Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur tenetur perspiciatis recusandae, ad delectus eos vel necessitatibus totam voluptas modi excepturi asperiores vero, eaque animi dolor voluptates praesentium, unde accusantium.'
+            text:'Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur tenetur perspiciatis recusandae, ad delectus eos vel necessitatibus totam voluptas modi excepturi asperiores vero, eaque animi dolor voluptates praesentium, unde accusantium.',
+            rating: 3,
           },
           {
             avatar: 'https://avatars0.githubusercontent.com/u/9064066?v=4&s=460',
-            name: 'Norilsk Nickel',
-            title: 'Добыча',
-            excerpt: '12% за 62 дня',
-            price:'Бесплатно',
+            name: 'Averyanov Oleg',
+            company:"Yandex",
+            profit: '12%',
+            tameProfit:'62',
+            price:'Краткосрочная',
             heading: 'Discover the innovative world of Apple and shop everything iPhone',
-            text:'Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur tenetur perspiciatis recusandae, ad delectus eos vel necessitatibus totam voluptas modi excepturi asperiores vero, eaque animi dolor voluptates praesentium, unde accusantium.'
+            text:'Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur tenetur perspiciatis recusandae, ad delectus eos vel necessitatibus totam voluptas modi excepturi asperiores vero, eaque animi dolor voluptates praesentium, unde accusantium.',
+            rating: 1,
           },
           {
             avatar: 'https://avatars0.githubusercontent.com/u/9064066?v=4&s=460',
-            name: 'Microsoft',
-            title: 'IT',
-            excerpt: '12% за 62 дня',
-            price:'Подписка',
+            name: 'Averyanov Oleg',
+            company:"Norilsk Nickel",
+            profit: '12%',
+            tameProfit:'62',
+            price:'Долгосрочная',
             heading: 'Discover the innovative world of Apple and shop everything iPhone',
-            text:'Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur tenetur perspiciatis recusandae, ad delectus eos vel necessitatibus totam voluptas modi excepturi asperiores vero, eaque animi dolor voluptates praesentium, unde accusantium.'
+            text:'Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur tenetur perspiciatis recusandae, ad delectus eos vel necessitatibus totam voluptas modi excepturi asperiores vero, eaque animi dolor voluptates praesentium, unde accusantium.',
+            rating: 5,
+          },
+          {
+            avatar: 'https://avatars0.githubusercontent.com/u/9064066?v=4&s=460',
+            name: 'Averyanov Oleg',
+            company:"Microsoft",
+            profit: '12%',
+            tameProfit:'62',
+            price:'Долгосрочная',
+            heading: 'Discover the innovative world of Apple and shop everything iPhone',
+            text:'Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur tenetur perspiciatis recusandae, ad delectus eos vel necessitatibus totam voluptas modi excepturi asperiores vero, eaque animi dolor voluptates praesentium, unde accusantium.',
+            rating: 4,
           },
         ],
         desserts: [

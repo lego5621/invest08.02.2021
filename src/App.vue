@@ -1,41 +1,43 @@
 <template>
-  <v-app id="inspire">
-    <v-app-bar
-      app
-      dense
-      flat
-    >
-      <Avatar></Avatar>
 
-      <v-tabs
-        centered
-        color="grey darken-1"
-      >
-        <v-tab to="/" >
-          Компании  
-        </v-tab>
-        <!-- <v-tab to="/">
-          Разбор Компаний
-        </v-tab> -->
-        <v-tab to="/idea">
-          Идеи
-        </v-tab>
-        <v-tab to="/article">
-          Статьи
-        </v-tab>
-        <v-tab to="/portfolio">
-          Портфель
-        </v-tab>
+      <v-app id="inspire">
+        <v-app-bar
+          app
+          dense
+          flat
+        >
+          <Avatar></Avatar>
 
-      </v-tabs>
-    </v-app-bar>
+          <v-tabs
+            centered
+            color="grey darken-1"
+          >
+            <v-tab to="/" >
+              Компании  
+            </v-tab>
+            <!-- <v-tab to="/">
+              Разбор Компаний
+            </v-tab> -->
+            <v-tab to="/idea">
+              Идеи
+            </v-tab>
+            <v-tab to="/article">
+              Статьи
+            </v-tab>
+            <v-tab to="/portfolio"> 
+              Портфель
+            </v-tab>
 
-    <v-main class="bacMain" >
-      <transition name="moveInUp">
-        <router-view></router-view>  
-      </transition>
-    </v-main>
-  </v-app>
+          </v-tabs>
+        </v-app-bar>
+
+        <v-main class="bacMain" >
+          <transition name="moveInUp">
+            <router-view></router-view>  
+          </transition>
+        </v-main>
+      </v-app>
+
 </template>
 
 <script>
@@ -45,8 +47,25 @@ import Avatar from '@/components/Avatar'
       Avatar,
     },
     data: () => ({
-
+       ops: {
+          vuescroll: {},
+          scrollPanel: {},
+          rail: {},
+          bar: {
+            background: '#c1c1c1',
+          }
+        }
     }),
+    mounted() {
+        const theme = localStorage.getItem("dark_theme");
+        if (theme) {
+            if (theme == "true") {
+                this.$vuetify.theme.dark = true;
+            } else {
+                this.$vuetify.theme.dark = false;
+            }
+        }
+    },
   }
 </script>
 
@@ -58,7 +77,7 @@ import Avatar from '@/components/Avatar'
     display: none !important;
   }
   html {
-    scroll-behavior: smooth;
+    scroll-behavior: smooth ;
   }
 
 
