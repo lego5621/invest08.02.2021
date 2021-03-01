@@ -1,7 +1,7 @@
 <template>
  <v-container >
       <v-row >
-        <v-expansion-panels accordion flat>
+        <v-expansion-panels accordion flat >
           <v-expansion-panel
             v-for="(message, i) in messages"
             :key="i"

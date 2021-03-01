@@ -1,11 +1,12 @@
 <template>
  <v-container class="pa-0">
     <v-card
-        rounded="lg"
-        class="mx-auto mb-5 "
+        rounded="xl"
+        class="mx-auto mb-5  specialColor"
         elevation="0"
         v-for="(article, i) in articles"
         :key="i"
+        outlined
     >
       <v-list-item three-line> 
         <v-list-item-content>
@@ -57,6 +58,8 @@
         >
           #{{ tag }}
         </v-chip> 
+
+        
       </v-card-text>
     </v-card>
 
@@ -64,9 +67,15 @@
 </template>
 
 <script>
+// import { mapGetters, mapActions } from "vuex";
+
   export default {
     name: 'Card_Analysis',
-    
+    // computed: mapGetters(["allPosts"]),
+    // methods: mapActions(["fetchPosts"]),
+    // async mounted() {
+    //   this.fetchPosts();
+    // },
     data: () => ({
       title:["Пенсия", "Инвестиции", "Управление деньгами", "Бюджет", "Иследования","Право и Закон","Ведение бизнеса в Казахстане"],
         articles: [

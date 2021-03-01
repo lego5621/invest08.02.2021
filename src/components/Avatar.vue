@@ -17,7 +17,7 @@
               >
           </v-avatar>
         </template>
-        <v-list min-width="200">
+        <v-list min-width="200" class="specialColor">
           <v-list-item to="/settings">
             <v-list-item-title>Настройки</v-list-item-title>
           </v-list-item>

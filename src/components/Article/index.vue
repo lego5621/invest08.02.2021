@@ -7,10 +7,11 @@
         xl="8"
         offset-lg="1"
         offset-xl="2"
+        class="bacMain"
       >
         <v-container class="pa-0">
           <v-sheet
-            class="mb-6 pa-2"
+            class="mb-6 pa-2 bacMain"
             rounded="lg"
           >
             <v-row
@@ -43,7 +44,7 @@
                 </v-chip>                
                 <v-chip
                   link
-                  class="ma-1"
+                  class="ma-1 "
                   v-for="(i) in title"
                   :key="i"
                 >
@@ -62,7 +63,6 @@
                 color="textLinkResult"
               ></v-pagination>
             </div>
-          <Footer></Footer>
         </v-container>
       </v-col>
     </v-row>
@@ -70,28 +70,22 @@
 </template>
 
 <script>
-import Footer from '@/components/Footer'
 import Card from '@/components/Article/Card'
   export default {
     components:{
-      Footer,
       Card,
     },
     name: 'Analysis',
     data: () => ({
       expand: false,
-            page: 1,
-      title:["Пенсия", "Инвестиции", "Управление деньгами", "Бюджет", "Иследования","Право и Закон","Ведение бизнеса в Казахстане"]
+      page: 1,
+      title:["Начинающим","Пенсия", "Инвестиции", "Управление деньгами", "Бюджет", "Иследования","Право и Закон","Ведение бизнеса в Казахстане"]
     }),
   }
 </script>
 
 <style lang="css" >
 
-.v-pagination__item, .v-pagination__navigation{
-  box-shadow: none !important;
-  outline: none !important;
-}
 
 </style>
 

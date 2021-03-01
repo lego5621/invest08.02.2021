@@ -7,16 +7,18 @@ export default new Vuetify({
   theme: {dark:true,
     themes: { 
       light: {
-        bacMain: "#E0E0E0",
+        bacMain: "#FFFFFF",
         footBac: "#FFFFFF",
         textLink: "#4E4E4E",
         textLinkResult: "#1465b5",
+        specialColor: "#F2F5F7",
       },
       dark: {
-        bacMain: "#121212",
+        bacMain: "#181A1B",
         footBac: "#1E1E1E",
         textLink: "#F8F8F8",
         textLinkResult: "#1465b5",
+        specialColor: "#1E2022",
       },
     },
   },

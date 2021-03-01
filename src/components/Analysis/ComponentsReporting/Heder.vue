@@ -1,7 +1,7 @@
 <template>
   <v-card
     rounded="lg"
-    class="mx-auto mb-5 "
+    class="mx-auto mb-5 bacMain"
     elevation="0"
   >
   <v-list-item three-line> 

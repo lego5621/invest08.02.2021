@@ -1,8 +1,8 @@
 <template>
  <v-container class="pa-0">
     <v-card
-        rounded="lg"
-        class="mx-auto mb-5 pb-3"
+        rounded="xl"
+        class="mx-auto mb-5 pb-3 specialColor"
         elevation="0"
         v-for="(message, i) in messages"
         :key="i"
@@ -25,11 +25,11 @@
                         v-else
                       >mdi-domain</v-icon>
                   </v-list-item-avatar>
-                  <strong class="subtitle-1 ">{{ message.name }}</strong>   
+                  <strong class="font-weight-medium">{{ message.name }}</strong>   
               </div>
-              <strong class="align-self-center mr-10 subtitle-1">{{ message.excerpt }}</strong>
-              <strong class="align-self-center mr-10 subtitle-1">{{ message.title }}</strong>
-              <strong class="align-self-center subtitle-1">{{ message.price }}</strong>
+              <strong class="align-self-center mr-10 font-weight-medium">{{ message.excerpt }}</strong>
+              <strong class="align-self-center mr-10 font-weight-medium">{{ message.title }}</strong>
+              <strong class="align-self-center font-weight-medium">{{ message.price }}</strong>
             </div>
           </router-link>
           <v-list-item-title class="text-wrap mb-2">
@@ -52,32 +52,32 @@
           {
             avatar: 'https://turbologo.ru/blog/wp-content/uploads/2020/02/gazprom-znak.png.webp',
             name: 'Газпром',
-            title: 'Материалы',
-            excerpt: 'Россия',
+            title: 'Россия',
+            excerpt: 'Покупать',
             price:'42$',
             text:'ПАО «Газпро́м» — российская транснациональная энергетическая компания, более 50 % акций которой принадлежит государству. Является холдинговой компанией Группы «Газпром». Непосредственно ПАО «Газпром» осуществляет только продажу природного газа и сдаёт в аренду свою газотранспортную систему.',
           },
           {
             avatar: 'https://www.angi.ru/userfiles/image/lukoil_1(1).jpg',
             name: 'Лукоил',
-            title: 'Материалы',
-            excerpt: 'Россия',
+            title: 'Россия',
+            excerpt: 'Держать',
             price:'42$',
             text:'ПАО «Лукойл» — российская нефтяная компания. Официальное название — ПАО «Нефтяная компания „Лукойл“» Наименование компании происходит от первых букв названий городов нефтяников и слова «ойл». Вторая после «Газпрома» по объёмам выручки компания в России.',
           },
           {
             avatar: 'https://smart-lab.ru/uploads/articles/00/19/10/thumbnail.png',
             name: 'Мосбиржа',
-            title: 'Финансы',
-            excerpt: 'Россия',
+            title: 'Америка',
+            excerpt: 'Держать',
             price:'42$',
             text:'Крупнейший российский биржевой холдинг, созданный в 2011 году в результате слияния ММВБ (Московской межбанковской валютной биржи), основанной в 1992 году, и биржи РТС (Российской торговой системы), открытой в 1995 году. Московская биржа является организатором торгов акциями, облигациями, производными инструментами, валютой, инструментами денежного рынка, драгоценными металлами, зерном и сахаром.',
           },
           {
           
             name: 'Schweizerische Nationalbank',
-            title: 'Финансы',
-            excerpt: 'Швеция',
+            title: 'Компания не инвестиционого уровня',
+            excerpt: '----',
             price:'42$',
             text:'Национальный банк Швейцарии — центральный банк Швейцарии. Название банка на официальных языках Швейцарии: нем. Schweizerische Nationalbank, фр. Banque Nationale Suisse, итал. Banca Nazionale Svizzera, романш. Banca Naziunala Svizra',
           },
