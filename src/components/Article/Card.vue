@@ -2,7 +2,7 @@
  <v-container class="pa-0">
     <v-card
         rounded="xl"
-        class="mx-auto mb-5  specialColor"
+        class="mx-auto mb-5 specialColor"
         elevation="0"
         v-for="(article, i) in articles"
         :key="i"
@@ -55,6 +55,7 @@
           v-for="(tag) in article.tag"
           :key="tag"
           small
+          color="chipColor"
         >
           #{{ tag }}
         </v-chip> 

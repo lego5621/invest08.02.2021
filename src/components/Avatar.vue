@@ -41,9 +41,9 @@
      
     }),
     methods: {
-        toggle_dark_mode: function () {
-            localStorage.setItem("dark_theme", this.$vuetify.theme.dark.toString());
-        }
+      toggle_dark_mode: function () {
+          localStorage.setItem("dark_theme", this.$vuetify.theme.dark.toString());
+      }
     },
 
 

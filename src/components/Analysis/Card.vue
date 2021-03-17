@@ -11,7 +11,7 @@
         <v-list-item-content >
           <router-link to="/single" class="block mr-10 text-decoration-none textLink--text overflow">
             <div class="d-flex justify-space-between text-no-wrap" >
-              <div to="/single" class="block mr-10 text-decoration-none textLink--text">
+              <div to="/single" class="d-flex  mr-10 text-decoration-none textLink--text">
                   <v-list-item-avatar
                     size="42"
                     class="ml-0"
@@ -25,11 +25,23 @@
                         v-else
                       >mdi-domain</v-icon>
                   </v-list-item-avatar>
-                  <strong class="font-weight-medium">{{ message.name }}</strong>   
+                  <strong class="font-weight-medium align-self-center">
+                    <p class="caption mb-0 text--disabled">Название</p>
+                    <p class=" mb-0">{{ message.name }}</p>
+                  </strong>   
               </div>
-              <strong class="align-self-center mr-10 font-weight-medium">{{ message.excerpt }}</strong>
-              <strong class="align-self-center mr-10 font-weight-medium">{{ message.title }}</strong>
-              <strong class="align-self-center font-weight-medium">{{ message.price }}</strong>
+              <strong class="align-self-center mr-10 font-weight-medium">
+                <p class="caption mb-0 text--disabled">Рекомендация</p>
+                <p class=" mb-0">{{ message.excerpt }}</p>
+              </strong>
+              <strong class="align-self-center mr-10 font-weight-medium">
+                <p class="caption mb-0 text--disabled">Риск</p>
+                <p class=" mb-0">{{ message.title }}</p>
+              </strong>
+              <strong class="align-self-center font-weight-medium">
+                <p class="caption mb-0 text--disabled">Цена</p>
+                <p class=" mb-0 ">{{ message.price }}</p>
+              </strong>
             </div>
           </router-link>
           <v-list-item-title class="text-wrap mb-2">
@@ -52,7 +64,7 @@
           {
             avatar: 'https://turbologo.ru/blog/wp-content/uploads/2020/02/gazprom-znak.png.webp',
             name: 'Газпром',
-            title: 'Россия',
+            title: 'Средний',
             excerpt: 'Покупать',
             price:'42$',
             text:'ПАО «Газпро́м» — российская транснациональная энергетическая компания, более 50 % акций которой принадлежит государству. Является холдинговой компанией Группы «Газпром». Непосредственно ПАО «Газпром» осуществляет только продажу природного газа и сдаёт в аренду свою газотранспортную систему.',
@@ -71,7 +83,7 @@
             title: 'Америка',
             excerpt: 'Держать',
             price:'42$',
-            text:'Крупнейший российский биржевой холдинг, созданный в 2011 году в результате слияния ММВБ (Московской межбанковской валютной биржи), основанной в 1992 году, и биржи РТС (Российской торговой системы), открытой в 1995 году. Московская биржа является организатором торгов акциями, облигациями, производными инструментами, валютой, инструментами денежного рынка, драгоценными металлами, зерном и сахаром.',
+            text:'Крупнейший российский биржевой холдинг, созданный в 2011 году в результате слияния ММВБ (Московской межбанковской валютной биржи), основанной в 1992 году, и биржи РТС (Российской торговой системы), открытой в 1995 году.',
           },
           {
           
@@ -95,7 +107,7 @@
             title: 'IT-сектор',
             excerpt: 'Россия',
             price:'32$',
-            text:'Я́ндекс» (англ. «Yandex»)— российская транснациональная компания в отрасли информационных технологий, чьё головное юридическое лицо зарегистрировано в Нидерландах, владеющая одноимённой системой поиска в интернете, интернет-порталом и веб-службами в нескольких странах. Наиболее заметное положение занимает на рынках России, Белоруссии и Казахстана.',
+            text:'Я́ндекс» (англ. «Yandex»)— российская транснациональная компания в отрасли информационных технологий, чьё головное юридическое лицо зарегистрировано в Нидерландах, владеющая одноимённой системой поиска в интернете, интернет-порталом и веб-службами в нескольких странах.',
           },
           {
             avatar: 'https://logosklad.ru/photo/logos/521/1469030052.jpg',

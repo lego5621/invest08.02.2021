@@ -19,12 +19,49 @@
         <br>
         Деверсификация по Странам позволяет минимизировать страновые риски, увеличивает "прочность портфеля"
     </v-col>
+    <v-col cols="12">
+      <v-alert
+        rounded="lg"
+        border="left"
+        colored-border
+        color="error"
+        elevation="4"
+        class="mb-3 alertColor"
+      >
+        Aliquam eu nunc. Fusce commodo aliquam arcu. In consectetuer turpis ut velit. Nulla facilisi..
+        Morbi mollis tellus ac sapien. Fusce vel dui. Praesent ut ligula non mi varius sagittis. Vivamus consectetuer hendrerit lacus. Suspendisse enim turpis, dictum sed, iaculis a, condimentum nec, nisi.
+      </v-alert>
+      <v-alert
+        rounded="lg"
+        border="left"
+        colored-border
+        color="error"
+        elevation="4"
+        class="mb-3 alertColor"
+      >
+        Aliquam eu nunc. Fusce commodo aliquam arcu. In consectetuer turpis ut velit. Nulla facilisi..
+        Morbi mollis tellus ac sapien. Fusce vel dui. Praesent ut ligula non mi varius sagittis. Vivamus consectetuer hendrerit lacus. Suspendisse enim turpis, dictum sed, iaculis a, condimentum nec, nisi.
+      </v-alert>
+      <v-alert
+        rounded="lg"
+        border="left"
+        colored-border
+        color="error"
+        elevation="4"
+        class="mb-3 alertColor"
+
+      >
+        Aliquam eu nunc. Fusce commodo aliquam arcu. In consectetuer turpis ut velit. Nulla facilisi..
+        Morbi mollis tellus ac sapien. Fusce vel dui. Praesent ut ligula non mi varius sagittis. Vivamus consectetuer hendrerit lacus. Suspendisse enim turpis, dictum sed, iaculis a, condimentum nec, nisi.
+      </v-alert>
+    </v-col>
   </v-row>
   </v-card>
 </template>
   
 <script>
   import { mapGetters } from "vuex";
+  import vuescroll from 'vuescroll';
 
  export default {
   computed: {
@@ -34,7 +71,34 @@
     ])
   },
 
+  components:{
+    vuescroll,
+  },
+
   data: () => ({
+    ops: {
+      vuescroll: {},
+      scrollPanel: {
+        initialScrollY: true,
+        initialScrollX: false,
+        scrollingX: false,
+        scrollingY: true,
+        speed: 300,
+      },
+      rail: {},
+      bar: {
+        showDelay: 500,
+        onlyShowBarOnScroll: true,
+        keepShow: false,
+        background: '#c1c1c1',
+        opacity: 1,
+        hoverStyle: false,
+        specifyBorderRadius: false,
+        minSize: 0,
+        size: '6px',
+        disable: false
+      }
+    },
     series: [65],
     
     chartOptions: {

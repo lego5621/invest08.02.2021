@@ -7,12 +7,11 @@
   >
     <div>
       <p class="text-h5 mb-0 font-weight-medium">Дивиденды</p>
-      <div>
-        <apexchart width="100%" height= "400px" type="bar" :options="chartOptions" :series="series"></apexchart>
+      <div class="mt-3">
+        Компания собираеться направлять на дивиденды 60% своей чистой прибыли. <span class="goodAnalysis">Прогназируемая доходность 7% </span>
       </div>
-      <div class="mt-4">
-        <p class="text-h6 mb-2">Что это значит:</p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui sit, quasi accusamus quae sunt veritatis alias, necessitatibus recusandae dignissimos optio eligendi vitae illum. Eaque, maxime! Provident nihil impedit porro vel.
+      <div>
+        <apexchart width="100%" height= "400px"  type="bar" :options="chartOptions" :series="series"></apexchart>
       </div>
     </div>
   </v-card>
@@ -21,14 +20,14 @@
 <script>
   import { mapGetters } from "vuex";
 
- export default {
+  export default {
 
-  computed: {
-    ...mapGetters([
-      'DividendHistorical',
-      'loaded'
-    ])
-  },
+    computed: {
+      ...mapGetters([
+        'DividendHistorical',
+        'loaded'
+      ])
+    },
 
   data: () => ({ 
      series: [{
@@ -44,7 +43,7 @@
             name: 'PRODUCT D',
             data: [23, 24, 25, 26, 27, 28]
           }],
-          chartOptions: {
+          chartOptions: {            
             states: {
               normal: {
                 filter: {

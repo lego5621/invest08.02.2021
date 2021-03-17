@@ -14,8 +14,10 @@
      <v-col cols="12" sm="7" lg="8" class="mx-auto d-flex flex-column align-self-center height240px">
        <p class="text-h5">Компания подходит для долгосрочного инвестирования</p>
        Если больше 55% то компания подходит для инвестирования, чем больше тем лучше, если меньше, то компания не подходит для ДОЛГОСРОЧНОГО инвестирования 
-       <br>
-       Lorem ipsum dolor, sit amet consectetur adipisicing elit. Mollitia cum tempora eligendi enim in excepturi voluptatem minus.
+        <div class="d-flex justify-space-between mt-2 flex-wrap">
+            <v-chip small class="mr-2 mt-2" link color="buttonsColor">Добавить в портфель</v-chip>
+            <v-chip small class="mr-2 mt-2" link color="buttonsColor">Сайт компании</v-chip>
+       </div>
     </v-col>
   </v-row>
   </v-card>

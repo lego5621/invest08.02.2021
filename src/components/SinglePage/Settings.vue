@@ -26,7 +26,7 @@
                         </v-row>
                     </v-sheet>
                 </v-col>
-                <v-col cols="12" lg="8"> 
+                <v-col cols="12" lg="8" class="pt-0"> 
                    <v-form v-model="valid">
                         <v-container>
                         <v-row>
@@ -74,18 +74,6 @@
                                 required
                             ></v-text-field>
                             </v-col>
-
-                            <v-col
-                            cols="12"
-                            >
-                                <v-select
-                                    v-model="select"
-                                    :items="items"
-                                    :rules="[v => !!v || 'Item is required']"
-                                    label="Страна"
-                                    required
-                                ></v-select>
-                            </v-col>
                             <v-btn
                                 color="blue lighten-1"
                                 class="white--text"
@@ -124,13 +112,6 @@
         v => !!v || 'E-mail is required',
         v => /.+@.+/.test(v) || 'E-mail must be valid',
       ],
-      select: null,
-        items: [
-            'Казахстан',
-            'Россия',
-            'Белорусь',
-            'Украина',
-        ],
     }),
   }
 </script>

@@ -13,7 +13,7 @@
           <p class="text-h4">
             Портфель: Пенсия
           </p>
-          <RadarAnalysis/>
+          <!-- <RadarAnalysis/> -->
           <Chart/>
           <Tables/>
           <Divided/>

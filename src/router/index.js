@@ -5,6 +5,7 @@ import Single from '@/components/Analysis/Single'
 import Article from '@/components/Article/index'
 import Portfolio from '@/components/Portfolio/index'
 import Setting from '@/components/SinglePage/Settings'
+import Login from '@/components/SinglePage/Login'
 
 
 Vue.use(VueRouter)
@@ -15,6 +16,7 @@ const routes = [
   { path: '/article', component: Article },
   { path: '/portfolio', component: Portfolio },
   { path: '/settings', component: Setting },
+  { path: '/login',name: 'login',component: Login },
 ]
 
 const router = new VueRouter({

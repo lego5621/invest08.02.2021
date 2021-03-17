@@ -3,20 +3,16 @@
     rounded="xl"
     class="mx-auto mb-5 pa-4 specialColor"
     elevation="0"
-    
-
   >
-    <p class="text-h5 ">Цена</p>
-      <div id="chart">
-        <apexchart type="area" height="350" :options="chartOptions" :series="StockHistorical"></apexchart>
-      </div>
+    <p class="text-h5 ">Доходность: 40%</p>
+    <div id="chart">
+      <apexchart type="area" height="350" :options="chartOptions" :series="StockHistorical"></apexchart>
+    </div>
     <div class="pt-3">
       <p class="mb-4">
         Lorem ipsum dolor sit amet consectetur, adipisicing elit. Molestias, accusantium commodi. Consequuntur delectus, quos dolor quibusdam odio natus corrupti, necessitatibus quisquam assumenda facere in odit! Lorem ipsum dolor, sit amet consectetur adipisicing elit.
       </p>
     </div>
-
-
   </v-card>
 </template>
 
@@ -71,7 +67,7 @@
           type: 'numeric',  
            labels: {
             style: {
-                colors: ["#42A5F5", "#42A5F5", "#42A5F5", "#42A5F5", "#42A5F5", "#42A5F5", "#42A5F5", "#42A5F5"],
+                colors: "#42A5F5",
                 fontSize: '15px',
                 fontFamily: 'Helvetica, Arial, sans-serif',
                 fontWeight: 400,
@@ -80,15 +76,7 @@
           }
         },
         yaxis: {
-          labels: {
-            style: {
-                colors: ["#42A5F5", "#42A5F5", "#42A5F5", "#42A5F5", "#42A5F5", "#42A5F5", "#42A5F5", "#42A5F5"],
-                fontSize: '15px',
-                fontFamily: 'Helvetica, Arial, sans-serif',
-                fontWeight: 400,
-                cssClass: 'apexcharts-xaxis-label',
-            },
-          }
+          show: false,
         }
       },      
     }),

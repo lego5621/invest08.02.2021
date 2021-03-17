@@ -35,7 +35,7 @@
                 <v-chip
                   link
                   class="ma-1"
-                  label
+                  color="specialColor"
                 >
                   <v-icon class="mr-1">
                     mdi-star-outline
@@ -47,6 +47,7 @@
                   class="ma-1 "
                   v-for="(i) in title"
                   :key="i"
+                  color="specialColor"
                 >
                   {{ i }}
                 </v-chip>                

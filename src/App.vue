@@ -1,11 +1,12 @@
 <template>
 
   <v-app id="inspire">
-    <v-app-bar
+    <v-app-bar 
       app
       dense
       flat
       class="bacMain" 
+      v-if="!['login', 'register'].includes($route.name)"
     >
       <div class="d-flex align-center justify-space-between width100">
       <Avatar></Avatar>
@@ -21,39 +22,39 @@
               >
                 Как это работает?
               </a>
-            </template>
-            <v-list class="specialColor">
-              <v-list-item to="/0">
-                <v-list-item-title >
-                  Что такое фондовый рынок и Акции?
-                </v-list-item-title>
-              </v-list-item>
-              <v-list-item to="/2">
-                <v-list-item-title>
-                  Какие бывают стратегии инвестрования?
-                </v-list-item-title>
-              </v-list-item>
-              <v-list-item to="/3">
-                <v-list-item-title>
-                  Почему нужно инвестировать?
-                </v-list-item-title>
-              </v-list-item>
-              <v-list-item to="/4">
-                <v-list-item-title>
-                  Сколько я могу заработать и сколько потерять?
-                </v-list-item-title>
-              </v-list-item>
-              <v-list-item to="/5">
-                <v-list-item-title>
-                  Как пользоваться сервисом?
-                </v-list-item-title>
-              </v-list-item>
-              <v-list-item to="/article" class="text-center">
-                <v-list-item-title>
-                  Еще...
-                </v-list-item-title>
-              </v-list-item>
-            </v-list>
+                </template>
+                <v-list class="specialColor">
+                  <v-list-item to="/0">
+                    <v-list-item-title >
+                      Что такое фондовый рынок и Акции?
+                    </v-list-item-title>
+                  </v-list-item>
+                  <v-list-item to="/2">
+                    <v-list-item-title>
+                      Какие бывают стратегии инвестрования?
+                    </v-list-item-title>
+                  </v-list-item>
+                  <v-list-item to="/3">
+                    <v-list-item-title>
+                      Почему нужно инвестировать?
+                    </v-list-item-title>
+                  </v-list-item>
+                  <v-list-item to="/4">
+                    <v-list-item-title>
+                      Сколько я могу заработать и сколько потерять?
+                    </v-list-item-title>
+                  </v-list-item>
+                  <v-list-item to="/5">
+                    <v-list-item-title>
+                      Как пользоваться сервисом?
+                    </v-list-item-title>
+                  </v-list-item>
+                  <v-list-item to="/article" class="text-center">
+                    <v-list-item-title>
+                      Еще...
+                    </v-list-item-title>
+                  </v-list-item>
+                </v-list>
               </v-menu>
               </div>
               <div>
@@ -89,14 +90,15 @@
         </div>
         <div></div>
       </div>
-      
     </v-app-bar>
 
-    <v-main class="bacMain" >
-      <transition name="moveInUp">
-        <router-view></router-view>  
-      </transition>
-      <Footer/>
+    <v-main class="bacMain " >
+      <div class="h90vh">
+        <transition name="moveInUp">
+          <router-view></router-view>  
+        </transition>
+      </div>
+          <Footer/>
     </v-main>
   </v-app>
 
@@ -161,7 +163,22 @@ import Footer from '@/components/Footer'
     outline: none;
   }
 
- 
+  .goodAnalysis{
+    border-bottom: 2px dashed #75b5e6;
+  }
+
+   .badAnalysis{
+    border-bottom: 2px dashed #E57373;
+  }
+
+  .h90vh{
+    flex-grow: 1 !important;
+  }
+
+  .v-main__wrap {
+    flex-direction: column;
+    display: flex;
+  }
 
 
 

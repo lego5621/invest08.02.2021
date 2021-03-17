@@ -26,26 +26,28 @@
                   class="flex-grow-1 "
                   color="grey darken-1"
                 ></v-text-field>
-                <v-btn 
+                <!-- <v-btn 
                   depressed
                   class="h-40 ml-2" 
-                  color="secondary"
+                  color="specialColor"
                   @click="expand = !expand"
                 >
-                  Дополнительно
-                </v-btn>
+                  <v-icon size="30"> mdi-arrow-down-drop-circle-outline</v-icon>
+                </v-btn> -->
               </v-col>
             </v-row>
             <v-row
               no-gutters 
               class="mt-0"
             >
-              <v-expand-transition>
+              <v-expand-transition >
                 <v-card
                   v-show="expand"
-                  height="200"
+                  height="60"
                   width="100%"
-                  class="mx-auto secondary mt-2"
+                  class="mx-auto specialColor mt-2"
+                  elevation="0"
+                  rounded="lg"
                 ></v-card>
               </v-expand-transition>
             </v-row>
