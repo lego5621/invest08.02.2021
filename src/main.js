@@ -5,6 +5,14 @@ import vuetify from './plugins/vuetify'
 import store from './store'
 import VueApexCharts from 'vue-apexcharts'
 
+import Axios from 'axios'
+
+Vue.prototype.$http = Axios;
+const token = localStorage.getItem('token')
+if (token) {
+  Vue.prototype.$http.defaults.headers.common['Authorization'] = token
+}
+
 Vue.use(VueApexCharts)
 
 Vue.component('apexchart', VueApexCharts)

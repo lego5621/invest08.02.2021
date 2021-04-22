@@ -36,7 +36,6 @@
                             <v-text-field
                                 v-model="firstname"
                                 :rules="nameRules"
-                                :counter="10"
                                 label="Имя"
                                 required
                             ></v-text-field>
@@ -48,7 +47,6 @@
                             <v-text-field
                                 v-model="lastname"
                                 :rules="nameRules"
-                                :counter="10"
                                 label="Фамилия"
                                 required
                             ></v-text-field>
@@ -104,12 +102,12 @@
       firstname: '',
       lastname: '',
       nameRules: [
-        v => !!v || 'Name is required',
-        v => v.length <= 10 || 'Name must be less than 10 characters',
+        v => !!v || 'Имя не корректно',
+        v => v.length <= 20 || 'Имя должно быть менее 20 символов',
       ],
       email: '',
       emailRules: [
-        v => !!v || 'E-mail is required',
+        v => !!v || 'Почта не корректна',
         v => /.+@.+/.test(v) || 'E-mail must be valid',
       ],
     }),
