@@ -139,7 +139,7 @@
       },
       {
         name: 'Мосбиржа',
-        avatar: 'https://smart-lab.ru/uploads/articles/00/19/10/thumbnail.png',
+        avatar: 'https://habrastorage.org/getpro/habr/post_images/c5b/420/14d/c5b42014d0a7f46263ed978da288eb8a.png',
         calories: 262,
         rating: "Покупать",
       },

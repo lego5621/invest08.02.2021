@@ -1,120 +1,130 @@
 <template>
   <v-card
     rounded="lg"
-    class=" mb-2 pa-4 bacMain"
+    class="mb-8 pr-4 pl-4 bacMain maxHeight"
     elevation="0"
-    min-height="100px"
   >
-  <v-row>
-    <v-col cols="12" sm="6" class="pa-2 mb-5">
-      <p class="text-h5 font-weight-medium"><v-icon size="50" class="mr-2" > mdi-chart-pie </v-icon>Бизнес компании</p>
-      <p class="mb-2 mt-2">
-        Страна: <span class="goodAnalysis">Россия</span>
-      </p>
-      <p class="mb-2 mt-2">
-        Отрасель: <span class="goodAnalysis">Добыча нефти</span>
-      </p>
-      <p class="mb-2 mt-2">
-        «Газпром» располагает самыми большими запасами природного газа в мире. Его доля в мировых запасах составляет 17 %, в российских — 72 %.
-      </p>
-      <p class="mb-2 mt-2">
-        Стратегическими регионами добычи газа на долгосрочную перспективу являются полуостров Ямал, Восточная Сибирь и Дальний Восток, континентальный шельф России.
-      </p>
-       <!-- <p class="mb-2 mt-2">
-        «Газпрому» принадлежит крупнейшая в мире Единая система газоснабжения России, а также газотранспортные сети на территории Армении, Кыргызстана, Белоруссии.
-      </p> -->
-    </v-col>
-    <!-- <v-col cols="12" sm="6" class="pa-2 mb-5">
-      <p class="text-h5 font-weight-medium"><v-icon size="50" class="mr-2"> mdi-arrow-top-right </v-icon>
-        Прогнозы аналитиков 
-      </p>
+  <vuescroll :ops="ops">
+    <v-row>
+      <v-col cols="12" sm="6" class="pa-3 mb-5 bacMain">
+        <div class="sticky bacMain">
+          <p class="text-h5 font-weight-medium">
+            <v-icon size="50" class="mr-2" > mdi-arrow-top-right</v-icon>
+            Факты за покупку
+          </p>
+        </div>
         <p class="mb-2 mt-2">
-        Средний рост чистой прибыли компании за 5 лет <span class="goodAnalysis">больше инвляции (5%)</span>, что являетья положительной тенденцией. Hастущая прибыль говорит о том что компания является успешной растущей компаний.
-      </p> 
-      <p class="mb-2 mt-2">
-        Последние 5 лет компания <span class="goodAnalysis">стабильно приносила прибыль</span>, что говорит о устойчивости спроса на товары и услуги компании.
-      </p>
-      <p class="mb-2 mt-2">
-        Средний прогназируемый рост акций <span class="goodAnalysis">состовляет 23% </span>, что больше на 4% средней доходности индекса snp500.
-      </p>
-      <p class="mb-2 mt-2">
-        Мы берем средний прогноз нескольких аналитиков и усредняем их цену, это делается для того чтобы невелировать ошибки и предвзятость отдельно взятого аналитика.
-      </p>
-      <p class="mb-2 mt-2">
-        Согластно консенсус прогнозу 7 аналитиков ближайшие 12 месяцев ожидается рост цена акций 
-      </p>
-      <p class="mb-2 mt-2">
-        Мы используем прогнозы только компитентных и провереных аналитиков, из крупных банков и инвестиционых фондов.
-      </p>
-      <p class="mb-2 mt-2">
-        Компания <span class="goodAnalysis">проводит обратный выкуп акций</span>, это является дополнительным стимулом для роста акций.
-      </p>
-    </v-col> -->
-     <v-col cols="12" sm="6"  class="pa-2 mt-5 mt-sm-0">
-     <p class="text-h5 font-weight-medium"> 
-        <v-icon size="50" class="mr-2"> mdi-security</v-icon>
-        Инвестиционный рейтинг
-        <!-- Устойчивость компании -->
-      </p>
-      <!-- <p class="mb-2 mt-2">
-        Компания имеет <span class="goodAnalysis">Нейтральный инвестиционный рейтинг</span>, что говорит о адекватной способности своевременно погашать свои финансовые обязательства.  -->
-        <!-- Обязательства таких компаний покупают <span class="goodAnalysis">пенсионные фонды</span>.  -->
-      <!-- </p> -->
-      <p class="mb-2 mt-2">
-        Компания имеет <span class="goodAnalysis">Нейтральный инвестиционный рейтинг</span>, риск банкротства не велик, компания хорошо поддаются анализу а прогнозы относительно точные, однако компании с данным рейтингом более подвержены влиянию различных неблогоприятных факторов.
-      </p> 
-      <p class="mb-2 mt-2">
-        Прогноз <span class="badAnalysis">стабильный</span>. Есть предпосылки для долгосрочного роста и увеличения устойчавости компании к внешним и внутреним угрозам.
-      </p> 
-      <!-- <p class="mb-2 mt-2">
-        Компании с "средним инвестиционным рейтигом"  легче подаются анализу, и прогнозы более точны.
-      </p>  -->
-    </v-col>
-  </v-row>
-  <!-- <v-row>
-    <v-col cols="12" sm="9"  class="pa-2 mt-5 mt-sm-0">
-     <p class="text-h5 font-weight-medium"> 
-        <v-icon size="50" class="mr-2"> mdi-security</v-icon>
-        Устойчивость компании
-      </p>
-      <p class="mb-2 mt-2">
-        Компания имеет <span class="goodAnalysis">Нейтральный инвестиционный рейтинг</span>, что говорит о адекватной способности своевременно погашать свои финансовые обязательства. 
-        Обязательства таких компаний покупают <span class="goodAnalysis">пенсионные фонды</span>. 
-      </p>
-      <p class="mb-2 mt-2">
-        Прогноз <span class="badAnalysis">стабильный</span>. Есть предпосылки для долгосрочного роста и увеличения устойчавости компании к внешним и внутреним угрозам.
-      </p> 
-      <p class="mb-2 mt-2">
-        Компании с "средним инвестиционным рейтигом"  легче подаются анализу, и прогнозы более точны.
-      </p> 
-      <p class="mb-2 mt-2">
-        Компании с данным рейтингом мение подвержены различным неблогоприятным факторам, а так же имеют достаточный "запас прочности" 
-      </p> 
-    </v-col>
-  </v-row> -->
+          «Газпром» располагает самыми большими запасами природного газа в мире. Его доля в мировых запасах составляет 17 %, в российских — 72 %.
+        </p>
+        <p class="mb-2 mt-2">
+          Стратегическими регионами добычи газа на долгосрочную перспективу являются полуостров Ямал, Восточная Сибирь
+        </p>
+        <p class="mb-2 mt-2">
+          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Totam, laborum. Beatae tenetur autem quibusdam enim.
+        </p>
+        <p class="mb-2 mt-2">
+          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Totam, laborum. Beatae tenetur autem quibusdam enim.
+        </p>
+        <p class="mb-2 mt-2">
+          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Totam, laborum. Beatae tenetur autem quibusdam enim.
+        </p>
+        <p class="mb-2 mt-2">
+          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Totam, laborum. Beatae tenetur autem quibusdam enim.
+        </p>
+        <p class="mb-2 mt-2">
+          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Totam, laborum. Beatae tenetur autem quibusdam enim.
+        </p>
+      </v-col>
+
+      <v-col cols="12" sm="6"  class="pa-2 mt-5 mt-sm-0">
+        <div class="sticky bacMain">
+            <p class="text-h5 font-weight-medium"> 
+            <v-icon size="50" class="mr-2"> mdi-arrow-bottom-right</v-icon>
+            Факты против покупки
+        </p>
+        </div>
+        <p class="mb-2 mt-2">
+          Компания имеет <span class="goodAnalysis">Нейтральный инвестиционный рейтинг</span>, риск банкротства не велик, компания хорошо поддаются анализу а прогнозы относительно точные
+        </p> 
+        <p  class="mb-2 mt-2"> 
+          Однако компании с данным рейтингом более подвержены влиянию различных неблогоприятных факторов.
+        </p>
+        <p  class="mb-2 mt-2"> 
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis maxime debitis adipisci commodi dolorum doloremque.
+        </p>
+        <p  class="mb-2 mt-2"> 
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fugit eos nesciunt quibusdam.
+        </p>
+        <p class="mb-2 mt-2">
+          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Totam, laborum. Beatae tenetur autem quibusdam enim.
+        </p>
+      </v-col>
+    </v-row>
+  </vuescroll>
   </v-card>
 </template>
   
 <script>
+import vuescroll from 'vuescroll';
 
  export default {
-
+  components: {
+    vuescroll
+  },
 
   computed: {
 
   },
 
   data: () => ({
-
-  
+     ops: {
+      vuescroll: {},
+      scrollPanel: {
+        scrollingX: false,
+        scrollingY: true,
+        speed: 300,
+      },
+      rail: {},
+      bar: {
+        showDelay: 500,
+        onlyShowBarOnScroll: false,
+        keepShow: false,
+        background: '#c1c1c1',
+        opacity: 1,
+        hoverStyle: false,
+        specifyBorderRadius: false,
+        minSize: 0,
+        size: '6px',
+        disable: false
+      }
+    },  
   }),
 }
 </script>
 
 <style lang="css" scoped>
-  .overflow{
-    overflow-x: auto;
+
+  .maxHeight{
+    height: 400px;
+    overflow-y: hidden;
   }
+
+  .maxHeight2{
+    height: auto;
+  }
+
+  .sticky{
+    position: sticky;
+    top: 0;
+  }
+
+  @media only screen and (max-width: 657px)  {
+    .maxHeight{
+      max-height: 600px;
+      overflow-x: hidden;
+    }
+  }
+
 </style>
 
 

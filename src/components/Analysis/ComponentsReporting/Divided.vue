@@ -1,12 +1,15 @@
 <template>
   <v-card
-    rounded="lg"
-    class=" mb-5 pa-4 bacMain"
+    rounded="xl"
+    class="pa-4 mb-5 specialColor"
     elevation="0"
     min-height="400px"
   >
     <div>
-      <p class="text-h5 mb-0 font-weight-medium">Дивиденды</p>
+      <p class="text-h5 mb-0 font-weight-medium">
+        <v-icon size="50" class="mr-2"> mdi-arrow-top-right </v-icon>
+        Дивиденды
+      </p>
       <div class="mt-3">
         Компания собираеться направлять на дивиденды 60% своей чистой прибыли. <span class="goodAnalysis">Прогназируемая доходность 7% </span>
       </div>
@@ -32,17 +35,8 @@
   data: () => ({ 
      series: [{
             name: 'PRODUCT A',
-            data: [20, 21, 22, 23, 24, 25]
-          }, {
-            name: 'PRODUCT B',
-            data: [21, 22, 23, 24, 25,26]
-          }, {
-            name: 'PRODUCT C',
-            data: [22, 23, 24, 25, 26, 27]
-          }, {
-            name: 'PRODUCT D',
-            data: [23, 24, 25, 26, 27, 28]
-          }],
+            data: [21, 22, 23, 24, 25]
+     }],
           chartOptions: {            
             states: {
               normal: {
@@ -99,11 +93,12 @@
                 horizontal: false,
               },
             },
+            
             xaxis: {
-              categories: ['2015 ', '2016 ', '2017 ', '2018 ', '2019 ', '2020 '],
+              categories: [ '2016 ', '2017 ', '2018 ', '2019 ', '2020 '],
               labels: {
                 style: {
-                    colors: ["#42A5F5","#42A5F5","#42A5F5","#42A5F5","#42A5F5","#42A5F5","#42A5F5","#42A5F5"],
+                    colors: ["#42A5F5","#42A5F5","#42A5F5","#42A5F5","#42A5F5",],
                     fontSize: '15px',
                     fontFamily: 'Helvetica, Arial, sans-serif',
                     fontWeight: 400,

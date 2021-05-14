@@ -6,8 +6,8 @@
   >
   <v-list-item three-line class="pa-0"> 
     <v-list-item-content >
-      <div class="d-flex justify-space-between text-no-wrap overflow" >
-        <div class="mr-10 d-flex">
+      <div class="d-flex justify-space-between text-no-wrap cardMedia" >
+        <div class="mr-10 d-flex cartItem">
           <v-list-item-avatar
             size="42"
             class="ml-0"
@@ -33,8 +33,8 @@
           <p class=" mb-0">{{ excerpt }}</p>
         </strong>
         <strong class="align-self-center mr-10 subtitle-1">
-          <p class="caption mb-0 text--disabled">Риск</p>
-          <p class=" mb-0">{{ title }}</p>
+          <p class="caption mb-0 text--disabled">Дивиденды</p>
+          <p class=" mb-0">Около {{ div }}</p>
         </strong>
         <strong class="align-self-center subtitle-1">
           <p class="caption mb-0 text--disabled">Цена</p>
@@ -56,7 +56,7 @@
     data: () => ({
       avatar: 'https://turbologo.ru/blog/wp-content/uploads/2020/02/gazprom-znak.png.webp',
       name: 'Газпром',
-      title: 'Низкий',
+      div: '5%',
       excerpt: 'Покупать',
       price:'42$',
       text:'ПАО «Газпро́м» — российская транснациональная энергетическая компания, более 50 % акций которой принадлежит государству. Является холдинговой компанией Группы «Газпром». Непосредственно ПАО «Газпром» осуществляет только продажу природного газа и сдаёт в аренду свою газотранспортную систему.',
@@ -65,11 +65,19 @@
 </script>
 
 <style lang="css" scoped>
-  .overflow{
-    overflow-x: auto;
-  }
   .lHeight {
     line-height: 1.5;
+  }
+
+  @media only screen and (max-width: 657px)  {
+    .cardMedia{
+      flex-wrap: wrap;
+      margin-bottom: 15px;
+    }
+
+    .cartItem{
+      flex-basis: 100%;
+    }
   }
 </style>
 

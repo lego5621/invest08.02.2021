@@ -65,7 +65,7 @@
                     v-on="on"
                     class="mr-6 d-flex align-center justify-space-between"
                   >
-                  Мой портфель
+                  Мои портфели
                   </div>
                 </template>
                 <v-list class="specialColor">

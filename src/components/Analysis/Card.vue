@@ -9,9 +9,9 @@
     >
       <v-list-item three-line> 
         <v-list-item-content >
-          <router-link to="/single" class="block mr-10 text-decoration-none textLink--text overflow">
-            <div class="d-flex justify-space-between text-no-wrap" >
-              <div to="/single" class="d-flex  mr-10 text-decoration-none textLink--text">
+          <router-link to="/single" class="block mr-10 text-decoration-none textLink--text ">
+            <div class="d-flex justify-space-between text-no-wrap cardMedia" >
+              <div to="/single" class="d-flex text-decoration-none textLink--text cartItem mr-3 ml-3">
                   <v-list-item-avatar
                     size="42"
                     class="ml-0"
@@ -30,15 +30,15 @@
                     <p class=" mb-0">{{ message.name }}</p>
                   </strong>   
               </div>
-              <strong class="align-self-center mr-10 font-weight-medium">
+              <strong class="align-self-center font-weight-medium mr-3 ml-3">
                 <p class="caption mb-0 text--disabled">Рекомендация</p>
                 <p class=" mb-0">{{ message.excerpt }}</p>
               </strong>
-              <strong class="align-self-center mr-10 font-weight-medium">
-                <p class="caption mb-0 text--disabled">Риск</p>
-                <p class=" mb-0">{{ message.title }}</p>
+              <strong class="align-self-center font-weight-medium mr-3 ml-3">
+                <p class="caption mb-0 text--disabled">Дивиденды</p>
+                <p class=" mb-0">Около {{ message.div }}</p>
               </strong>
-              <strong class="align-self-center font-weight-medium">
+              <strong class="align-self-center font-weight-medium mr-3 ml-3">
                 <p class="caption mb-0 text--disabled">Цена</p>
                 <p class=" mb-0 ">{{ message.price }}</p>
               </strong>
@@ -64,7 +64,7 @@
           {
             avatar: 'https://turbologo.ru/blog/wp-content/uploads/2020/02/gazprom-znak.png.webp',
             name: 'Газпром',
-            title: 'Средний',
+            div: '5%',
             excerpt: 'Покупать',
             price:'42$',
             text:'ПАО «Газпро́м» — российская транснациональная энергетическая компания, более 50 % акций которой принадлежит государству. Является холдинговой компанией Группы «Газпром». Непосредственно ПАО «Газпром» осуществляет только продажу природного газа и сдаёт в аренду свою газотранспортную систему.',
@@ -72,31 +72,30 @@
           {
             avatar: 'https://www.angi.ru/userfiles/image/lukoil_1(1).jpg',
             name: 'Лукоил',
-            title: 'Россия',
+            div: '10%',
             excerpt: 'Держать',
             price:'42$',
             text:'ПАО «Лукойл» — российская нефтяная компания. Официальное название — ПАО «Нефтяная компания „Лукойл“» Наименование компании происходит от первых букв названий городов нефтяников и слова «ойл». Вторая после «Газпрома» по объёмам выручки компания в России.',
           },
           {
-            avatar: 'https://smart-lab.ru/uploads/articles/00/19/10/thumbnail.png',
+            avatar: 'https://habrastorage.org/getpro/habr/post_images/c5b/420/14d/c5b42014d0a7f46263ed978da288eb8a.png',
             name: 'Мосбиржа',
-            title: 'Америка',
-            excerpt: 'Держать',
+            div: '1%',
+            excerpt: 'Продавать',
             price:'42$',
             text:'Крупнейший российский биржевой холдинг, созданный в 2011 году в результате слияния ММВБ (Московской межбанковской валютной биржи), основанной в 1992 году, и биржи РТС (Российской торговой системы), открытой в 1995 году.',
           },
           {
-          
             name: 'Schweizerische Nationalbank',
-            title: 'Компания не инвестиционого уровня',
-            excerpt: '----',
+            div: '2%',
+            excerpt: 'Держать (5%)',
             price:'42$',
             text:'Национальный банк Швейцарии — центральный банк Швейцарии. Название банка на официальных языках Швейцарии: нем. Schweizerische Nationalbank, фр. Banque Nationale Suisse, итал. Banca Nazionale Svizzera, романш. Banca Naziunala Svizra',
           },
           {
             avatar: 'https://static.wixstatic.com/media/7ad5cb_ff5933713c67476391db39f11faf8213.jpg',
             name: 'Alaska Air Group Inc',
-            title: 'Транспорт',
+            div: '4%',
             excerpt: 'Америка',
             price:'98$',
             text:'Американский авиационный холдинг со штаб-квартирой в Ситэке, пригород Сиэтла (Вашингтон), владеющий двумя сертифицированными коммерческими авиаперевозчиками: магистральной авиакомпанией Alaska Airlines и региональной авиакомпанией Horizon Air.',
@@ -104,7 +103,7 @@
           {
             avatar: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRN11YVJdN6J-Zs0jMez2uRMDzMWyvUILao9A&usqp=CAU',
             name: 'Yandex',
-            title: 'IT-сектор',
+            div: '3%',
             excerpt: 'Россия',
             price:'32$',
             text:'Я́ндекс» (англ. «Yandex»)— российская транснациональная компания в отрасли информационных технологий, чьё головное юридическое лицо зарегистрировано в Нидерландах, владеющая одноимённой системой поиска в интернете, интернет-порталом и веб-службами в нескольких странах.',
@@ -112,7 +111,7 @@
           {
             avatar: 'https://logosklad.ru/photo/logos/521/1469030052.jpg',
             name: 'Norilsk Nickel',
-            title: 'Материалы',
+            div: '0%',
             excerpt: 'Россия',
             price:'8$',
             text:'«ПАО «Норникель» — российская горно-металлургическая компания. В настоящее время «Норникель» объединяет группу предприятий, возглавляемую Публичным акционерным обществом "Горно-металлургическая компания «Норильский никель»',
@@ -120,7 +119,7 @@
           {
             avatar: 'https://storage.googleapis.com/multi-static-content/previews/artage-io-thumb-65e040f40fbf04601dc75759bec78b99.png',
             name: 'Microsoft',
-            title: 'IT',
+            div: '6%',
             excerpt: 'Америка',
             price:'12$',
             text:'Ма́йкрософт — одна из крупнейших транснациональных компаний по производству проприетарного программного обеспечения для различного рода вычислительной техники — персональных компьютеров, игровых приставок, КПК, мобильных телефонов и прочего',
@@ -136,7 +135,14 @@
 </script>
 
 <style lang="css" scoped>
-  .overflow{
-    overflow-x: auto;
+   @media only screen and (max-width: 657px)  {
+      .cardMedia{
+        flex-wrap: wrap;
+        margin-bottom: 15px;
+      }
+
+      .cartItem{
+        flex-basis: 100%;
+      }
   }
 </style>

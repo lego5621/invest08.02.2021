@@ -6,13 +6,13 @@
   >
     <p class="text-h5 ">Доходность: 40%</p>
     <div id="chart">
-      <apexchart type="area" height="350" :options="chartOptions" :series="StockHistorical"></apexchart>
+      <apexchart type="area" height="350" :options="chartOptions" :series="getStockHistorical"></apexchart>
     </div>
-    <div class="pt-3">
+    <!-- <div class="pt-3">
       <p class="mb-4">
         Lorem ipsum dolor sit amet consectetur, adipisicing elit. Molestias, accusantium commodi. Consequuntur delectus, quos dolor quibusdam odio natus corrupti, necessitatibus quisquam assumenda facere in odit! Lorem ipsum dolor, sit amet consectetur adipisicing elit.
       </p>
-    </div>
+    </div> -->
   </v-card>
 </template>
 
@@ -22,20 +22,20 @@
  export default {
     computed: {
       ...mapGetters([
-        'StockHistorical',
+        'getStockHistorical',
         'loaded'
       ])
     },
 
-     async mounted() {
-        this.fetchStatements();
-      },
+    async mounted() {
+      this.StockHistorical();
+    },
 
-      methods: {
-        ...mapActions([
-          'fetchStatements'
-        ])
-      },
+    methods: {
+      ...mapActions([
+        'StockHistorical'
+      ])
+    },
     name: 'Chart',
     data: () => ({
       chartOptions: {

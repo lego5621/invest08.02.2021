@@ -11,6 +11,7 @@
         <v-container class="pa-0">
           <Heder/>
           <Chart/>
+          <FinAnalysis/>
           <!-- <RadarAnalysis/> -->
           <TextAnalysis/>
           <Divided/>
@@ -28,6 +29,7 @@
   import TextAnalysis from '@/components/Analysis/ComponentsReporting/TextAnalysis'
   import RadarAnalysis from '@/components/Analysis/ComponentsReporting/RadarAnalysis'
   import Result from '@/components/Analysis/ComponentsReporting/Result'
+  import FinAnalysis from '@/components/Analysis/ComponentsReporting/FinAnalysis'
 
   export default {
     components:{
@@ -37,6 +39,7 @@
       TextAnalysis,
       RadarAnalysis,
       Result,
+      FinAnalysis,
     },
     name: 'ReportingSingle',
     data: () => ({

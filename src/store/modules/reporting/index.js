@@ -1,244 +1,179 @@
 export default {
     actions: {
-      async fetchStatements({ commit, getters, dispatch, state }) {
-        const res = await fetch(
-          'https://financialmodelingprep.com/api/v3/income-statement/AAPL?limit=5&apikey=demo'
-        )
-        const Statements = await res.json()
-        
-        
-        const revenueStatements = Statements.map(function(Statements) {
-          return Statements.revenue;
-        }).reverse();
-
-        const incomeStatements = Statements.map(function(Statements) {
-          return Statements.netIncome;
-        }).reverse();
-
-        commit('RevenueStatements', revenueStatements)
-        commit('IncomeStatements', incomeStatements)
-
-        dispatch('fetchActiv')
-      },
-
-      async fetchActiv({ commit, getters, dispatch, state }) {
-        const res = await fetch(
-          'https://financialmodelingprep.com/api/v3/balance-sheet-statement/AAPL?limit=5&apikey=demo'
-        )
-        const Statements = await res.json()
-        
-        
-        const activStatements = Statements.map(function(Statements) {
-          return Statements.totalAssets;
-        }).reverse();
-
-
-        commit('ActivStatements', activStatements)
-        dispatch('debtToAssetsTTM')
-      },
-
-      async debtToAssetsTTM({ commit, getters, dispatch, state }) {
-        const res = await fetch(
-          'https://financialmodelingprep.com/api/v3/key-metrics-ttm/AAPL?limit=1&apikey=demo'
-        )
-        const Statements = await res.json()
-        
-        let debtToAssetsTTM= Statements[0].debtToAssetsTTM
-
-        commit('debtToAssetsTTM', debtToAssetsTTM)
-        dispatch('StockHistorical')
-      },
-
-      async StockHistorical ({ commit, getters, dispatch, state }) {
-        const res = await fetch(
-          'https://financialmodelingprep.com/api/v3/historical-price-full/AAPL?serietype=line&limit=50&apikey=demo'
-        )
+      async StockHistorical({ commit, getters, dispatch, state }) {
+        let url ='http://localhost:5000/get/single/aapl'
+        const res = await fetch(url)
         const Statements = await res.json()
 
-        const dateHistorical = Statements.historical.map(function(Statements) {
-          return Statements.close.toFixed(1)
+        const dateHistorical = Statements.historicalPrice.map(function(Statements) {
+          return Statements.adjClose.toFixed(1)
         }).reverse();
 
-        const labelHistorical = Statements.historical.map(function(Statements) {
-          return Statements.date
+        const TargetPrice = Statements.historicalPrice.map(function(Statements) {
+          return Statements.adjTargetPrice.toFixed(1);
         }).reverse();
 
-        const sliceHistorical =dateHistorical.reverse().slice(0, 400)
-        const dateSliceHistorical =labelHistorical.reverse().slice(0, 400)
+        const Revenue = Statements.statementAll.map(function(Statements) {
+          return Statements.revenue
+        })
 
+        const Earnings = Statements.statementAll.map(function(Statements) {
+          return Statements.earnings
+        })
 
-        commit('StockHistorical', sliceHistorical.reverse() )
-        commit('dateSliceHistorical',  dateSliceHistorical.reverse() )
-        dispatch('DividendHistorical')
-      },
-
-      async DividendHistorical ({ commit, getters, dispatch, state }) {
-        const res = await fetch(
-          'https://financialmodelingprep.com/api/v3/historical-price-full/stock_dividend/AAPL?apikey=demo'
-        )
-        const Statements = await res.json()
-
-        const DividendHistorical = Statements.historical.map(function(Statements) {
-          return Statements.adjDividend
-        }).reverse();
-        
-        const dateDividendHistorical = Statements.historical.map(function(Statements) {
-          return Statements.date
+        const debtRatio = Statements.debtRatio.map(function(debtRatio) {
+          return debtRatio.percent
         }).reverse();
 
-        const sliceDividendHistorical =DividendHistorical.reverse().slice(0, 20)
-        const sliceDateSliceHistorical =dateDividendHistorical.reverse().slice(0, 20)
+        const dividendsPaid = Statements.dividendsPaid.map(function(Statements) {
+          return Statements.percent
+        }).reverse()
 
-        commit('DividendHistorical', sliceDividendHistorical.reverse() )
-        commit('dateDividendHistorical', sliceDateSliceHistorical.reverse() )
-        dispatch('fetchPayoutRatio')
-      },
+        const year = Statements.statementAll.map(function(Statements) {
+          return Statements.year
+        })
 
-      async fetchPayoutRatio({ commit, getters, dispatch, state }) {
-        const res = await fetch(
-          'https://financialmodelingprep.com/api/v3/ratios-ttm/AAPL?apikey=demo'
-        )
-        const Statements = await res.json()
+        if(Statements.statementPrognosis.revenue){
+          year.push('Прогноз на '+Statements.statementPrognosis.year)
+          Revenue.push(Statements.statementPrognosis.revenue)
+          Earnings.push(Statements.statementPrognosis.earnings)
+        }
 
-        let payoutRatioTTM= Statements[0].payoutRatioTTM
-
-        let priceEarningsRatioTTM = Statements[0].priceEarningsRatioTTM
-      
-        commit('payoutRatioTTM', payoutRatioTTM)
-        commit('priceEarningsRatioTTM', priceEarningsRatioTTM)
+        commit('StockHistorical', dateHistorical.reverse())
+        commit('TargetPrice', TargetPrice.reverse())
+        commit('Revenue', Revenue)
+        commit('Earnings', Earnings)
+        commit('debtRatio', debtRatio)
+        commit('dividendsPaid', dividendsPaid)
+        commit('year', year)
         state.loaded = true
       },
     },
 
     mutations: {
-      RevenueStatements(state, RevenueStatements) {
-        state.RevenueStatements = RevenueStatements
-      },
-      IncomeStatements(state, incomeStatements) {
-        state.incomeStatements = incomeStatements
-      },
-      ActivStatements(state, activStatements) {
-        state.activStatements = activStatements
-      },
-      payoutRatioTTM(state, payoutRatioTTM) {
-        state.payoutRatioTTM = payoutRatioTTM
-      },
-
-      priceEarningsRatioTTM(state, priceEarningsRatioTTM) {
-        state.priceEarningsRatioTTM = priceEarningsRatioTTM
-      },
-
-      debtToAssetsTTM(state, debtToAssetsTTM) {
-        state.debtToAssetsTTM = debtToAssetsTTM
-      },
-
       StockHistorical(state, StockHistorical) {
         state.StockHistorical = StockHistorical
       },
-
-      dateSliceHistorical(state, dateSliceHistorical) {
-        state.dateSliceHistorical = dateSliceHistorical
+      TargetPrice(state, TargetPrice) {
+        state.TargetPrice = TargetPrice
       },
-
-      DividendHistorical(state, DividendHistorical) {
-        state.DividendHistorical = DividendHistorical
+      Revenue(state, Revenue) {
+        state.Revenue = Revenue
       },
-
-      dateDividendHistorical(state, dateDividendHistorical) {
-        state.dateDividendHistorical = dateDividendHistorical
+      Earnings(state, Earnings) {
+        state.Earnings = Earnings
+      },
+      debtRatio(state, debtRatio) {
+        state.debtRatio = debtRatio
+      },
+      dividendsPaid(state, dividendsPaid) {
+        state.dividendsPaid = dividendsPaid
+      },
+      year(state, year) {
+        state.year = year
       },
     },
 
     state: {
-      RevenueStatements: [],
-      incomeStatements: [],
-      activStatements: [],
-      payoutRatioTTM: null,
-      priceEarningsRatioTTM: null,
-      debtToAssetsTTM: null,
       loaded: false,
       StockHistorical:[],
-      dateSliceHistorical:[],
-      DividendHistorical: [],
-      dateDividendHistorical: [],
+      TargetPrice:[],
+      Revenue:[],
+      Earnings:[],
+      debtRatio:[],
+      dividendsPaid:[],
+      year:[],
     },
 
     getters: {
-      revenueStatements(state) {
-        let revenue ={
-          labels: ['2015', '2016', '2017', '2018', '2019'],
-          datasets: [
-            {
-              label: "",
-              backgroundColor: 'rgba(31, 69, 98, 0.65)',
-              data: state.RevenueStatements, 
-              categoryPercentage: 1,
-            }
-          ]
-        }
-        return revenue
-      },
-      incomeStatements(state) {
-        let income ={
-          labels: ['2015', '2016', '2017', '2018', '2019'],
-          datasets: [
-            {
-              label: "",
-              backgroundColor: 'rgba(31, 69, 98, 0.65)',
-              data: state.incomeStatements, 
-              categoryPercentage: 1,
-            }
-          ]
-        }
-        return income
-      },
+      getStockHistorical(state) {
 
-      activStatements(state) {
-        let income ={
-          labels: ['2016', '2017', '2018', '2019', '2020'],
-          datasets: [
-            {
-              label: "",
-              backgroundColor: 'rgba(31, 69, 98, 0.65)',
-              data: state.activStatements, 
-              categoryPercentage: 1,
-            }
-          ]
-        }
-        return income
-      },
-
-      StockHistorical(state) {
-        let income = [{
-          name: 'Prise',
+        let price = [{
+          name: 'Прогноз',
+          data: state.TargetPrice,
+        },{
+          name: 'Цена',
           data: state.StockHistorical
         }]
 
-        return income
+        return price
       },
 
-      DividendHistorical(state) {
-        let income = [{
-          name: 'series-1',
-          data: state.DividendHistorical
+      getRevenue(state) {
+
+        let revenue = [{
+          name: '',
+          data: state.Revenue,
         }]
-        
-        return income
+
+        return revenue
       },
 
-      getPayoutRatioTTM(state){
-        return state.payoutRatioTTM
+      getEarnings(state) {
+
+        let earnings = [{
+          name: '',
+          data: state.Earnings,
+        }]
+
+        return earnings
       },
 
-      priceEarningsRatioTTM(state){
-        return state.priceEarningsRatioTTM
+      getDebtRatio(state) {
+
+        let debtRatio = [{
+          name: '',
+          data: state.debtRatio,
+        }]
+
+        return debtRatio
       },
 
-      debtToAssetsTTM(state){
-        return state.debtToAssetsTTM
-      },
-      
+      getDividendsPaid(state) {
 
+        let dividendsPaid = [{
+          name: '',
+          data: state.dividendsPaid,
+        }]
+
+        return dividendsPaid
+      },
+
+      getYear(state) {
+
+        return{            
+          
+          colors:[ '#51a9f0', '#51a9f0', '#51a9f0', '#51a9f0','RGBA(102, 184, 250, 0.4)'],
+          tooltip: {
+            theme: 'dark',
+          },
+  
+          chart: {
+            sparkline: {
+              enabled: true
+            },
+          },
+  
+          states: {
+            active: {
+              filter: {
+                type: 'none'
+              }
+            }
+          },
+  
+          xaxis: {
+            categories: state.year,
+          },
+  
+          plotOptions: {
+            bar: {
+              distributed: true,
+            },
+          },
+        }
+      },
+   
       loaded(state){
         return state.loaded
       }
