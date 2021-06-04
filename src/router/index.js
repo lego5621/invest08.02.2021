@@ -1,14 +1,15 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Reporting from '@/components/Analysis/index'
-import Single from '@/components/Analysis/Single'
-import Article from '@/components/Article/index'
-import Portfolio from '@/components/Portfolio/index'
-import Setting from '@/components/SinglePage/Settings'
+import Reporting from '@/components/AnalysisIndex'
+import Single from '@/components/AnalysisSinglePage'
+import Article from '@/components/ArticleList'
+import Portfolio from '@/components/PortfolioPage'
+import Setting from '@/components/TheSettings'
+import The404Page from '@/components/The404Page'
 
-import Login from '@/components/SinglePage/Login'
+
+import Login from '@/components/TheLogin'
 import store from '@/store/index'
-
 
 Vue.use(VueRouter)
 
@@ -21,16 +22,18 @@ const routes = [
   { 
     path: '/', 
     component: Reporting,
+    name: 'index',
     meta: { 
       requiresAuth: true
     }
   },
   { 
-    path: '/single', 
+    path: '/company/:id', 
     component: Single,
+    name: 'single',
     meta: { 
       requiresAuth: true
-    }
+    },
   },
   { 
     path: '/article', 
@@ -54,32 +57,45 @@ const routes = [
     }
   },
   { 
-    path: '/404', 
-    name: '404', 
-    component: Setting, 
-  }, 
-  { 
     path: '*', 
-    redirect: '/404' 
-  }
+    name: '404', 
+    component: The404Page, 
+    meta: { 
+      requiresAuth: true
+    }
+  }, 
+  // { 
+  //   path: '*', 
+  //   redirect: '/404' 
+  // }
 ]
 
 const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
-  routes
+  routes,
+  scrollBehavior(to, from, savedPosition) {
+    if (savedPosition) {
+      return {
+        selector: savedPosition,
+        behavior: 'smooth',
+      }
+    } else {
+      return { x: 0, y: 0 }
+    }
+  }
 })
 
-// router.beforeEach((to, from, next) => {
-//   if(to.matched.some(record => record.meta.requiresAuth)) {
-//     if (store.getters.isLoggedIn) {
-//       next()
-//       return
-//     }
-//     next('/login') 
-//   } else {
-//     next() 
-//   }
-// })
+router.beforeEach((to, from, next) => {
+  if(to.matched.some(record => record.meta.requiresAuth)) {
+    if (store.getters.isLoggedIn || localStorage.getItem("Token")) {
+      next()
+      return
+    }
+    next('/login') 
+  } else {
+    next() 
+  }
+})
 
 export default router

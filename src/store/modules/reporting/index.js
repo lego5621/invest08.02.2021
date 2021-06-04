@@ -1,181 +1,155 @@
+import companyData from '@/store/modules/reporting/actions/companyData.js'
+import allCompany from '@/store/modules/reporting/actions/allCompany.js'
+import yearDebtRatioDividend from '@/store/modules/reporting/getters/yearDebtRatioDividend.js'
+import yearRevenueEarning from '@/store/modules/reporting/getters/yearRevenueEarning.js'
+
 export default {
     actions: {
-      async StockHistorical({ commit, getters, dispatch, state }) {
-        let url ='http://localhost:5000/get/single/aapl'
-        const res = await fetch(url)
-        const Statements = await res.json()
-
-        const dateHistorical = Statements.historicalPrice.map(function(Statements) {
-          return Statements.adjClose.toFixed(1)
-        }).reverse();
-
-        const TargetPrice = Statements.historicalPrice.map(function(Statements) {
-          return Statements.adjTargetPrice.toFixed(1);
-        }).reverse();
-
-        const Revenue = Statements.statementAll.map(function(Statements) {
-          return Statements.revenue
-        })
-
-        const Earnings = Statements.statementAll.map(function(Statements) {
-          return Statements.earnings
-        })
-
-        const debtRatio = Statements.debtRatio.map(function(debtRatio) {
-          return debtRatio.percent
-        }).reverse();
-
-        const dividendsPaid = Statements.dividendsPaid.map(function(Statements) {
-          return Statements.percent
-        }).reverse()
-
-        const year = Statements.statementAll.map(function(Statements) {
-          return Statements.year
-        })
-
-        if(Statements.statementPrognosis.revenue){
-          year.push('Прогноз на '+Statements.statementPrognosis.year)
-          Revenue.push(Statements.statementPrognosis.revenue)
-          Earnings.push(Statements.statementPrognosis.earnings)
-        }
-
-        commit('StockHistorical', dateHistorical.reverse())
-        commit('TargetPrice', TargetPrice.reverse())
-        commit('Revenue', Revenue)
-        commit('Earnings', Earnings)
-        commit('debtRatio', debtRatio)
-        commit('dividendsPaid', dividendsPaid)
-        commit('year', year)
-        state.loaded = true
-      },
+      allCompany,
+      companyData,
     },
 
     mutations: {
-      StockHistorical(state, StockHistorical) {
-        state.StockHistorical = StockHistorical
+
+      pages(state, allCompany){
+
+        let pages = {
+          totalPages: allCompany.totalPages,
+          currentPage: allCompany.currentPage
+        }
+
+        state.pages = pages
       },
-      TargetPrice(state, TargetPrice) {
-        state.TargetPrice = TargetPrice
+
+      clearDataCompany(state) {
+        state.description = {}
+        state.historicalPrice = []
+        state.targetPrice = []
+        state.revenue = []
+        state.earnings = []
+        state.debtRatio = []
+        state.dividendsPaid = []
+        state.year = []
       },
-      Revenue(state, Revenue) {
-        state.Revenue = Revenue
+
+      clearAllCompany(state) {
+        state.allCompany = []
       },
-      Earnings(state, Earnings) {
-        state.Earnings = Earnings
+
+      description(state, description) {
+        state.description = description
       },
+
+      historicalPrice(state, historicalPrice) {
+        state.historicalPrice = historicalPrice
+      },
+
+      targetPrice(state, targetPrice) {
+        state.targetPrice = targetPrice
+      },
+
+      revenue(state, revenue) {
+        state.revenue = revenue
+      },
+
+      earnings(state, earnings) {
+        state.earnings = earnings
+      },
+
       debtRatio(state, debtRatio) {
         state.debtRatio = debtRatio
       },
+
       dividendsPaid(state, dividendsPaid) {
         state.dividendsPaid = dividendsPaid
       },
+
       year(state, year) {
         state.year = year
+      },
+
+      allCompany(state, allCompany) {
+        //let arr = []
+        //if(state.allCompany == {}){
+         // state.allCompany = allCompany
+        //}
+        //state.allCompany = arr.concat(state.allCompany, allCompany);
+        state.allCompany = allCompany
       },
     },
 
     state: {
-      loaded: false,
-      StockHistorical:[],
-      TargetPrice:[],
-      Revenue:[],
-      Earnings:[],
+      pages:{},
+      description:{},
+      historicalPrice:[],
+      targetPrice:[],
+      revenue:[],
+      earnings:[],
       debtRatio:[],
       dividendsPaid:[],
       year:[],
+      allCompany:[],
     },
 
     getters: {
-      getStockHistorical(state) {
+      yearDebtRatioDividend,
+      yearRevenueEarning,
 
+
+
+      pages(state){
+        return state.pages
+      },
+
+      description(state) {
+        return state.description
+      },
+
+      historicalPrice(state) {
         let price = [{
           name: 'Прогноз',
-          data: state.TargetPrice,
+          data: state.targetPrice,
         },{
           name: 'Цена',
-          data: state.StockHistorical
+          data: state.historicalPrice
         }]
-
         return price
       },
 
-      getRevenue(state) {
-
+      revenue(state) {
         let revenue = [{
           name: '',
-          data: state.Revenue,
+          data: state.revenue,
         }]
-
         return revenue
       },
 
-      getEarnings(state) {
-
+      earnings(state) {
         let earnings = [{
           name: '',
-          data: state.Earnings,
+          data: state.earnings,
         }]
-
         return earnings
       },
 
-      getDebtRatio(state) {
-
+      debtRatio(state) {
         let debtRatio = [{
           name: '',
           data: state.debtRatio,
         }]
-
         return debtRatio
       },
 
-      getDividendsPaid(state) {
-
+      dividendsPaid(state) {
         let dividendsPaid = [{
           name: '',
           data: state.dividendsPaid,
         }]
-
         return dividendsPaid
       },
 
-      getYear(state) {
-
-        return{            
-          
-          colors:[ '#51a9f0', '#51a9f0', '#51a9f0', '#51a9f0','RGBA(102, 184, 250, 0.4)'],
-          tooltip: {
-            theme: 'dark',
-          },
-  
-          chart: {
-            sparkline: {
-              enabled: true
-            },
-          },
-  
-          states: {
-            active: {
-              filter: {
-                type: 'none'
-              }
-            }
-          },
-  
-          xaxis: {
-            categories: state.year,
-          },
-  
-          plotOptions: {
-            bar: {
-              distributed: true,
-            },
-          },
-        }
+      allCompany1(state) {
+        return state.allCompany
       },
-   
-      loaded(state){
-        return state.loaded
-      }
   }
 }

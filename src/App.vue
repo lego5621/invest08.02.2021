@@ -9,7 +9,7 @@
       v-if="!['login', 'register'].includes($route.name)"
     >
       <div class="d-flex align-center justify-space-between width100">
-      <Avatar></Avatar>
+        <Avatar></Avatar>
         <div class="d-flex text-no-wrap ml-4 overflow">
           <router-link to="/" class="mr-6 textLink--text font-weight-medium" >Каталог</router-link>
           <div class="d-flex align-center justify-space-between">
@@ -49,26 +49,47 @@
                       Как пользоваться сервисом?
                     </v-list-item-title>
                   </v-list-item>
-                  <v-list-item to="/article" class="text-center">
+                  <!-- <v-list-item to="/article" class="text-center">
                     <v-list-item-title>
                       Еще...
                     </v-list-item-title>
-                  </v-list-item>
+                  </v-list-item> -->
                 </v-list>
               </v-menu>
               </div>
               <div>
-              <v-menu offset-y class="mr-6" rounded="xl" transition="slide-y-transition">
-                <template v-slot:activator="{ on, attrs }">
+              <!-- <v-menu offset-y class="mr-6" rounded="xl" transition="slide-y-transition"> -->
+              <!-- <v-dialog
+                transition="dialog-bottom-transition"
+                max-width="600"
+              >
+                <template v-slot:activator="{ on, attrs }"> -->
                   <div
-                    v-bind="attrs"
-                    v-on="on"
-                    class="mr-6 d-flex align-center justify-space-between"
+                    class="mr-6 d-flex align-center justify-space-between text--disabled"
                   >
                   Мои портфели
                   </div>
-                </template>
-                <v-list class="specialColor">
+                  <!-- v-bind="attrs"
+                    v-on="on" -->
+                <!-- </template> -->
+                <!-- <template v-slot:default="dialog">
+                  <v-card class="specialColor">
+                    <v-toolbar
+                      elevation="0"
+                      class="specialColor"
+                    >Название компании</v-toolbar>
+                    <v-card-text>
+                      <div class="text-h5 pa-12">Эта фукциональность еще не доступна, но мы работаем над ней</div>
+                    </v-card-text>
+                    <v-card-actions class="justify-end specialColor">
+                      <v-btn
+                        text
+                        @click="dialog.value = false"
+                      >Закрыть</v-btn>
+                    </v-card-actions>
+                  </v-card>
+                </template> -->
+                <!-- <v-list class="specialColor">
                   <v-list-item to="/portfolio">
                     <v-list-item-title>
                       Пенсия
@@ -84,8 +105,9 @@
                     <v-icon size="23" class="mr-1"> mdi-briefcase-plus </v-icon> Добавить
                     </v-list-item-title>
                   </v-list-item>
-                </v-list>
-              </v-menu>
+                </v-list> -->
+              <!-- </v-menu> -->
+                <!-- </v-dialog> -->
               </div>
         </div>
         <div></div>
@@ -98,20 +120,44 @@
           <router-view></router-view>  
         </transition>
       </div>
-          <Footer/>
+      <Footer/>
     </v-main>
   </v-app>
 
 </template>
 
 <script>
-import Avatar from '@/components/Avatar'
-import Footer from '@/components/Footer'
+import Avatar from '@/components/TheAvatar'
+import Footer from '@/components/TheFooter'
+import store from '@/store/index'
+import { mapMutations } from "vuex";
+
   export default {
     components:{
       Avatar,
       Footer,
     },
+
+    methods:{
+      ...mapMutations([
+        'clearDataCompany',
+        'clearAllCompany',
+      ])
+    },
+
+    watch: {
+      $route(to, from) {
+        if (to.name !== 'single') {
+          this.clearDataCompany()
+        }
+        // if (to.name == 'index' || to.name == 'single') {
+         
+        // }else{
+        //   this.clearAllCompany()
+        // }
+      }
+    },
+
     data: () => ({
        ops: {
           vuescroll: {},
@@ -122,6 +168,7 @@ import Footer from '@/components/Footer'
           }
         }
     }),
+
     mounted() {
         const theme = localStorage.getItem("dark_theme");
         if (theme) {
@@ -153,9 +200,11 @@ import Footer from '@/components/Footer'
   .h-40{
     height: 40px !important;
   }
+  
   .v-slide-group__prev--disabled{
     display: none !important;
   }
+
   html {
     scroll-behavior: smooth ;
   }
