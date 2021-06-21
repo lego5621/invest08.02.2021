@@ -75,20 +75,22 @@ export default {
         //}
         //state.allCompany = arr.concat(state.allCompany, allCompany);
         state.allCompany = allCompany
+        state.indexListLoader = false
       },
     },
 
     state: {
-      pages:{},
-      description:{},
-      historicalPrice:[],
-      targetPrice:[],
-      revenue:[],
-      earnings:[],
-      debtRatio:[],
-      dividendsPaid:[],
-      year:[],
-      allCompany:[],
+      pages: {},
+      description: {},
+      historicalPrice: [],
+      targetPrice: [],
+      revenue: [],
+      earnings: [],
+      debtRatio: [],
+      dividendsPaid: [],
+      year: [],
+      allCompany: [],
+      indexListLoader: true,
     },
 
     getters: {

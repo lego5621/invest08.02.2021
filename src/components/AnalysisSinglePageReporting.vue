@@ -6,7 +6,8 @@
         class=" mb-5 pa-4 specialColor widthBar"
         elevation="0"
       >
-      <p class="mb-1">Прибыль (<span class="goodAnalysis">+5%</span>)</p>
+      <!-- <p class="mb-1">Прибыль (<span class="goodAnalysis">+5%</span>)</p> -->
+      <p class="mb-1">Прибыль</p>
         <div>
           <apexchart width="100%"  type="bar" :options="yearRevenueEarning" :series="earnings"></apexchart>
         </div>
@@ -16,7 +17,7 @@
         class=" mb-5 pa-4  specialColor widthBar"
         elevation="0"
       >
-      <p class="mb-1">Выручка (<span class="goodAnalysis">+15%</span>)</p>
+      <p class="mb-1">Выручка</p>
         <div>
           <apexchart width="100%"  type="bar" :options="yearRevenueEarning" :series="revenue"></apexchart>
         </div>
@@ -26,9 +27,9 @@
         class=" mb-5 pa-4 specialColor widthBar"
         elevation="0"
       >
-      <p class="mb-1" >Долг (<span class="badAnalysis">+12%</span>)</p>
+      <p class="mb-1" >Аналитики</p>
         <div>
-          <apexchart width="100%"  type="bar" :options="yearDebtRatioDividend" :series="debtRatio"></apexchart>
+          <apexchart width="100%"  type="bar" :options="chartOptions" :series="series"></apexchart>
         </div>
       </v-card>
       <v-card
@@ -36,7 +37,7 @@
         class=" mb-5 pa-4 specialColor widthBar"
         elevation="0"
       >
-      <p class="mb-1">Дивиденды (<span class="goodAnalysis">+10%</span>)</p>
+      <p class="mb-1">Дивиденды</p>
         <div>
           <apexchart width="100%"  type="bar" :options="yearDebtRatioDividend" :series="dividendsPaid"></apexchart>
         </div>
@@ -62,6 +63,39 @@
     },
 
   data: () => ({ 
+    series: [{
+      name: 'Sell',
+      data: [11, 17, 15, 15,]
+    }, {
+      name: 'Hold',
+      data: [13, 23, 20, 8,]
+    }, {
+      name: 'Bay',
+      data: [44, 45, 41, 67, ]
+    }],
+    chartOptions: {
+      colors:[ 'RGBA(102, 184, 250)', 'RGBA(102, 184, 250, 0.7)','RGBA(102, 184, 250, 0.4)',],
+      tooltip: {
+        theme: 'dark',
+      },
+      chart: {
+        stacked: true,
+        // stackType: '100%',
+        sparkline: {
+          enabled: true
+        },
+      },
+      xaxis: {
+        categories: ['2011 Q1', '2011 Q2', '2011 Q3', '2011 Q4'],
+      },
+      states: {
+      active: {
+          filter: {
+            type: 'none'
+          }
+        }
+      },
+    },
 
   })
 }

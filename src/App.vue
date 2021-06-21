@@ -193,6 +193,8 @@ import { mapMutations } from "vuex";
 </script>
 
 <style lang="css">
+
+
   .overflow{
     overflow-x: auto;
   }

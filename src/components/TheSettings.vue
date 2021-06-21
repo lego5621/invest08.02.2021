@@ -25,7 +25,7 @@
                               size="150"
                             >mdi-account</v-icon>
                           </v-avatar>
-                          <p class="mt-5 mb-1 text-h6">Аверьянов Олег</p>
+                          <p class="mt-5 mb-1 text-h6">{{ lastname }} {{ firstname }}</p>
                           <p class="mb-5 font-weight-thin">Частный инвестор</p>
                         </v-col>
                     </v-row>
@@ -40,7 +40,6 @@
                         >
                         <v-text-field
                             v-model="firstname"
-                            :rules="nameRules"
                             label="Имя"
                             required
                         ></v-text-field>
@@ -50,10 +49,9 @@
                         cols="12"
                         >
                         <v-text-field
-                            v-model="lastname"
-                            :rules="nameRules"
-                            label="Фамилия"
-                            required
+                          v-model="lastname"
+                          label="Фамилия"
+                          required
                         ></v-text-field>
                         </v-col>
 
@@ -61,26 +59,27 @@
                         cols="12"
                         >
                         <v-text-field
-                            v-model="email"
-                            :rules="emailRules"
-                            label="E-mail"
-                            required
+                          v-model="email"
+                          label="E-mail"
+                          required
                         ></v-text-field>
                         </v-col>
                         <v-col
                         cols="12"
                         >
                         <v-text-field
-                            v-model="firstname"
-                            :rules="nameRules"
-                            label="Пароль"
-                            required
+                          v-model="password"
+                          label="Пароль"
+                          required
+                          :type="show ? 'text' : 'password'"
+                          :append-icon="show ? 'mdi-eye' : 'mdi-eye-off'"
+                          @click:append="show = !show"
                         ></v-text-field>
                         </v-col>
                         <v-btn
-                            color="blue lighten-1"
-                            class="white--text"
-                            elevation="0"
+                          color="blue lighten-1"
+                          class="white--text"
+                          elevation="0"
                         >
                         Сохранить
                         </v-btn>
@@ -96,26 +95,35 @@
 </template>
 
 <script>
-
+import jwt_decode from "jwt-decode";
   export default {
     components:{
 
     },
     name: 'Settings',
     data: () => ({
-        valid: false,
+      show: false,
+      valid: false,
       firstname: '',
       lastname: '',
+      password:'',
+      email: '',
       nameRules: [
         v => !!v || 'Имя не корректно',
         v => v.length <= 20 || 'Имя должно быть менее 20 символов',
       ],
-      email: '',
       emailRules: [
         v => !!v || 'Почта не корректна',
         v => /.+@.+/.test(v) || 'E-mail must be valid',
       ],
     }),
+    
+    created: function () {
+      let user = jwt_decode(localStorage.getItem("Token"))
+      this.firstname = user.firstname
+      this.lastname = user.lastname
+      this.email = user.email
+    }
   }
 </script>
 

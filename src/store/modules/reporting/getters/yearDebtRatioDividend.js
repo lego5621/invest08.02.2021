@@ -2,7 +2,7 @@ export default function(state) {
     return{            
       
         colors:[ '#51a9f0', '#51a9f0', '#51a9f0', '#51a9f0'],
-            tooltip: {
+        tooltip: {
             theme: 'dark',
         },
 

@@ -1,11 +1,19 @@
 <template>
  <v-container class="pa-0">
+   <div v-if="this.$store.state.reporting.indexListLoader">
+    <ListSkeleton 
+      v-for="(i) in 5"
+      :key="i+5" 
+    /> 
+   </div>
+  
+   <div v-if="!this.$store.state.reporting.indexListLoader">
     <v-card
-        rounded="xl"
-        class="mx-auto mb-5 pb-3 specialColor"
-        elevation="0"
-        v-for="(company, i) in allCompany1"
-        :key="i"
+      rounded="xl"
+      class="mx-auto mb-5 pb-3 specialColor"
+      elevation="0"
+      v-for="(company, i) in allCompany1"
+      :key="i"
     >
       <v-list-item three-line> 
         <v-list-item-content >
@@ -31,12 +39,12 @@
                   </strong>   
               </div>
               <strong class="align-self-center font-weight-medium mr-3 ml-3">
-                <p class="caption mb-0 text--disabled">Рекомендация</p>
-                <p class=" mb-0">Покупать</p>
+                <p class="caption mb-0 text--disabled ">Рекомендация</p>
+                <p class="mb-0">Покупка</p>
               </strong>
               <strong class="align-self-center font-weight-medium mr-3 ml-3">
-                <p class="caption mb-0 text--disabled">Доходность</p>
-                <p class=" mb-0">Около {{ (company.recommendationPrice - company.recommendationPrice) }}</p>
+                <p class="caption mb-0 text--disabled">Прогназируемая цена</p>
+                <p class=" mb-0 text-center">{{ Math.floor(company.recommendationPrice) }} (50%)</p>
               </strong>
               <strong class="align-self-center font-weight-medium mr-3 ml-3">
                 <p class="caption mb-0 text--disabled">Цена</p>
@@ -51,16 +59,21 @@
         </v-list-item-content>
       </v-list-item>
     </v-card>
-
+  </div>
 </v-container >
 </template>
 
 <script>
   import { mapGetters, mapActions } from "vuex";
   import store from '@/store/index'
+  import ListSkeleton from '@/components/AnalysisCardSkeleton'
 
   export default {
     name: 'Card_Analysis',
+
+    components:{
+      ListSkeleton,
+    },
 
     computed: {
       ...mapGetters([
@@ -68,11 +81,9 @@
       ])
     },
 
-    async mounted() {
-      if(this.allCompany1.length == 0){
-        this.allCompany();
-      }else{
-        
+    mounted() {
+      if(this.$store.state.reporting.allCompany.length == 0){
+        store.dispatch('allCompany');
       }
     },
 
@@ -85,6 +96,7 @@
 </script>
 
 <style lang="css" scoped>
+
   @media only screen and (max-width: 657px)  {
     .cardMedia{
       flex-wrap: wrap;
@@ -95,4 +107,5 @@
       flex-basis: 100%;
     }
   }
+
 </style>

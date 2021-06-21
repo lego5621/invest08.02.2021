@@ -23,6 +23,9 @@
           </v-avatar>
         </template>
         <v-list min-width="200" class="specialColor">
+          <!-- <v-list-item>
+            <v-list-item-title>{{ email }}</v-list-item-title>
+          </v-list-item> -->
           <v-list-item > 
             <v-switch
               v-model="$vuetify.theme.dark"
@@ -32,9 +35,9 @@
               persistent-hint
             ></v-switch>
           </v-list-item>
-          <v-list-item to="/settings">
+          <!-- <v-list-item to="/settings">
             <v-list-item-title>Настройки</v-list-item-title>
-          </v-list-item>
+          </v-list-item> -->
           <v-list-item @click="logout">
             <v-list-item-title>Выход</v-list-item-title>
           </v-list-item>
@@ -43,10 +46,24 @@
 </template>
 
 <script>
+import jwt_decode from "jwt-decode";
   export default {
     name: 'Avatar',
     computed : {
       isLoggedIn : function(){ return this.$store.getters.isLoggedIn}
+    },
+    created: function () {
+      let user = jwt_decode(localStorage.getItem("Token"))
+      this.firstname = user.firstname
+      this.lastname = user.lastname
+      this.email = user.email
+    },
+    data:()=>{
+      return {
+        email : "",
+        lastname : "",
+        firstname : "",
+      }
     },
     methods: {
       toggle_dark_mode: function () {

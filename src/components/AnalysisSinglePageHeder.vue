@@ -33,7 +33,7 @@
           <p class=" mb-0"> Покупать </p>
         </strong>
         <strong class="align-self-center mr-10 subtitle-1">
-          <p class="caption mb-0 text--disabled">Доходность</p>
+          <p class="caption mb-0 text--disabled">Прогназируемая цена</p>
           <p class=" mb-0">Около {{ Math.floor(description.TargetPrice) }}</p>
         </strong>
         <strong class="align-self-center subtitle-1">

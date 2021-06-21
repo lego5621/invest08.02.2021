@@ -13,27 +13,31 @@
             Положительные факторы
           </p>
         </div>
-        <p class="mb-2 mt-2">
-          <span class="goodAnalysis">Нейтральный инвестиционный рейтинг</span><br/>
-          «Газпром» располагает самыми большими запасами природного газа в мире. Его доля в мировых запасах составляет 17 %, в российских — 72 %.
+        <p class="mb-2 mt-2" v-if="PrognoseEarningsThesis">
+          <span class="goodAnalysis">Аналитики прогназируют рост чистой прибыли</span><br/>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia voluptate consequatur nobis atque rem. Aliquam?
         </p>
-        <p class="mb-2 mt-2">
-          <span class="goodAnalysis">Lorem, ipsum.</span><br/>
-          Стратегическими регионами добычи газа на долгосрочную перспективу являются полуостров Ямал, Восточная Сибирь
+        <p class="mb-2 mt-2" v-if="PrognoseRevenueThesis">
+          <span class="goodAnalysis">Аналитики прогназируют рост выручки</span><br/>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut, commodi.
         </p>
-        <p class="mb-2 mt-2">
-          <span class="goodAnalysis">Lorem ipsum dolor sit.</span><br/>
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Totam, laborum. Beatae tenetur autem quibusdam enim.
+        <p class="mb-2 mt-2" v-if="!debtRatioThesis">
+          <span class="goodAnalysis">Снижение задолжности</span><br/>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut, commodi.
         </p>
-        <p class="mb-2 mt-2">
-          <span class="goodAnalysis">Lorem, ipsum dolor.</span><br/>
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Totam, laborum. Beatae tenetur autem quibusdam enim.
+        <p class="mb-2 mt-2" v-if="dividendsPaidThesis">
+          <span class="goodAnalysis">Компания платит дивиденды</span><br/>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem, vitae nostrum et voluptas quod vel quaerat neque.
         </p>
-        <p class="mb-2 mt-2">
-          <span class="goodAnalysis">Lorem, dolor.</span><br/>
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Totam, laborum. Beatae tenetur autem quibusdam enim.
+        <p class="mb-2 mt-2" v-if="earningsThesis">
+          <span class="goodAnalysis">Прибыль компании растет</span><br/>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem, vitae nostrum et voluptas quod vel quaerat neque.
         </p>
-      </v-col>
+        <p class="mb-2 mt-2" v-if="revenueThesis">
+          <span class="goodAnalysis">Тенденция роста выручки</span><br/>
+          За последние 4 года выручка компании выросла, что говорит о хорошем спросе на товары и услуги компании.
+        </p>
+        </v-col>
 
       <v-col cols="12" sm="6"  class="pa-3 mt-sm-0 mb-5">
         <div class="sticky bacMain">
@@ -42,21 +46,29 @@
             Негативные факторы
         </p>
         </div>
-        <p class="mb-2 mt-2">
-          <span class="badAnalysis">Lorem, ipsum dolor.</span><br/>
-          Компания имеет, риск банкротства не велик, компания хорошо поддаются анализу а прогнозы относительно точные
-        </p> 
-        <p  class="mb-2 mt-2"> 
-          <span class="badAnalysis">Lorem, dolor.</span><br/>
-          Однако компании с данным рейтингом более подвержены влиянию различных неблогоприятных факторов.
+        <p class="mb-2 mt-2" v-if="!PrognoseEarningsThesis">
+          <span class="badAnalysis">Аналитики прогназируют падение чистой прибыли</span><br/>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia voluptate consequatur nobis atque rem. Aliquam?
         </p>
-        <p  class="mb-2 mt-2"> 
-          <span class="badAnalysis">Lorem ipsum dolor sit.</span><br/>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis maxime debitis adipisci commodi dolorum doloremque.
+        <p class="mb-2 mt-2" v-if="!PrognoseRevenueThesis">
+          <span class="badAnalysis">Аналитики прогназируют падение выручки</span><br/>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam velit dolorum odit.
         </p>
-        <p  class="mb-2 mt-2"> 
-          <span class="badAnalysis">Lorem, ipsum dolor.</span><br/>
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fugit eos nesciunt quibusdam.
+        <p class="mb-2 mt-2" v-if="debtRatioThesis">
+          <span class="badAnalysis">Рост задолжности </span><br/>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem, vitae nostrum et voluptas quod vel quaerat neque.
+        </p>
+        <p class="mb-2 mt-2" v-if="!dividendsPaidThesis">
+          <span class="badAnalysis">Компания не платит дивиденды</span><br/>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem, vitae nostrum et voluptas quod vel quaerat neque.
+        </p>
+        <p class="mb-2 mt-2" v-if="!earningsThesis">
+          <span class="badAnalysis">Прибыль компании не растет</span><br/>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem, vitae nostrum et voluptas quod vel quaerat neque.
+        </p>
+        <p class="mb-2 mt-2" v-if="!revenueThesis">
+          <span class="badAnalysis">Тенденция роста выручки</span><br/>
+          За последние 4 года выручка компании снизилась, что говорит о уменьшающимся спросе на товары и услуги предлогаемые компанией.
         </p>
       </v-col>
     </v-row>
@@ -65,8 +77,10 @@
         <p class="text-h5 font-weight-medium">
           <v-icon size="45" class="mr-2" > mdi-alert-circle </v-icon>
           Стоит обратить внимание
-          </p>
-        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Esse hic repellat deleniti inventore illum praesentium soluta quas, officiis quod assumenda accusantium in ipsum harum architecto aperiam non ipsam veniam pariatur voluptates eligendi error reprehenderit consectetur, commodi tempora. Error, possimus perferendis beatae voluptatum reiciendis odit neque veniam, optio aperiam autem praesentium?</p>
+        </p>
+        <p class="mb-2">Есть убыточные годы - у компании, за последнии 4 года, есть убыточные годы, возможно это "бумажные" убытки не влияющие на денежную прибыль, или разовый убыток, советуем более чательнее изучить данную ситуацию.</p>
+        <p class="mb-2">Негативная динамика выручки - за последние 4 года уменьшилась выручка, это являеться крайне негативным фактором говорящим о снижении спроса на товары или услуги компании.</p>
+        <p class="mb-2">Высокое значение мультиплекатора P/E - высокое значение данного мутиплекатора может говорить о переоценности компании, для растущих компаний высокий P/E являеться естественным.</p>
       </v-col>
     </v-row>
   <!-- </vuescroll> -->
@@ -74,39 +88,65 @@
 </template>
   
 <script>
-import vuescroll from 'vuescroll';
-
+import { mapGetters } from "vuex";
  export default {
   components: {
-    vuescroll
+
   },
 
   computed: {
-
+    ...mapGetters([
+      'yearDebtRatioDividend',
+      'yearRevenueEarning',
+      'revenue',
+      'earnings',
+      'debtRatio',
+      'dividendsPaid',
+    ]),
+    PrognoseEarningsThesis: function () {
+      if( this.earnings[0].data.length == 5){
+        if(this.earnings[0].data[this.earnings[0].data.length -1] > this.earnings[0].data[this.earnings[0].data.length -2]){
+          return true
+        }
+        return false
+      }
+    },
+    PrognoseRevenueThesis: function () {
+      if( this.revenue[0].data.length == 5){
+        if(this.revenue[0].data[this.revenue[0].data.length -1] > this.revenue[0].data[this.revenue[0].data.length -2]){
+          return true
+        }
+        return false
+      }
+    },
+    debtRatioThesis: function () {
+      if(this.debtRatio[0].data[this.debtRatio[0].data.length -1] > this.debtRatio[0].data[this.debtRatio[0].data.length -3]){
+        return true
+      }
+      return false
+    },
+    dividendsPaidThesis: function () {
+      if(this.dividendsPaid[0].data.length > 2){
+        return true
+      }
+      return false
+    },
+    earningsThesis: function () {
+      if(this.earnings[0].data[this.earnings[0].data.length -2] > this.earnings[0].data[0]){
+        return true
+      }
+      return false
+    },
+    revenueThesis: function () {
+      if(this.revenue[0].data[this.revenue[0].data.length -2] > this.revenue[0].data[0]){
+        return true
+      }
+      return false
+    },
   },
 
   data: () => ({
-     ops: {
-      vuescroll: {},
-      scrollPanel: {
-        scrollingX: false,
-        scrollingY: true,
-        speed: 300,
-      },
-      rail: {},
-      bar: {
-        showDelay: 500,
-        onlyShowBarOnScroll: false,
-        keepShow: false,
-        background: '#c1c1c1',
-        opacity: 1,
-        hoverStyle: false,
-        specifyBorderRadius: false,
-        minSize: 0,
-        size: '6px',
-        disable: false
-      }
-    },  
+      
   }),
 }
 </script>

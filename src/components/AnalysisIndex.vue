@@ -27,7 +27,14 @@
                 ></v-autocomplete>
               </v-col>
               <v-col class="d-flex">
-                <p>Сортировать по: <a href="#" class="aMargin">Цена</a> <a href="#" class="aMargin">Доходность</a></p>
+                <p>
+                  Сортировать: 
+                  <span  class="aMargin" v-on:click="changeFilter('')">Все</span>
+                  <span  class="aMargin" v-on:click="changeFilter('minPrice')">Дешевые</span>
+                  <span  class="aMargin" v-on:click="changeFilter('maxPrice')">Дорогие</span>
+                  <span  class="aMargin" v-on:click="changeFilter('maxProfit')">Максимальная прибыль</span>
+                  <span  class="aMargin" v-on:click="changeFilter('maxProfit')">Компании США</span>
+                </p>
               </v-col>
             </v-row>
           </v-sheet>
@@ -36,8 +43,8 @@
           <AnalysisList></AnalysisList>
             <div class="text-center mb-4">
               <v-pagination
-                v-model="pages.currentPage"
-                :length=pages.totalPages
+                v-model= "pages.currentPage"
+                :length= pages.totalPages
                 :total-visible="7"
                 color="textLinkResult"
                 elevation="0"
@@ -69,14 +76,19 @@ import store from '@/store/index'
       ...mapGetters([
         'allCompany1',
         'pages',
-      ])
+      ]),
     },
 
     methods:{
       onPageChange: function(){
         window.scrollTo(0,0);
-        let nextPage = this.pages.currentPage
-        store.dispatch('allCompany', nextPage);
+        let page = this.pages.currentPage
+        store.dispatch('allCompany', {page, filter: this.filter});
+        this.$store.state.reporting.indexListLoader = true
+      },
+      changeFilter: function(filter){
+        this.filter=filter
+        this.onPageChange()
       },
     },
 
@@ -87,7 +99,7 @@ import store from '@/store/index'
     name: 'Analysis',
 
     data: () => ({
-      page: 1
+      filter:''
     }),
 
     // created:function (){
@@ -100,10 +112,11 @@ import store from '@/store/index'
 
 <style lang="css" scoped>
 
-.aMargin{
-  margin-left: 1.5rem;
-}
-
+  .aMargin{
+    margin-left: 1.5rem;
+    cursor: pointer;
+    color: #2196f3;
+  }
 
 </style>
 

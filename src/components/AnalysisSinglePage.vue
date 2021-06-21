@@ -9,10 +9,20 @@
         offset-xl="2"
       >
         <v-container class="pa-0">
-          <Heder/>
+          <CardSkeleton
+            v-if="Object.keys(this.$store.state.reporting.description).length == 0"
+          />
+          <Heder
+            v-if="!Object.keys(this.$store.state.reporting.description).length == 0"
+          />
           <Chart/>
           <FinAnalysis/>
-          <TextAnalysis/>
+          <TextAnalysis
+            v-if="!Object.keys(this.$store.state.reporting.description).length == 0"
+          />
+          <ThesisSkeleton
+            v-if="Object.keys(this.$store.state.reporting.description).length == 0"
+          />
           <!-- <Divided/> -->
         </v-container>
       </v-col>
@@ -25,7 +35,9 @@
   import Chart from '@/components/AnalysisSinglePageChart'
   // import Divided from '@/components/AnalysisSinglePageDivided'
   import TextAnalysis from '@/components/AnalysisSinglePageThesis'
+  import ThesisSkeleton from '@/components/AnalysisSinglePageThesisSkeleton'
   import FinAnalysis from '@/components/AnalysisSinglePageReporting'
+  import CardSkeleton from '@/components/AnalysisSinglePageHederSkeleton'
   import store from '@/store/index'
 
 export default {
@@ -35,6 +47,8 @@ export default {
     // Divided,
     TextAnalysis,
     FinAnalysis,
+    CardSkeleton,
+    ThesisSkeleton,
   },
   name: 'ReportingSingle',
   created:function (){

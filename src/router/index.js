@@ -49,13 +49,13 @@ const routes = [
       requiresAuth: true
     }
   },
-  { 
-    path: '/settings', 
-    component: Setting,
-    meta: { 
-      requiresAuth: true
-    }
-  },
+  // { 
+  //   path: '/settings', 
+  //   component: Setting,
+  //   meta: { 
+  //     requiresAuth: true
+  //   }
+  // },
   { 
     path: '*', 
     name: '404', 
