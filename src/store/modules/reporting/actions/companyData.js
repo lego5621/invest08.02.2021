@@ -36,6 +36,7 @@ export default async function({ commit }, id) {
                 return Statements.year
             })
 
+
             if(Statements.statementPrognosis.revenue){
                 year.push('Прогноз на '+Statements.statementPrognosis.year)
                 revenue.push(Statements.statementPrognosis.revenue)
@@ -57,5 +58,6 @@ export default async function({ commit }, id) {
             commit('dividendsPaid', dividendsPaid)
             commit('description', description)
             commit('year', year)
+            commit('recommendationTrend', Statements.recommendationTrend)
         })
     }

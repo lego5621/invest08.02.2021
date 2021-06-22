@@ -37,9 +37,9 @@ export default function(state) {
             offsetX: 0,
             offsetY: 0,
             style: {
-              color: '#51a9f0',
-              fontSize: '19px',
-              fontFamily: undefined
+                color: '#51a9f0',
+                fontSize: '19px',
+                fontFamily: undefined
             }
         }
     }

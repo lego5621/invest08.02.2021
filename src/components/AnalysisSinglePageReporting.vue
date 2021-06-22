@@ -29,7 +29,7 @@
       >
       <p class="mb-1" >Аналитики</p>
         <div>
-          <apexchart width="100%"  type="bar" :options="chartOptions" :series="series"></apexchart>
+          <apexchart width="100%"  type="bar" :options="recommendationTrendSetting" :series="recommendationTrend"></apexchart>
         </div>
       </v-card>
       <v-card
@@ -59,43 +59,12 @@
         'earnings',
         'debtRatio',
         'dividendsPaid',
+        'recommendationTrend',
+        'recommendationTrendSetting',
       ])
     },
 
   data: () => ({ 
-    series: [{
-      name: 'Sell',
-      data: [11, 17, 15, 15,]
-    }, {
-      name: 'Hold',
-      data: [13, 23, 20, 8,]
-    }, {
-      name: 'Bay',
-      data: [44, 45, 41, 67, ]
-    }],
-    chartOptions: {
-      colors:[ 'RGBA(102, 184, 250)', 'RGBA(102, 184, 250, 0.7)','RGBA(102, 184, 250, 0.4)',],
-      tooltip: {
-        theme: 'dark',
-      },
-      chart: {
-        stacked: true,
-        // stackType: '100%',
-        sparkline: {
-          enabled: true
-        },
-      },
-      xaxis: {
-        categories: ['2011 Q1', '2011 Q2', '2011 Q3', '2011 Q4'],
-      },
-      states: {
-      active: {
-          filter: {
-            type: 'none'
-          }
-        }
-      },
-    },
 
   })
 }

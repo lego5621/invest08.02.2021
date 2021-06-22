@@ -2,6 +2,8 @@ import companyData from '@/store/modules/reporting/actions/companyData.js'
 import allCompany from '@/store/modules/reporting/actions/allCompany.js'
 import yearDebtRatioDividend from '@/store/modules/reporting/getters/yearDebtRatioDividend.js'
 import yearRevenueEarning from '@/store/modules/reporting/getters/yearRevenueEarning.js'
+import recommendationTrendSetting from '@/store/modules/reporting/getters/recommendationTrend.js'
+
 
 export default {
     actions: {
@@ -30,6 +32,11 @@ export default {
         state.debtRatio = []
         state.dividendsPaid = []
         state.year = []
+        state.recommendationTrend = []
+      },
+
+      recommendationTrend(state, recommendationTrend) {
+        state.recommendationTrend = recommendationTrend
       },
 
       clearAllCompany(state) {
@@ -80,6 +87,7 @@ export default {
     },
 
     state: {
+      recommendationTrend:[],
       pages: {},
       description: {},
       historicalPrice: [],
@@ -96,6 +104,20 @@ export default {
     getters: {
       yearDebtRatioDividend,
       yearRevenueEarning,
+      recommendationTrendSetting,
+
+      recommendationTrend(state){
+        return [{
+          name: 'За продажу',
+          data: state.recommendationTrend[2]
+        }, {
+          name: 'За удержание',
+          data: state.recommendationTrend[1]
+        }, {
+          name: 'За покупку',
+          data: state.recommendationTrend[0]
+        }]
+      },
 
 
 
