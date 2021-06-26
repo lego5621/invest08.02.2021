@@ -44,7 +44,7 @@
               </strong>
               <strong class="align-self-center font-weight-medium mr-3 ml-3">
                 <p class="caption mb-0 text--disabled">Прогназируемая цена</p>
-                <p class=" mb-0 text-center">{{ Math.floor(company.recommendationPrice) }} (+50%)</p>
+                <p class=" mb-0 text-center">{{ Math.floor(company.recommendationPrice) }} (+{{ company.profitPercentage }}%)</p>
               </strong>
               <strong class="align-self-center font-weight-medium mr-3 ml-3">
                 <p class="caption mb-0 text--disabled">Цена</p>
