@@ -6,6 +6,8 @@ import Article from '@/components/ArticleList'
 import Portfolio from '@/components/PortfolioPage'
 import Setting from '@/components/TheSettings'
 import The404Page from '@/components/The404Page'
+import The500Page from '@/components/The500Page'
+
 
 
 import Login from '@/components/TheLogin'
@@ -64,6 +66,15 @@ const routes = [
       requiresAuth: true
     }
   }, 
+  { 
+    path: '*', 
+    name: '500', 
+    component: The500Page, 
+    meta: { 
+      requiresAuth: true
+    }
+  }, 
+  
   // { 
   //   path: '*', 
   //   redirect: '/404' 

@@ -1,11 +1,9 @@
 import axios from 'axios'
+import router from '@/router/index.js';
 export default async function({ commit }, id) {
-        let url =`http://localhost:3000/api/v1/company/${id}`
-        axios.get(url)
-            .then(function (res) {
-            
-            // const res = await fetch(url)
-            // const Statements = await res.json()
+    let url =`http://localhost:3000/api/v1/company/${id}`
+    axios.get(url)
+        .then(function (res) {
             const Statements =  res.data
 
             const historicalPrice = Statements.historicalPrice.map(function(Statements) {
@@ -59,5 +57,12 @@ export default async function({ commit }, id) {
             commit('description', description)
             commit('year', year)
             commit('recommendationTrend', Statements.recommendationTrend)
-        })
+        }).catch(err => { 
+            if(err.response.status ==404){
+                router.push({ name: '404' });
+            }
+            if(err.response.status ==500){
+                router.push({ name: '500' });
+            }
+          })
     }
