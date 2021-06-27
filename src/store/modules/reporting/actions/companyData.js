@@ -47,6 +47,7 @@ export default async function({ commit }, id) {
             description.avatar = Statements.avatar
             description.historicalPrice = Statements.historicalPrice[Statements.historicalPrice.length - 1].adjClose  
             description.TargetPrice = Statements.historicalPrice[Statements.historicalPrice.length - 1].adjTargetPrice
+            description.profitPercentage = Statements.profitPercentage
 
             commit('historicalPrice', historicalPrice)
             commit('targetPrice', targetPrice)

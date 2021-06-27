@@ -40,7 +40,9 @@
               </div>
               <strong class="align-self-center font-weight-medium mr-3 ml-3">
                 <p class="caption mb-0 text--disabled ">Рекомендация</p>
-                <p class="mb-0">Покупка</p>
+                <p v-if="company.profitPercentage > 15" class="mb-0">Покупать</p>
+                <p v-else-if="company.profitPercentage < 15 && company.profitPercentage > 0" class="mb-0">Держать</p>
+                <p v-else class="mb-0">Продавать</p>
               </strong>
               <strong class="align-self-center font-weight-medium mr-3 ml-3">
                 <p class="caption mb-0 text--disabled">Прогназируемая цена</p>
@@ -78,7 +80,7 @@
     computed: {
       ...mapGetters([
         'allCompany1',
-      ])
+      ]),
     },
 
     mounted() {
