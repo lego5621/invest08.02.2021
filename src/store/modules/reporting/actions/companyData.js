@@ -49,6 +49,12 @@ export default async function({ commit }, id) {
             description.TargetPrice = Statements.historicalPrice[Statements.historicalPrice.length - 1].adjTargetPrice
             description.profitPercentage = Statements.profitPercentage
 
+            description.city = Statements.city
+            description.country = Statements.country
+            description.sector = Statements.sector
+            description.site = Statements.site
+            description.auditRisk = Statements.auditRisk
+
             commit('historicalPrice', historicalPrice)
             commit('targetPrice', targetPrice)
             commit('revenue', revenue)
@@ -59,10 +65,10 @@ export default async function({ commit }, id) {
             commit('year', year)
             commit('recommendationTrend', Statements.recommendationTrend)
         }).catch(err => { 
-            if(err.response.status ==404){
+            if(err.response.status == 404){
                 router.push({ name: '404' });
             }
-            if(err.response.status ==500){
+            if(err.response.status == 500){
                 router.push({ name: '500' });
             }
           })

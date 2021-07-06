@@ -33,10 +33,9 @@ export default {
         state.dividendsPaid = []
         state.year = []
         state.recommendationTrend = []
-      },
-
-      recommendationTrend(state, recommendationTrend) {
-        state.recommendationTrend = recommendationTrend
+        state.recommendationSell = []
+        state.recommendationBuy = []
+        state.recommendationHold = []
       },
 
       clearAllCompany(state) {
@@ -84,6 +83,15 @@ export default {
         state.allCompany = allCompany
         state.indexListLoader = false
       },
+
+      recommendationTrend(state, recommendationTrend) {
+        state.recommendationTrend = recommendationTrend
+        state.recommendationSell = recommendationTrend[2]
+        state.recommendationBuy = recommendationTrend[0]
+        state.recommendationHold = recommendationTrend[1]
+
+
+      },
     },
 
     state: {
@@ -99,6 +107,10 @@ export default {
       year: [],
       allCompany: [],
       indexListLoader: true,
+
+      recommendationSell:[],
+      recommendationBuy:[],
+      recommendationHold:[],
     },
 
     getters: {
@@ -107,18 +119,18 @@ export default {
       recommendationTrendSetting,
 
       recommendationTrend(state){
-        return [{
+        let data = [{
           name: 'За продажу',
-          data: state.recommendationTrend[2]
+          data: state.recommendationSell
         }, {
           name: 'За удержание',
-          data: state.recommendationTrend[1]
+          data: state.recommendationHold
         }, {
           name: 'За покупку',
-          data: state.recommendationTrend[0]
+          data: state.recommendationBuy
         }]
+        return data
       },
-
 
 
       pages(state){

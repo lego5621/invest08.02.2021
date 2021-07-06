@@ -22,18 +22,18 @@
                   rounded
                   outlined
                   dense
-                  label="Название или тикер компании"
+                  label="Название компании"
                   hide-details=true
                 ></v-autocomplete>
               </v-col>
               <v-col class="d-flex">
                 <p>
                   Сортировать: 
-                  <span  class="aMargin" v-on:click="changeFilter('')">Все</span>
-                  <span  class="aMargin" v-on:click="changeFilter('minPrice')">Дешевые</span>
-                  <span  class="aMargin" v-on:click="changeFilter('maxPrice')">Дорогие</span>
-                  <span  class="aMargin" v-on:click="changeFilter('maxProfit')">Максимальная прибыль</span>
-                  <span  class="aMargin" v-on:click="changeFilter('maxProfit')">Компании США</span>
+                  <span v-bind:class="{ goodAnalysis: allFilter }" class="aMargin" v-on:click="changeFilter('')">Все</span>
+                  <span v-bind:class="{ goodAnalysis: minPriceFilter }"  class="aMargin" v-on:click="changeFilter('minPrice')">Дешевые</span>
+                  <span v-bind:class="{ goodAnalysis: maxPriceFilter }" class="aMargin" v-on:click="changeFilter('maxPrice')">Дорогие</span>
+                  <span v-bind:class="{ goodAnalysis: maxProfitFilter }" class="aMargin" v-on:click="changeFilter('maxProfit')">Максимальная прибыль</span>
+                  <!-- <span  class="aMargin" v-on:click="changeFilter('maxProfit')">Компании США</span> -->
                 </p>
               </v-col>
             </v-row>
@@ -77,6 +77,30 @@ import store from '@/store/index'
         'allCompany1',
         'pages',
       ]),
+      allFilter: function () {
+        if( this.filter == "" ){
+          return 1
+        }  
+        return 0
+      },
+      minPriceFilter: function () {
+        if( this.filter == "minPrice" ){
+          return 1
+        }  
+        return 0
+      },
+      maxPriceFilter: function () {
+        if( this.filter == "maxPrice" ){
+          return 1
+        }  
+        return 0
+      },
+      maxProfitFilter: function () {
+        if( this.filter == "maxProfit" ){
+          return 1
+        }  
+        return 0
+      },
     },
 
     methods:{

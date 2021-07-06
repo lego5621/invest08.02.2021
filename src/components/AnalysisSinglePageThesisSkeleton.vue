@@ -15,7 +15,7 @@
         </div>
         <div 
           class="mb-2 mt-2" 
-          v-for="(i) in 5"
+          v-for="(i) in 3"
           :key="i+5"
         >
           <v-skeleton-loader
@@ -34,7 +34,7 @@
         </div>
         <div 
             class="mb-2 mt-2" 
-            v-for="(i) in 5"
+            v-for="(i) in 3"
             :key="i+5"
           >
             <v-skeleton-loader
@@ -52,6 +52,10 @@
           Стоит обратить внимание
           </p>
         <div >
+          <v-skeleton-loader
+            type="list-item-three-line"
+            class="cartItem2 "
+          ></v-skeleton-loader>
           <v-skeleton-loader
             type="list-item-three-line"
             class="cartItem2 "

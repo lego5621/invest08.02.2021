@@ -34,12 +34,16 @@
       </v-card>
       <v-card
         rounded="lg"
-        class=" mb-5 pa-4 specialColor widthBar"
+        class=" mb-5 pa-4 specialColor widthBar d-flex flex-column"
         elevation="0"
+
       >
       <p class="mb-1">Дивиденды</p>
-        <div>
+        <div v-if="dividendsPaid[0].data.length > 1">
           <apexchart width="100%"  type="bar" :options="yearDebtRatioDividend" :series="dividendsPaid"></apexchart>
+        </div>
+        <div v-if="dividendsPaid[0].data.length <= 1" class="mb-1 colorDivText text-center flex44">
+          <p class="mb-1 colorDivText text-center align-center;">Нет истории выплат дивидендов</p>
         </div>
       </v-card>
     </div>
@@ -53,24 +57,33 @@
 
     computed: {
       ...mapGetters([
+        'recommendationTrendSetting',
+        'recommendationTrend',
         'yearDebtRatioDividend',
         'yearRevenueEarning',
         'revenue',
         'earnings',
         'debtRatio',
         'dividendsPaid',
-        'recommendationTrend',
-        'recommendationTrendSetting',
       ])
     },
 
-  data: () => ({ 
 
-  })
 }
 </script>
 
 <style lang="css" scoped>
+
+  .flex44{
+    align-self: center !important;
+    flex-grow: 1;
+  }
+
+  .colorDivText{
+    color: #51a9f0;
+    align-items: center;
+  display: flex;
+  }
 
   .overflow{
     overflow-x: auto;

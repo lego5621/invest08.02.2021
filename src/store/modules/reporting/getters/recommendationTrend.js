@@ -1,6 +1,18 @@
 import moment from 'moment'
 export default function(state) {
     return{ 
+        noData: {
+            text: 'Ожидаем данные...',
+            align: 'center',
+            verticalAlign: 'middle',
+            offsetX: 0,
+            offsetY: 0,
+            style: {
+                color: '#51a9f0',
+                fontSize: '19px',
+                fontFamily: undefined
+            }
+        },
         colors:[ 'RGBA(102, 184, 250)', 'RGBA(102, 184, 250, 0.7)','RGBA(102, 184, 250, 0.4)',],
         tooltip: {
             theme: 'dark',
@@ -19,18 +31,6 @@ export default function(state) {
                 filter: {
                     type: 'none'
                 }
-            }
-        },
-        noData: {
-            text: 'Ожидаем данные...',
-            align: 'center',
-            verticalAlign: 'middle',
-            offsetX: 0,
-            offsetY: 0,
-            style: {
-            color: '#51a9f0',
-            fontSize: '19px',
-            fontFamily: undefined
             }
         },
     }
