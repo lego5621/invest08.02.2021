@@ -180,6 +180,7 @@ import { mapMutations } from "vuex";
         }
     },
     created: function () {
+      store.dispatch('search');
       this.$http.interceptors.response.use(undefined, function (err) {
         return new Promise(function (resolve, reject) {
           if (err.status === 401 && err.config && !err.config.__isRetryRequest) {

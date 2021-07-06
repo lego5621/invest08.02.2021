@@ -22,9 +22,25 @@
                   rounded
                   outlined
                   dense
+                  no-filter
+
+                  v-model="select"
+                  :loading="loading"
+                  :items="items"
+                  :search-input.sync="search"
+
+                  hide-no-data
+                  hide-details
                   label="Название компании"
-                  hide-details=true
-                ></v-autocomplete>
+                  return-object
+                  item-text="name"
+
+                >
+                  <template v-slot:item={item}>
+                    <router-link class="link-flex" :to="'/company/'+item.ticker">{{ item.name }}</router-link>
+                  </template>
+                </v-autocomplete>
+
               </v-col>
               <v-col class="d-flex">
                 <p>
@@ -76,6 +92,7 @@ import store from '@/store/index'
       ...mapGetters([
         'allCompany1',
         'pages',
+        'states',
       ]),
       allFilter: function () {
         if( this.filter == "" ){
@@ -114,6 +131,12 @@ import store from '@/store/index'
         this.filter=filter
         this.onPageChange()
       },
+      
+      querySelections(v) {
+        this.items = this.states.filter(e => {
+          return (e.name.toLowerCase() || '').indexOf((v.toLowerCase() || '')) > -1
+        })
+      },
     },
 
     components:{
@@ -123,8 +146,20 @@ import store from '@/store/index'
     name: 'Analysis',
 
     data: () => ({
-      filter:''
+      filter:'',
+      
+      items: [],
+      loading: false,
+      search: null,
+      select: "",
+
     }),
+
+    watch: {
+      search (val) {
+        val && val !== this.select && this.querySelections(val)
+      },
+    },
 
     // created:function (){
     //   if(this.$route.params.page){
@@ -140,6 +175,11 @@ import store from '@/store/index'
     margin-left: 1.5rem;
     cursor: pointer;
     color: #2196f3;
+  }
+
+  .link-flex{
+    display: flex;
+    width: 100%;
   }
 
 </style>

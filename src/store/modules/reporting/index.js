@@ -3,15 +3,22 @@ import allCompany from '@/store/modules/reporting/actions/allCompany.js'
 import yearDebtRatioDividend from '@/store/modules/reporting/getters/yearDebtRatioDividend.js'
 import yearRevenueEarning from '@/store/modules/reporting/getters/yearRevenueEarning.js'
 import recommendationTrendSetting from '@/store/modules/reporting/getters/recommendationTrend.js'
+import search from '@/store/modules/reporting/actions/search.js'
+
 
 
 export default {
     actions: {
       allCompany,
       companyData,
+      search,
     },
 
     mutations: {
+
+      search(state, company) {
+        state.search = company
+      },
 
       pages(state, allCompany){
 
@@ -111,6 +118,7 @@ export default {
       recommendationSell:[],
       recommendationBuy:[],
       recommendationHold:[],
+      search:[],
     },
 
     getters: {
@@ -135,6 +143,10 @@ export default {
 
       pages(state){
         return state.pages
+      },
+
+      states(state){
+        return state.search
       },
 
       description(state) {
