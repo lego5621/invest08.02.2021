@@ -16,14 +16,7 @@
             v-if="!Object.keys(this.$store.state.reporting.description).length == 0"
           />
           <Chart/>
-          <FinAnalysis/>
-          <TextAnalysis
-            v-if="!Object.keys(this.$store.state.reporting.description).length == 0"
-          />
-          <ThesisSkeleton
-            v-if="Object.keys(this.$store.state.reporting.description).length == 0"
-          />
-          <!-- <Divided/> -->
+          <TextAnalysis/>
         </v-container>
       </v-col>
     </v-row>
@@ -34,7 +27,7 @@
   import Heder from '@/components/AnalysisSinglePageHeder'
   import Chart from '@/components/AnalysisSinglePageChart'
   // import Divided from '@/components/AnalysisSinglePageDivided'
-  import TextAnalysis from '@/components/AnalysisSinglePageThesis'
+  import TextAnalysis from '@/components/2AnalysisSinglePageThesis'
   import ThesisSkeleton from '@/components/AnalysisSinglePageThesisSkeleton'
   import FinAnalysis from '@/components/AnalysisSinglePageReporting'
   import CardSkeleton from '@/components/AnalysisSinglePageHederSkeleton'

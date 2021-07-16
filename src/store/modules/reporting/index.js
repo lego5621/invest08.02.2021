@@ -119,6 +119,7 @@ export default {
       recommendationBuy:[],
       recommendationHold:[],
       search:[],
+      filter:'',
     },
 
     getters: {
@@ -174,8 +175,11 @@ export default {
 
       earnings(state) {
         let earnings = [{
-          name: '',
+          name: 'Прибыль',
           data: state.earnings,
+        },{
+          name: 'Выручка',
+          data: state.revenue,
         }]
         return earnings
       },

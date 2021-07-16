@@ -173,9 +173,9 @@ import { mapMutations } from "vuex";
         const theme = localStorage.getItem("dark_theme");
         if (theme) {
             if (theme == "true") {
-                this.$vuetify.theme.dark = true;
+              this.$vuetify.theme.dark = true;
             } else {
-                this.$vuetify.theme.dark = false;
+              this.$vuetify.theme.dark = false;
             }
         }
     },
@@ -194,6 +194,12 @@ import { mapMutations } from "vuex";
 </script>
 
 <style lang="css">
+
+/* svg text {
+	fill: black;
+} */
+
+
 
 
   .overflow{
@@ -242,6 +248,9 @@ import { mapMutations } from "vuex";
     display: flex;
   }
 
+  .v-tabs-bar{
+    display: none !important;
+  }
 
 
 /* 

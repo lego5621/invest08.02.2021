@@ -46,7 +46,8 @@
               </strong>
               <strong class="align-self-center font-weight-medium mr-3 ml-3">
                 <p class="caption mb-0 text--disabled">Прогназируемая цена</p>
-                <p class=" mb-0 text-center">{{ Math.floor(company.recommendationPrice) }} (+{{ company.profitPercentage }}%)</p>
+                <p class=" mb-0 text-center">{{ Math.floor(company.recommendationPrice) }} 
+                  (<span v-if="company.profitPercentage> 0">+</span>{{ company.profitPercentage }}%)</p>
               </strong>
               <strong class="align-self-center font-weight-medium mr-3 ml-3">
                 <p class="caption mb-0 text--disabled">Цена</p>
@@ -57,7 +58,6 @@
           <v-list-item-title class="text-wrap mb-2">
             {{company.description}}
           </v-list-item-title>
-
         </v-list-item-content>
       </v-list-item>
     </v-card>

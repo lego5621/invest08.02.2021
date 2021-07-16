@@ -67,7 +67,35 @@ import jwt_decode from "jwt-decode";
     },
     methods: {
       toggle_dark_mode: function () {
-          localStorage.setItem("dark_theme", this.$vuetify.theme.dark.toString());
+        localStorage.setItem("dark_theme", this.$vuetify.theme.dark.toString());  
+        const theme = localStorage.getItem("dark_theme");
+        if (theme) {
+            if (theme == "true") {
+                this.$apexcharts.exec('test', 'updateOptions', {
+                  theme: {
+                    mode: 'dark', 
+                    monochrome: {
+                        enabled: false,
+                        color: '#1e2022',
+                        shadeTo: 'dark',
+                        shadeIntensity: 0.65
+                    },
+                  },
+                })
+            } else {
+              this.$apexcharts.exec('test', 'updateOptions', {
+                  theme: {
+                    mode: 'light', 
+                    monochrome: {
+                        enabled: false,
+                        color: '#1e2022',
+                        shadeTo: 'dark',
+                        shadeIntensity: 0.65
+                    },
+                  },
+                })
+            }
+        }
       },
       logout: function () {
         this.$store.dispatch('logout')

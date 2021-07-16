@@ -22,13 +22,13 @@ export default async function({ commit }, id) {
                 return Statements.earnings
             })
 
-            const debtRatio = Statements.debtRatio.map(function(debtRatio) {
+            /*const debtRatio = Statements.debtRatio.map(function(debtRatio) {
                 return debtRatio.percent
             }).reverse();
 
             const dividendsPaid = Statements.dividendsPaid.map(function(Statements) {
                 return Statements.percent
-            }).reverse()
+            }).reverse()*/
 
             const year =  Statements.statementAll.map(function(Statements) {
                 return Statements.year
@@ -41,29 +41,42 @@ export default async function({ commit }, id) {
                 earnings.push(Statements.statementPrognosis.earnings)
             }
 
-            let description ={}
+            let description = {}
             description.description = Statements.description
+            description.fullDescription = Statements.fullDescription
             description.name = Statements.name
             description.avatar = Statements.avatar
             description.historicalPrice = Statements.historicalPrice[Statements.historicalPrice.length - 1].adjClose  
             description.TargetPrice = Statements.historicalPrice[Statements.historicalPrice.length - 1].adjTargetPrice
             description.profitPercentage = Statements.profitPercentage
+            //description.otherFactors = Statements.otherFactors
+            //description.analystsGrade = Statements.analystsGrade
 
-            description.city = Statements.city
+            //description.city = Statements.city
             description.country = Statements.country
             description.sector = Statements.sector
-            description.site = Statements.site
-            description.auditRisk = Statements.auditRisk
+            //description.site = Statements.site
+            //description.overallRisk = Statements.overallRisk
+
+            description.multipliers = {}
+
+            description.multipliers.ROA = Statements.ROA
+            description.multipliers.ROE = Statements.ROE
+            description.multipliers.ROS = Statements.ROS
+            description.multipliers.PE = Statements.PE
+            description.multipliers.PB = Statements.PB
+            description.multipliers.PS = Statements.PS
+            description.multipliers.DE = Statements.DE
 
             commit('historicalPrice', historicalPrice)
             commit('targetPrice', targetPrice)
             commit('revenue', revenue)
             commit('earnings', earnings)
-            commit('debtRatio', debtRatio)
-            commit('dividendsPaid', dividendsPaid)
+            //commit('debtRatio', debtRatio)
+            //commit('dividendsPaid', dividendsPaid)
             commit('description', description)
             commit('year', year)
-            commit('recommendationTrend', Statements.recommendationTrend)
+            //commit('recommendationTrend', Statements.recommendationTrend)
         }).catch(err => { 
             if(err.response.status == 404){
                 router.push({ name: '404' });

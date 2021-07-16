@@ -95,25 +95,25 @@ import store from '@/store/index'
         'states',
       ]),
       allFilter: function () {
-        if( this.filter == "" ){
+        if( this.$store.state.reporting.filter == "" ){
           return 1
         }  
         return 0
       },
       minPriceFilter: function () {
-        if( this.filter == "minPrice" ){
+        if( this.$store.state.reporting.filter == "minPrice" ){
           return 1
         }  
         return 0
       },
       maxPriceFilter: function () {
-        if( this.filter == "maxPrice" ){
+        if( this.$store.state.reporting.filter == "maxPrice" ){
           return 1
         }  
         return 0
       },
       maxProfitFilter: function () {
-        if( this.filter == "maxProfit" ){
+        if( this.$store.state.reporting.filter == "maxProfit" ){
           return 1
         }  
         return 0
@@ -124,11 +124,11 @@ import store from '@/store/index'
       onPageChange: function(){
         window.scrollTo(0,0);
         let page = this.pages.currentPage
-        store.dispatch('allCompany', {page, filter: this.filter});
+        store.dispatch('allCompany', {page, filter: this.$store.state.reporting.filter});
         this.$store.state.reporting.indexListLoader = true
       },
       changeFilter: function(filter){
-        this.filter=filter
+        this.$store.state.reporting.filter=filter
         this.onPageChange()
       },
       

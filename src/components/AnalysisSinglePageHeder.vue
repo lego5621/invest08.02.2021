@@ -36,7 +36,7 @@
         </strong>
         <strong class="align-self-center mr-10 subtitle-1">
           <p class="caption mb-0 text--disabled">Прогназируемая цена</p>
-          <p class=" mb-0">Около {{ Math.floor(description.TargetPrice) }} (+{{ description.profitPercentage }}%)</p>
+          <p class=" mb-0">Около {{ Math.floor(description.TargetPrice) }} (<span v-if="description.profitPercentage> 0">+</span>{{ description.profitPercentage }}%)</p>
         </strong>
         <strong class="align-self-center subtitle-1">
           <p class="caption mb-0 text--disabled">Цена</p>

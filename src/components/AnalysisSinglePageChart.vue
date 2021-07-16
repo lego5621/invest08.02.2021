@@ -8,7 +8,7 @@
   <p class="text-h5 mb-0">
     <v-icon size="50" class="mr-2"> mdi-arrow-top-right </v-icon>
     <!-- Покупать с целью 45$ -->
-    Ожидания аналитиков
+    Консенсус прогноз цены
   </p>
   <!-- <p>Согластно консенсус прогнозу от <span class="goodAnalysis">8 аналитиков</span>, ближайшие 12 месяцев ожидается <span class="goodAnalysis"> рост цены</span>  акции на 23%.</p> -->
     <!-- <p class="text-h5 ">Цена: {{ StockHistorical[0].data[StockHistorical[0].data.length - 1] }}</p> -->
