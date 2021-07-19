@@ -30,6 +30,7 @@ export default async function({ commit }, id) {
                 return Statements.percent
             }).reverse()*/
 
+
             const year =  Statements.statementAll.map(function(Statements) {
                 return Statements.year
             })
@@ -68,7 +69,23 @@ export default async function({ commit }, id) {
             description.multipliers.PS = Statements.PS
             description.multipliers.DE = Statements.DE
 
+
+            
+            const liab = Statements.liabCapital.map(function(Statements) {
+                return Statements.totalLiab
+            }).reverse()
+
+
+            const Capital = Statements.liabCapital.map(function(Statements) {
+                return Statements.shareCapital
+            }).reverse()
+
+
             commit('historicalPrice', historicalPrice)
+            commit('QAnalysis', Statements.QAnalysis)
+            commit('liab', liab)
+            commit('Capital', Capital)
+
             commit('targetPrice', targetPrice)
             commit('revenue', revenue)
             commit('earnings', earnings)

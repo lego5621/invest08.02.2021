@@ -199,7 +199,13 @@ import { mapMutations } from "vuex";
 	fill: black;
 } */
 
+  .goodNumColor{
+    color: #1c86c7 !important;
+  }
 
+  .badNumColor{
+    color: #e46065 !important;
+  }
 
 
   .overflow{

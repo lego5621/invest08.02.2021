@@ -16,8 +16,20 @@ export default {
 
     mutations: {
 
+      QAnalysis(state, QAnalysis){
+        state.QAnalysis = QAnalysis
+      },
+
       search(state, company) {
         state.search = company
+      },
+
+      liab(state, liab) {
+        state.liab = liab
+      },
+
+      Capital(state, Capital) {
+        state.Capital = Capital
       },
 
       pages(state, allCompany){
@@ -115,6 +127,10 @@ export default {
       allCompany: [],
       indexListLoader: true,
 
+      QAnalysis:[],
+      liab:[],
+      Capital:[],
+
       recommendationSell:[],
       recommendationBuy:[],
       recommendationHold:[],
@@ -126,6 +142,23 @@ export default {
       yearDebtRatioDividend,
       yearRevenueEarning,
       recommendationTrendSetting,
+
+
+
+      QAnalysis(state){
+        return state.QAnalysis
+      },
+
+      liabCapital(state){
+        let data = [{
+          name: 'Задолженость',
+          data: state.liab
+        }, {
+          name: 'Капитал',
+          data: state.Capital
+        }]
+        return data
+      },
 
       recommendationTrend(state){
         let data = [{

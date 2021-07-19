@@ -81,9 +81,33 @@ import jwt_decode from "jwt-decode";
                         shadeIntensity: 0.65
                     },
                   },
+                  
+                })
+                this.$apexcharts.exec('test1', 'updateOptions', {
+                  theme: {
+                    mode: 'dark', 
+                    monochrome: {
+                        enabled: false,
+                        color: '#1e2022',
+                        shadeTo: 'dark',
+                        shadeIntensity: 0.65
+                    },
+                  },
+                  
                 })
             } else {
               this.$apexcharts.exec('test', 'updateOptions', {
+                  theme: {
+                    mode: 'light', 
+                    monochrome: {
+                        enabled: false,
+                        color: '#1e2022',
+                        shadeTo: 'dark',
+                        shadeIntensity: 0.65
+                    },
+                  },
+                })
+                this.$apexcharts.exec('test1', 'updateOptions', {
                   theme: {
                     mode: 'light', 
                     monochrome: {
