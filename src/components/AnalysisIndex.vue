@@ -4,9 +4,9 @@
       <v-col
         cols="12"
         lg="10"
-        xl="8"
+        xl="6"
         offset-lg="1"
-        offset-xl="2"
+        offset-xl="3"
         class="bacMain"
       >
         <v-container class="pa-0">

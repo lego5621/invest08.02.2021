@@ -4,9 +4,9 @@
       <v-col
         cols="12"
         lg="10"
-        xl="8"
+        xl="6"
         offset-lg="1"
-        offset-xl="2"
+        offset-xl="4"
       >
         <v-container class="pa-0">
           <v-row class="mt-5 mb-16">
@@ -16,8 +16,8 @@
                         <v-col cols="12" class="d-flex flex-column align-center"> 
                           <v-avatar size="200">
                             <img
-                              v-if="0"
-                              src="https://avatars0.githubusercontent.com/u/9064066?v=4&s=460"
+                              v-if="1"
+                              src="https://cdn.vuetifyjs.com/images/john.jpg"
                               alt="John"
                             >
                             <v-icon
@@ -76,13 +76,50 @@
                           @click:append="show = !show"
                         ></v-text-field>
                         </v-col>
-                        <v-btn
+                        <!-- <v-btn
                           color="blue lighten-1"
                           class="white--text"
                           elevation="0"
                         >
                         Сохранить
-                        </v-btn>
+                        </v-btn> -->
+                        <v-dialog
+                          v-model="dialog"
+                          width="500"
+                        >
+                          <template v-slot:activator="{ on, attrs }">
+                            <v-btn
+                              color="blue lighten-1"
+                              dark
+                              v-bind="attrs"
+                              v-on="on"
+                            >
+                              Сохранить
+                            </v-btn>
+                          </template>
+
+                          <v-card>
+                            <v-card-title class="text-h5  lighten-2">
+                              Ошибка
+                            </v-card-title>
+
+                            <v-card-text>
+                              Это тестовый аккаунт, вы не можете изменить данные, свяжитесь с администратором.
+                            </v-card-text>
+
+
+                            <v-card-actions>
+                              <v-spacer></v-spacer>
+                              <v-btn
+                                color="primary"
+                                text
+                                @click="dialog = false"
+                              >
+                                Закрыть
+                              </v-btn>
+                            </v-card-actions>
+                          </v-card>
+                        </v-dialog>
                     </v-row>
                   </v-container>
                 </v-form>
@@ -102,6 +139,9 @@ import jwt_decode from "jwt-decode";
     },
     name: 'Settings',
     data: () => ({
+      dialog: false,
+
+
       show: false,
       valid: false,
       firstname: '',

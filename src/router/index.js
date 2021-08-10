@@ -8,6 +8,8 @@ import Setting from '@/components/TheSettings'
 import The404Page from '@/components/The404Page'
 import The500Page from '@/components/The500Page'
 
+import ExArticle from '@/components/singlePageBloсk/articleExample'
+
 
 
 import Login from '@/components/TheLogin'
@@ -51,13 +53,20 @@ const routes = [
       requiresAuth: true
     }
   },
-  // { 
-  //   path: '/settings', 
-  //   component: Setting,
-  //   meta: { 
-  //     requiresAuth: true
-  //   }
-  // },
+  { 
+    path: '/settings', 
+    component: Setting,
+    meta: { 
+      requiresAuth: true
+    }
+  },
+  { 
+    path: '/ExamArticle', 
+    component: ExArticle,
+    meta: { 
+      requiresAuth: true
+    }
+  },
   { 
     path: '*', 
     name: '404', 

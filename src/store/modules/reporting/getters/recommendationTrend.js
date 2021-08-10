@@ -13,19 +13,41 @@ export default function(state) {
                 fontFamily: undefined
             }
         },
+        plotOptions: {
+            bar: {
+                columnWidth: '70%'
+            },
+        },
         colors:[ 'RGBA(102, 184, 250)', 'RGBA(102, 184, 250, 0.7)','RGBA(102, 184, 250, 0.4)',],
         tooltip: {
             theme: 'dark',
         },
         chart: {
+            id:'debiRatio',
             stacked: true,
-            sparkline: {
-                enabled: true
+            toolbar: {
+                show: false,
             },
+            // sparkline: {
+            //     enabled: true
+            // },
         },
+
+        grid: {
+            show: false,
+          },
         xaxis: {
-            categories: [ moment().locale("ru").subtract(3, 'Month').format("MMMM YYYY"), moment().locale("ru").subtract(2, 'Month').format("MMMM YYYY"), moment().locale("ru").subtract(1, 'Month').format("MMMM YYYY"), moment().locale("ru").subtract(0, 'Month').format("MMMM YYYY")],
+            categories: [ moment().locale("ru").subtract(3, 'Month').format("MMMM YYYY"), moment().locale("ru").subtract(2, 'Month').format("MMMM YYYY"), moment().locale("ru").subtract(1, 'Month').format("MMMM YYYY"), moment().locale("ru").subtract(0, 'Month').format("MMMM YYYY"),],
         },
+
+        yaxis: {
+            show: false,
+        },
+        
+        legend: {
+            show: false,
+        },
+
         states: {
             active: {
                 filter: {

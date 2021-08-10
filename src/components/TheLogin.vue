@@ -30,6 +30,14 @@
         >
           <form class="login" @submit.prevent="login">
             <h1>Войдите в систему</h1>
+            <v-alert
+              text
+              type="error"
+              rounded="xl"
+               v-if="this.$store.state.auth.status"
+            >
+              Неверный логин или пароль
+            </v-alert>
             <v-text-field
               v-model="email"
               label="Электроная почта"
@@ -50,13 +58,13 @@
             >
               Войти
             </v-btn>
-            <v-btn
+            <!-- <v-btn
               elevation="0"
               color="specialColor"
               href="#reg"
             >
               Регистрация
-            </v-btn>
+            </v-btn> -->
           </form>
         </v-sheet>
       </v-col>
@@ -76,11 +84,11 @@
         </v-tabs>
       </v-col>
     </v-row> -->
-     <v-row 
+     <!-- <v-row 
       class="hig100"
       id="reg"
       no-gutters
-    >
+    > 
       <v-col
         cols="12"
         md="6"
@@ -103,6 +111,14 @@
         >
           <form @submit.prevent="register">
             <h1>Регистрация</h1>
+            <v-alert
+              text
+              type="error"
+              rounded="xl"
+               v-if="this.$store.state.auth.status_reg"
+            >
+              Данные заполнены неверно.
+            </v-alert>
             <v-text-field
               v-model="firstname"
               label="Имя"
@@ -119,7 +135,7 @@
               required
             ></v-text-field>
             <v-text-field
-              v-model="password"
+              v-model="passwordReg"
               label="Пароль"
               required
               :type="show1 ? 'text' : 'password'"
@@ -136,7 +152,7 @@
           </form>
         </v-sheet>
       </v-col>
-    </v-row>
+    </v-row>-->
   </div>
 </template>
 <script>
@@ -147,6 +163,7 @@
         show1: false,
         email : "",
         password : "",
+        passwordReg : "",
 
         firstname : "",
         lastname : "",
@@ -166,7 +183,7 @@
           firstname: this.firstname,
           lastname: this.lastname,
           email: this.regemail,
-          password: this.password,
+          password: this.passwordReg,
         }
         this.$store.dispatch('register', user)
        .then(() => this.$router.push('/'))

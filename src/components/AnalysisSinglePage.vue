@@ -4,9 +4,9 @@
       <v-col
         cols="12"
         lg="10"
-        xl="8"
+        xl="6"
         offset-lg="1"
-        offset-xl="2"
+        offset-xl="3"
       >
         <v-container class="pa-0">
           <CardSkeleton
@@ -16,7 +16,29 @@
             v-if="!Object.keys(this.$store.state.reporting.description).length == 0"
           />
           <Chart/>
-          <TextAnalysis/>
+          <!-- <TextAnalysis/> -->
+          <!-- <Revenue/> -->
+          <!-- <Earnings/> -->
+          <!-- <Upgrades/> -->
+
+          <!-- <RecommendationTrend/> -->
+
+          <!-- <News/> -->
+
+          <!-- <Dividend/>
+          <DebtRatio/> -->
+
+          <!-- <ROE/> -->
+          <!-- <Stocks/> -->
+          <!-- <About/> -->
+          <Earnings/>
+          <Upgrades/>
+          <Idea/>
+          <DebtRatio/>
+          <Dividend/>
+
+          <!-- <Conclusion/> -->
+
         </v-container>
       </v-col>
     </v-row>
@@ -31,6 +53,22 @@
   import ThesisSkeleton from '@/components/AnalysisSinglePageThesisSkeleton'
   import FinAnalysis from '@/components/AnalysisSinglePageReporting'
   import CardSkeleton from '@/components/AnalysisSinglePageHederSkeleton'
+
+  import Revenue from '@/components/singlePageBloсk/revenue'
+  import Earnings from '@/components/singlePageBloсk/earnings'
+  import News from '@/components/singlePageBloсk/news'
+  import Dividend from '@/components/singlePageBloсk/divid'
+  import Stocks from '@/components/singlePageBloсk/stocks'
+  import About from '@/components/singlePageBloсk/about'
+  import Upgrades from '@/components/singlePageBloсk/upgrades'
+  import RecommendationTrend from '@/components/singlePageBloсk/recommendationTrend'
+  import DebtRatio from '@/components/singlePageBloсk/debtRatio'
+  import ROE from '@/components/singlePageBloсk/ROE'
+  import Conclusion from '@/components/singlePageBloсk/conclusion'
+  import Idea from '@/components/singlePageBloсk/idea'
+
+
+
   import store from '@/store/index'
 
 export default {
@@ -42,6 +80,21 @@ export default {
     FinAnalysis,
     CardSkeleton,
     ThesisSkeleton,
+
+
+
+    Revenue,
+    Earnings,
+    News,
+    Dividend,
+    Stocks,
+    About,
+    Upgrades,
+    RecommendationTrend,
+    DebtRatio,
+    ROE,
+    Conclusion,
+    Idea
   },
   name: 'ReportingSingle',
   created:function (){

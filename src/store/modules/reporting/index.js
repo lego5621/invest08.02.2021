@@ -24,6 +24,10 @@ export default {
         state.search = company
       },
 
+      stocksCaunt(state, stocksCaunt) {
+        state.stocksCaunt = stocksCaunt
+      },
+
       liab(state, liab) {
         state.liab = liab
       },
@@ -87,6 +91,7 @@ export default {
 
       dividendsPaid(state, dividendsPaid) {
         state.dividendsPaid = dividendsPaid
+        state.dividendsPaidYear=dividendsPaid.year
       },
 
       year(state, year) {
@@ -104,12 +109,12 @@ export default {
       },
 
       recommendationTrend(state, recommendationTrend) {
-        state.recommendationTrend = recommendationTrend
+        // state.recommendationTrend = recommendationTrend
         state.recommendationSell = recommendationTrend[2]
         state.recommendationBuy = recommendationTrend[0]
         state.recommendationHold = recommendationTrend[1]
-
-
+        // state.recommendationStrongSell = recommendationTrend[2]
+        state.recommendationStrongBuy = recommendationTrend[3]
       },
     },
 
@@ -123,19 +128,19 @@ export default {
       earnings: [],
       debtRatio: [],
       dividendsPaid: [],
+      dividendsPaidYear:[],
       year: [],
       allCompany: [],
       indexListLoader: true,
 
-      QAnalysis:[],
-      liab:[],
-      Capital:[],
 
       recommendationSell:[],
       recommendationBuy:[],
       recommendationHold:[],
       search:[],
       filter:'',
+
+      stocksCaunt:[],
     },
 
     getters: {
@@ -160,17 +165,30 @@ export default {
         return data
       },
 
+
       recommendationTrend(state){
-        let data = [{
-          name: 'За продажу',
+        let data = [
+        // {
+        //   name: 'Падение более 30%',
+        //   data: state.recommendationStrongSell
+        // }, 
+        {
+          name: 'Ожидают падение акций',
           data: state.recommendationSell
-        }, {
-          name: 'За удержание',
+        }, 
+        {
+          name: 'Ожидают рост менее 15%',
           data: state.recommendationHold
-        }, {
-          name: 'За покупку',
+        }, 
+        {
+          name: 'Ожидают рост более 15%',
           data: state.recommendationBuy
-        }]
+        },
+        {
+          name: 'Ожидают рост более 30%',
+          data: state.recommendationStrongBuy
+        }, 
+      ]
         return data
       },
 
@@ -200,7 +218,7 @@ export default {
 
       revenue(state) {
         let revenue = [{
-          name: '',
+          name: 'Выручка',
           data: state.revenue,
         }]
         return revenue
@@ -210,10 +228,8 @@ export default {
         let earnings = [{
           name: 'Прибыль',
           data: state.earnings,
-        },{
-          name: 'Выручка',
-          data: state.revenue,
-        }]
+        },
+      ]
         return earnings
       },
 
@@ -228,7 +244,32 @@ export default {
       dividendsPaid(state) {
         let dividendsPaid = [{
           name: '',
-          data: state.dividendsPaid,
+          data: state.dividendsPaid.percent,
+        }]
+        return dividendsPaid
+      },
+
+
+      dividendsPaidYear(state) {
+        let dividendsPaid = [{
+          name: '',
+          data: state.dividendsPaidYear,
+        }]
+        return dividendsPaid
+      },
+
+      getStocksCaunt(state) {
+        let dividendsPaid = [{
+          name: '',
+          data: state.stocksCaunt.caunt,
+        }]
+        return dividendsPaid
+      },
+
+      stocksYear(state) {
+        let dividendsPaid = [{
+          name: '',
+          data: state.stocksCaunt.date,
         }]
         return dividendsPaid
       },

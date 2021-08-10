@@ -35,9 +35,9 @@
               persistent-hint
             ></v-switch>
           </v-list-item>
-          <!-- <v-list-item to="/settings">
+          <v-list-item to="/settings">
             <v-list-item-title>Настройки</v-list-item-title>
-          </v-list-item> -->
+          </v-list-item>
           <v-list-item @click="logout">
             <v-list-item-title>Выход</v-list-item-title>
           </v-list-item>
@@ -52,12 +52,12 @@ import jwt_decode from "jwt-decode";
     computed : {
       isLoggedIn : function(){ return this.$store.getters.isLoggedIn}
     },
-    created: function () {
-      let user = jwt_decode(localStorage.getItem("Token"))
-      this.firstname = user.firstname
-      this.lastname = user.lastname
-      this.email = user.email
-    },
+    // created: function () {
+    //   let user = jwt_decode(localStorage.getItem("Token"))
+    //   this.firstname = user.firstname
+    //   this.lastname = user.lastname
+    //   this.email = user.email
+    // },
     data:()=>{
       return {
         email : "",
@@ -69,57 +69,49 @@ import jwt_decode from "jwt-decode";
       toggle_dark_mode: function () {
         localStorage.setItem("dark_theme", this.$vuetify.theme.dark.toString());  
         const theme = localStorage.getItem("dark_theme");
-        if (theme) {
+        // if (theme) {
             if (theme == "true") {
-                this.$apexcharts.exec('test', 'updateOptions', {
+              let darkConf = {
                   theme: {
                     mode: 'dark', 
                     monochrome: {
-                        enabled: false,
-                        color: '#1e2022',
-                        shadeTo: 'dark',
-                        shadeIntensity: 0.65
+                      enabled: false,
+                      color: '#1e2022',
+                      shadeTo: 'dark',
+                      shadeIntensity: 0.65
                     },
                   },
-                  
-                })
-                this.$apexcharts.exec('test1', 'updateOptions', {
-                  theme: {
-                    mode: 'dark', 
-                    monochrome: {
-                        enabled: false,
-                        color: '#1e2022',
-                        shadeTo: 'dark',
-                        shadeIntensity: 0.65
-                    },
-                  },
-                  
-                })
+                }
+                this.$apexcharts.exec('test', 'updateOptions', darkConf)
+                this.$apexcharts.exec('revenue', 'updateOptions', darkConf)
+                this.$apexcharts.exec('recommendationTrend', 'updateOptions', darkConf)
+                this.$apexcharts.exec('dividend', 'updateOptions', darkConf)
+                this.$apexcharts.exec('debtRatio', 'updateOptions', darkConf)
+                this.$apexcharts.exec('news', 'updateOptions', darkConf)
+                this.$apexcharts.exec('chart', 'updateOptions', darkConf)
+
             } else {
-              this.$apexcharts.exec('test', 'updateOptions', {
-                  theme: {
-                    mode: 'light', 
-                    monochrome: {
-                        enabled: false,
-                        color: '#1e2022',
-                        shadeTo: 'dark',
-                        shadeIntensity: 0.65
-                    },
+              let lightConf ={
+                theme: {
+                  mode: 'light', 
+                  monochrome: {
+                    enabled: false,
+                    color: '#1e2022',
+                    shadeTo: 'dark',
+                    shadeIntensity: 0.65
                   },
-                })
-                this.$apexcharts.exec('test1', 'updateOptions', {
-                  theme: {
-                    mode: 'light', 
-                    monochrome: {
-                        enabled: false,
-                        color: '#1e2022',
-                        shadeTo: 'dark',
-                        shadeIntensity: 0.65
-                    },
-                  },
-                })
+                },
+              }
+              this.$apexcharts.exec('test', 'updateOptions', lightConf)
+              this.$apexcharts.exec('revenue', 'updateOptions', lightConf)
+              this.$apexcharts.exec('recommendationTrend', 'updateOptions', lightConf)
+              this.$apexcharts.exec('dividend', 'updateOptions', lightConf)
+              this.$apexcharts.exec('debtRatio', 'updateOptions', lightConf)
+              this.$apexcharts.exec('news', 'updateOptions', lightConf)
+              this.$apexcharts.exec('chart', 'updateOptions', lightConf)
+
             }
-        }
+        // }
       },
       logout: function () {
         this.$store.dispatch('logout')

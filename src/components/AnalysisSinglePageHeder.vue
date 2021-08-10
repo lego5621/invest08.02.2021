@@ -30,11 +30,13 @@
         </div>  
         <strong class="align-self-center mr-10 subtitle-1">
           <p class="caption mb-0 text--disabled">Рекомендация</p>
-          <p v-if="description.profitPercentage > 15" class="mb-0">Покупать</p>
-          <p v-else-if="description.profitPercentage < 15 && description.profitPercentage > 0" class="mb-0">Держать</p>
-          <p v-else class="mb-0">Продавать</p>
+          <!-- <p v-if="description.profitPercentage >= 10" class="mb-0">Накапливать</p>
+          <p v-else-if="description.profitPercentage < 10 && description.profitPercentage > 0" class="mb-0">Держать</p>
+          <p v-else class="mb-0">Сокращать</p> -->
+          <p v-if="description.profitPercentage < 0 && description.recommendation =='Покупать'" class="mb-0">Пересмотр...</p>
+          <p class="mb-0" v-else>{{description.recommendation}}</p> 
         </strong>
-        <strong class="align-self-center mr-10 subtitle-1">
+        <strong class="align-self-center mr-10 subtitle-1 ">
           <p class="caption mb-0 text--disabled">Прогназируемая цена</p>
           <p class=" mb-0">Около {{ Math.floor(description.TargetPrice) }} (<span v-if="description.profitPercentage> 0">+</span>{{ description.profitPercentage }}%)</p>
         </strong>

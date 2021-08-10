@@ -11,7 +11,13 @@
       <div class="d-flex align-center justify-space-between width100">
         <Avatar></Avatar>
         <div class="d-flex text-no-wrap ml-4 overflow">
-          <router-link to="/" class="mr-6 textLink--text font-weight-medium" >Каталог</router-link>
+          <router-link to="/" class="mr-6 textLink--text font-weight-medium" >Акции</router-link>
+          <div class="mr-6 d-flex align-center justify-space-between text--disabled">IPO</div>
+          <div class="mr-6 d-flex align-center justify-space-between text--disabled">Фонды</div>
+
+
+
+
           <div class="d-flex align-center justify-space-between">
           <v-menu offset-y class="mr-6" rounded="xl" transition="slide-y-transition">
             <template v-slot:activator="{ on, attrs }">
@@ -24,36 +30,36 @@
               </a>
                 </template>
                 <v-list class="specialColor">
-                  <v-list-item to="/0">
+                  <v-list-item to="/ExamArticle">
                     <v-list-item-title >
                       Что такое фондовый рынок и Акции?
                     </v-list-item-title>
                   </v-list-item>
-                  <v-list-item to="/2">
+                  <v-list-item to="/ExamArticle">
                     <v-list-item-title>
                       Какие бывают стратегии инвестрования?
                     </v-list-item-title>
                   </v-list-item>
-                  <v-list-item to="/3">
+                  <v-list-item to="/ExamArticle">
                     <v-list-item-title>
                       Почему нужно инвестировать?
                     </v-list-item-title>
                   </v-list-item>
-                  <v-list-item to="/4">
+                  <v-list-item to="/ExamArticle">
                     <v-list-item-title>
                       Сколько я могу заработать и сколько потерять?
                     </v-list-item-title>
                   </v-list-item>
-                  <v-list-item to="/5">
+                  <v-list-item to="/ExamArticle">
                     <v-list-item-title>
                       Как пользоваться сервисом?
                     </v-list-item-title>
                   </v-list-item>
-                  <!-- <v-list-item to="/article" class="text-center">
+                  <v-list-item to="/article" class="text-center">
                     <v-list-item-title>
                       Еще...
                     </v-list-item-title>
-                  </v-list-item> -->
+                  </v-list-item>
                 </v-list>
               </v-menu>
               </div>
@@ -108,8 +114,8 @@
                 </v-list> -->
               <!-- </v-menu> -->
                 <!-- </v-dialog> -->
-              </div>
-        </div>
+            </div>
+          </div>
         <div></div>
       </div>
     </v-app-bar>
@@ -120,7 +126,7 @@
           <router-view></router-view>  
         </transition>
       </div>
-      <Footer/>
+      <Footer v-if="!['login', 'register'].includes($route.name)"/>
     </v-main>
   </v-app>
 
@@ -170,15 +176,16 @@ import { mapMutations } from "vuex";
     }),
 
     mounted() {
-        const theme = localStorage.getItem("dark_theme");
-        if (theme) {
-            if (theme == "true") {
-              this.$vuetify.theme.dark = true;
-            } else {
-              this.$vuetify.theme.dark = false;
-            }
-        }
+      const theme = localStorage.getItem("dark_theme");
+
+      if (theme == "true") {
+        this.$vuetify.theme.dark = true;
+      } else {
+        this.$vuetify.theme.dark = false;
+        localStorage.setItem("dark_theme", this.$vuetify.theme.dark.toString());
+      }
     },
+
     created: function () {
       store.dispatch('search');
       this.$http.interceptors.response.use(undefined, function (err) {
@@ -194,10 +201,6 @@ import { mapMutations } from "vuex";
 </script>
 
 <style lang="css">
-
-/* svg text {
-	fill: black;
-} */
 
   .goodNumColor{
     color: #1c86c7 !important;

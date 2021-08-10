@@ -4,7 +4,9 @@ export default {
     login({commit}, user){
       return new Promise((resolve, reject) => {
         commit('auth_request')
-        axios({url: 'http://localhost:3000/api/v1/login', data: user, method: 'POST' })
+        // let url = 'https://serene-brushlands-48720.herokuapp.com/api/v1/login'
+        let url = 'http://localhost:3000/api/v1/login'
+        axios({url: url, data: user, method: 'POST' })
         .then(resp => {
           const token = resp.data.user.token
           const id = resp.data.user._id
@@ -33,7 +35,7 @@ export default {
           resolve(resp)
         })
         .catch(err => {
-          commit('auth_error', err)
+          commit('auth_error_reg')
           localStorage.removeItem('token')
           reject(err)
         })
@@ -51,15 +53,18 @@ export default {
 
   mutations: {
     auth_request(state){
-      state.status = 'loading'
+      state.status = 0
     },
     auth_success(state, token, user){
-      state.status = 'success'
+      state.status = 0
       state.token = token
       state.user = user
     },
     auth_error(state){
-      state.status = 'error'
+      state.status = 1
+    },
+    auth_error_reg(state){
+      state.status_reg = 1
     },
     logout(state){
       state.status = ''
@@ -69,7 +74,8 @@ export default {
   },
   
   state: {
-    status: '',
+    status: 0,
+    status_reg: 0,
     token: localStorage.getItem('token') || '',
     id : ''
   },

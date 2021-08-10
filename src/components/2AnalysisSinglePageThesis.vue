@@ -19,6 +19,7 @@
             <apexchart id="test" width="100%" height="300px" type="bar" :options="chartOptions" :series="earnings"></apexchart>
           </div>
         </v-card>
+        <p>Это на 20% чем рост конкурентов</p>
       </v-col>
     </v-row>
     <v-row>
@@ -30,17 +31,18 @@
           <v-col cols="12" sm="4" class="pa-3 mt-sm-0 mb-2">
             <p class="mb-2 text-center">ROA <a href="#"><v-icon size="19" class="mr-2"> mdi-progress-question </v-icon></a></p>
             <p class="mb-2 text-center text-h4 goodNumColor">{{description.multipliers.ROA.toFixed(1)}}<span class="text-h6">/52</span></p>
-            <p class="mb-2 text-center text-caption">Компания лучше конкурентов управляет активами</p>
+            <p class="mb-2 text-center text-caption">Компания эффективнее конкурентов управляет активами</p>
           </v-col>
           <v-col cols="12" sm="4" class="pa-3 mt-sm-0 mb-2">
             <p class="mb-2 text-center">ROE <a href="#"><v-icon size="19" class="mr-2"> mdi-progress-question </v-icon></a></p>
             <p class="mb-2 text-center text-h4 goodNumColor">{{description.multipliers.ROE.toFixed(1)}}<span class="text-h6">/520</span></p>
-            <p class="mb-2 text-center text-caption">Компания лучше конкурентов управляет капиталом</p>
+            <!-- <p class="mb-2 text-center text-caption">Компания лучше конкурентов управляет капиталом</p> -->
+            <p class="mb-2 text-center text-caption">Компания эффективнее большенства конкурентов</p>
           </v-col>
           <v-col cols="12" sm="4" class="pa-3 mt-sm-0 mb-2">
             <p class="mb-2 text-center">ROS <a href="#"><v-icon size="19" class="mr-2"> mdi-progress-question </v-icon></a></p>
             <p class="mb-2 text-center text-h4 badNumColor">{{description.multipliers.ROS.toFixed(1)}}<span class="text-h6">/52</span></p>
-            <p class="mb-2 text-center text-caption">Компания хуже конкурентов управляет издержками</p>
+            <p class="mb-2 text-center text-caption">Компания неэффективно управляет издержками</p>
           </v-col>
           <v-col cols="12" class="pa-3 mt-sm-0 mb-5" >
             <p v-html="QAnalysisText"></p>
@@ -201,7 +203,7 @@ import SkeletonReasons from '@/components/AnalysisSinglePageThesisSkeletonReason
       const theme = localStorage.getItem("dark_theme");
       let settingObj ={
 
-        colors:[ '#51a9f0', '#51a9f0', '#51a9f0', '#51a9f0','RGBA(102, 184, 250, 0.4)'],
+        colors:[ '#51a9f0', '#51a9f0', '#51a9f0', '#51a9f0','RGBA(102, 184, 250, 0.4)','RGBA(102, 184, 250, 0.4)'],
 
         legend: {
           fontSize: '18px',
@@ -279,9 +281,8 @@ import SkeletonReasons from '@/components/AnalysisSinglePageThesisSkeletonReason
         },
 
         xaxis: {
-            categories: this.$store.state.reporting.year,
-            show: false,
-            
+          categories: this.$store.state.reporting.year,
+          show: false,
         },
 
         yaxis: {

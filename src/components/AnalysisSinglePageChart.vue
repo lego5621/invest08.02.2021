@@ -23,11 +23,6 @@
   import { mapGetters, mapActions } from "vuex";
 
  export default {
-    computed: {
-      ...mapGetters([
-        'historicalPrice',
-      ])
-    },
 
     // async mounted() {
     //   this.companyData();
@@ -42,36 +37,78 @@
     name: 'Chart',
     
     data: () => ({
-      chartOptions: {
-        tooltip: {
-          theme: 'dark',
-        },
-        chart: {
-          height: 350,
-          sparkline: {
-            enabled: true
+       
+    }),
+    computed: {
+      chartOptions:function(){
+        const theme = localStorage.getItem("dark_theme");
+        let settings={
+          tooltip: {
+            theme: 'dark',
           },
-        },
-        stroke: {
-          width: [2, 3],
-          curve: 'straight',
-          dashArray: [5, 0]
-        },
-        colors: ["#3a76a6", "#188cd2"],
-        noData: {
-          text: 'Ожидаем данные...',
-          align: 'center',
-          verticalAlign: 'middle',
-          offsetX: 0,
-          offsetY: 0,
-          style: {
-            color: '#51a9f0',
-            fontSize: '19px',
-            fontFamily: undefined
+          chart: {
+            id:'chart',
+            height: 350,
+            sparkline: {
+              enabled: true
+            },
+            background: 'transparent'
+          },
+          stroke: {
+            width: [2, 3],
+            curve: 'straight',
+            dashArray: [5, 0]
+          },
+          colors: ["#3a76a6", "#188cd2"],
+          noData: {
+            text: 'Ожидаем данные...',
+            align: 'center',
+            verticalAlign: 'middle',
+            offsetX: 0,
+            offsetY: 0,
+            style: {
+              color: '#51a9f0',
+              fontSize: '19px',
+              fontFamily: undefined
+            }
           }
         }
-      },      
-    }),
+        if (theme) {
+            if (theme == "true") {
+              settings.theme= {
+                  mode: 'dark', 
+                  monochrome: {
+                      enabled: false,
+                      color: '#1e2022',
+                      shadeTo: 'dark',
+                      shadeIntensity: 0.65
+                  },
+                } 
+              settings.tooltip= {
+                theme: 'dark',
+              }          
+            } else {
+              settings.theme= {
+                mode: 'light', 
+                monochrome: {
+                    enabled: false,
+                    color: '#1e2022',
+                    shadeTo: 'light',
+                    shadeIntensity: 0.65
+                },
+              }
+              settings.tooltip= {
+                theme: 'light',             
+              }     
+        }
+        return settings
+      }
+      },
+      ...mapGetters([
+        'historicalPrice',
+      ])
+    }
+    
   }
 </script>
 

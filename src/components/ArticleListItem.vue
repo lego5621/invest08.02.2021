@@ -8,9 +8,9 @@
         :key="i"
         outlined
     >
-      <v-list-item three-line> 
-        <v-list-item-content>
-          <div class="d-flex justify-space-between text-no-wrap overflow">
+      <v-list-item three-line class=" block text-decoration-none textLink--text "> 
+        <v-list-item-content >
+          <div class="d-flex justify-space-between text-no-wrap overflow" >
             <div class="mr-10">
               <v-list-item-avatar
                   size="42"
@@ -26,9 +26,10 @@
               </v-list-item-avatar>
               <strong class="subtitle-1">{{ article.name }}</strong>   
             </div>
-            <strong class="align-self-center mr-10 subtitle-1">{{ article.сategory }}</strong>
+            
+            <strong class="align-self-center mr-10 subtitle-1 d-none d-sm-flex">{{ article.сategory }}</strong>
             <strong class="align-self-center mr-10 subtitle-1">{{ article.time }}</strong>
-             <div class="align-self-center">
+            <div class="align-self-center d-none d-sm-flex">
               <v-rating
                 background-color="grey darken-1"
                 color="textLinkResult"
@@ -38,9 +39,11 @@
               ></v-rating>
             </div>
           </div>
+          <router-link to="/ExamArticle" class="block mr-10 text-decoration-none textLink--text " >
           <v-list-item-title class="headline text-wrap mb-2">
-            <strong>{{ article.heading }}</strong>
+            <strong  to="/ExamArticle">{{ article.heading }}</strong>
           </v-list-item-title>
+           </router-link>
           <v-list-item-subtitle>
             {{article.title}}
           </v-list-item-subtitle>
@@ -159,4 +162,5 @@
   .overflow{
     overflow-x: auto;
   }
+
 </style>
