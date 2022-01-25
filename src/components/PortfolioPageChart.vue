@@ -4,7 +4,6 @@
     class="mx-auto mb-5 pa-4 specialColor"
     elevation="0"
   >
-    <p class="text-h5 ">Доходность: 40%</p>
     <div id="chart">
       <apexchart type="area" height="350" :options="chartOptions" :series="historicalPrice"></apexchart>
     </div>
@@ -24,7 +23,7 @@
     },
 
     created:function (){
-      store.dispatch('companyData', 'mmm');
+      store.dispatch('companyData', 'aapl');
       window.scrollTo(0,0);
     },
 

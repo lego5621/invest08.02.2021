@@ -15,6 +15,9 @@ export default new Vuetify({
         buttonsColor: "#75b5e6",
         alertColor: "#FFFFFF",
         chipColor: "#E9ECEE",
+        buttonsColorPortfol: "#1976d2",
+        a:'#438fda'
+
       },
       dark: {
         bacMain: "#181A1B",
@@ -25,6 +28,8 @@ export default new Vuetify({
         buttonsColor: "#115a91",
         alertColor: "#1E2022",
         chipColor: "#303233",
+        buttonsColorPortfol: "#1465b5",
+        a:'#438fda'
       },
     },
   },

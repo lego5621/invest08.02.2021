@@ -9,12 +9,13 @@
         md="6"
         class="d-flex align-content-center flex-wrap pr-1"
       >
-        <div class="title">
-          <p class="text-center text-md-right text-h3">
-            Invesco
+        <div class="title ">
+          <p class="text-center text-md-right text-h3 ">
+            <!-- Invesco -->
+            <span class="green--text text--lighten-1 ">Freedom</span> Advisor
           </p>
-          <p class="text-center text-md-right">
-            Мы помогаем делать прибыльные инвестиции.
+          <p class="text-center text-md-right font-weight-regular">
+            Мы поможем делать прибыльные инвестиции
           </p>
         </div>
       </v-col>
@@ -29,7 +30,7 @@
           class="formLogin rounded-xl  "
         >
           <form class="login" @submit.prevent="login">
-            <h1>Войдите в систему</h1>
+            <h1 class="font-weight-regular">Войдите в систему</h1>
             <v-alert
               text
               type="error"

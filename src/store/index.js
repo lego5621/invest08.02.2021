@@ -3,6 +3,8 @@ import Vuex from 'vuex'
 import article from './modules/article/index'
 import reporting from './modules/reporting/index'
 import auth from './modules/auth/index'
+import portfolio from './modules/portfolio/index'
+
 
 Vue.use(Vuex)
 
@@ -11,5 +13,6 @@ export default new Vuex.Store({
     article,
     reporting,
     auth,
+    portfolio,
   }
 })

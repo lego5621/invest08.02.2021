@@ -1,7 +1,7 @@
 import axios from 'axios'
 export default async function ({ commit, getters, dispatch, state }, payload ={page:1, filter:''}) {
-    let url =`http://localhost:3000/api/v1/company`
-    // let url =`https://serene-brushlands-48720.herokuapp.com/api/v1/company`
+    // let url =`http://localhost:3000/api/v1/company`
+    let url =`https://serene-brushlands-48720.herokuapp.com/api/v1/company`
 
 
     if(payload.page){

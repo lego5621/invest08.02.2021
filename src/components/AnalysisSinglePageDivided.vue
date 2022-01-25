@@ -33,8 +33,8 @@
 
   data: () => ({ 
      series: [{
-            name: 'PRODUCT A',
-            data: [21, 22, 23, 24, 25]
+        name: 'PRODUCT A',
+        data: [21, 22, 23, 24, 25]
      }],
           chartOptions: {            
             states: {

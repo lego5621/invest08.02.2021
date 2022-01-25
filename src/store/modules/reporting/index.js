@@ -16,6 +16,10 @@ export default {
 
     mutations: {
 
+      idea(state, idea){
+        state.idea = idea
+      },
+
       QAnalysis(state, QAnalysis){
         state.QAnalysis = QAnalysis
       },
@@ -73,6 +77,10 @@ export default {
         state.historicalPrice = historicalPrice
       },
 
+      historicalPriceData(state, historicalPriceData) {
+        state.historicalPriceData = historicalPriceData
+      },
+
       targetPrice(state, targetPrice) {
         state.targetPrice = targetPrice
       },
@@ -123,6 +131,7 @@ export default {
       pages: {},
       description: {},
       historicalPrice: [],
+      historicalPriceData:[],
       targetPrice: [],
       revenue: [],
       earnings: [],
@@ -132,6 +141,7 @@ export default {
       year: [],
       allCompany: [],
       indexListLoader: true,
+      idea:[],
 
 
       recommendationSell:[],
@@ -149,6 +159,11 @@ export default {
       recommendationTrendSetting,
 
 
+
+
+      idea(state){
+        return state.idea
+      },
 
       QAnalysis(state){
         return state.QAnalysis
@@ -214,6 +229,14 @@ export default {
           data: state.historicalPrice
         }]
         return price
+      },
+
+      historicalPriceData(state) {
+        let historicalPriceData = {
+          name: 'Дата',
+          data: state.historicalPriceData,
+        }
+        return historicalPriceData
       },
 
       revenue(state) {

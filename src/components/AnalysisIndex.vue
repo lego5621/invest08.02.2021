@@ -34,7 +34,6 @@
                   label="Название компании"
                   return-object
                   item-text="name"
-
                 >
                   <template v-slot:item={item}>
                     <router-link class="link-flex" :to="'/company/'+item.ticker">{{ item.name }}</router-link>
@@ -42,15 +41,13 @@
                 </v-autocomplete>
 
               </v-col>
-              <v-col class="d-flex">
-                <p>
-                  Сортировать: 
-                  <span v-bind:class="{ goodAnalysis: allFilter }" class="aMargin" v-on:click="changeFilter('')">Все</span>
-                  <span v-bind:class="{ goodAnalysis: minPriceFilter }"  class="aMargin" v-on:click="changeFilter('minPrice')">Дешевые</span>
-                  <span v-bind:class="{ goodAnalysis: maxPriceFilter }" class="aMargin" v-on:click="changeFilter('maxPrice')">Дорогие</span>
-                  <span v-bind:class="{ goodAnalysis: maxProfitFilter }" class="aMargin" v-on:click="changeFilter('maxProfit')">Максимальная прибыль</span>
+              <v-col class="d-flex flex-wrap">
+                  <span class="mr-4 mb-2 "> Сортировать: </span>
+                  <span v-bind:class="{ goodAnalysis: allFilter }" class="aMargin  mr-4 mb-2" v-on:click="changeFilter('')">Все</span>
+                  <span v-bind:class="{ goodAnalysis: minPriceFilter }"  class="aMargin mr-4 mb-2" v-on:click="changeFilter('minPrice')">Дешевые</span>
+                  <span v-bind:class="{ goodAnalysis: maxPriceFilter }" class="aMargin mr-4 mb-2" v-on:click="changeFilter('maxPrice')">Дорогие</span>
+                  <span v-bind:class="{ goodAnalysis: maxProfitFilter }" class="aMargin mr-4 mb-2" v-on:click="changeFilter('maxProfit')">Максимальная прибыль</span>
                   <!-- <span  class="aMargin" v-on:click="changeFilter('maxProfit')">Компании США</span> -->
-                </p>
               </v-col>
             </v-row>
           </v-sheet>
@@ -123,9 +120,9 @@ import store from '@/store/index'
     methods:{
       onPageChange: function(){
         window.scrollTo(0,0);
+        this.$store.state.reporting.indexListLoader = true
         let page = this.pages.currentPage
         store.dispatch('allCompany', {page, filter: this.$store.state.reporting.filter});
-        this.$store.state.reporting.indexListLoader = true
       },
       changeFilter: function(filter){
         this.$store.state.reporting.filter=filter
@@ -172,7 +169,6 @@ import store from '@/store/index'
 <style lang="css" scoped>
 
   .aMargin{
-    margin-left: 1.5rem;
     cursor: pointer;
     color: #2196f3;
   }

@@ -5,16 +5,9 @@
     class="mx-auto mb-5 pa-4 specialColor"
     elevation="0"
   >
-  <!--<p class="text-h5 mb-0">
-    <v-icon size="50" class="mr-2"> mdi-arrow-top-right </v-icon>
-     Покупать с целью 452$ 
-    Консенсус прогноз цены
-  </p>-->
-  <!-- <p>Согластно консенсус прогнозу от <span class="goodAnalysis">8 аналитиков</span>, ближайшие 12 месяцев ожидается <span class="goodAnalysis"> рост цены</span>  акции на 23%.</p> -->
-    <!-- <p class="text-h5 ">Цена: {{ StockHistorical[0].data[StockHistorical[0].data.length - 1] }}</p> -->
-      <div id="chart">
-        <apexchart type="line" height="350" :options="chartOptions" :series="historicalPrice"></apexchart>
-      </div>
+    <div id="chart">
+      <apexchart type="line" height="380" :options="chartOptions" :series="historicalPrice"></apexchart>
+    </div>
   </v-card>
 </div>
 </template>
@@ -43,23 +36,90 @@
       chartOptions:function(){
         const theme = localStorage.getItem("dark_theme");
         let settings={
+
           tooltip: {
             theme: 'dark',
+            x:{
+              format:'dd.MM.yyyy',
+            }
           },
+
           chart: {
             id:'chart',
             height: 350,
             sparkline: {
-              enabled: true
+              enabled: false
             },
-            background: 'transparent'
+            background: 'transparent',
+            toolbar: {
+              show: false,
+            },
+            zoom: {
+              enabled: false,
+            },
+
           },
+
+          states: {
+            active: {
+                filter: {
+                  type: 'none'
+                }
+              }
+          },
+
+          plotOptions: {
+              bar: {
+                  distributed: true,
+                  horizontal: false,
+              },
+          },
+
+          legend: {
+            show: false,
+            fontSize: '18px',
+            horizontalAlign: 'left',
+            position: 'top',
+            colors:'#51a9f0',
+            markers: {
+                width: 3,
+                height: 0,
+            }
+          },
+
+          grid: {
+            show: false,
+          },
+
+          axisBorder: {
+            show: false,
+          },  
+
+          dataLabels: {
+            enabled: false,
+          },
+
           stroke: {
             width: [2, 3],
             curve: 'straight',
             dashArray: [5, 0]
           },
+
+          xaxis: {
+            type: 'datetime',
+            categories: this.$store.state.reporting.historicalPriceData,
+            show: false,
+            labels: {
+              format: 'dd.MM.yyyy'
+            }
+          },
+
+          yaxis: {
+            show: false,
+          },
+
           colors: ["#3a76a6", "#188cd2"],
+
           noData: {
             text: 'Ожидаем данные...',
             align: 'center',
@@ -86,6 +146,9 @@
                 } 
               settings.tooltip= {
                 theme: 'dark',
+                x:{
+                  format:'dd.MM.yyyy',
+                }
               }          
             } else {
               settings.theme= {
@@ -98,7 +161,10 @@
                 },
               }
               settings.tooltip= {
-                theme: 'light',             
+                theme: 'light',  
+                x:{
+                  format:'dd.MM.yyyy',
+                }           
               }     
         }
         return settings
@@ -106,6 +172,7 @@
       },
       ...mapGetters([
         'historicalPrice',
+        'historicalPriceData',
       ])
     }
     

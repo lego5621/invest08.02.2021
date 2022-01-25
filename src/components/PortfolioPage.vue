@@ -10,9 +10,7 @@
         class="bacMain"
       >
         <v-container class="pa-0">
-          <p class="text-h4">
-            Портфель: Пенсия
-          </p>
+          <Heder/>
           <Chart/>
           <Tables/>
           <!-- <Divided/> -->
@@ -27,11 +25,15 @@
   import Divided from '@/components/PortfolioPageDivided'
   import Tables from '@/components/PortfolioPageListStocks'
 
+  import Heder from '@/components/PortfolioPageHeder'
+
+
   export default {
    components:{
       Chart,
       Divided,
       Tables,
+      Heder,
     },
     name: 'Analysis',
   }

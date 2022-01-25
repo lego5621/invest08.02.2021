@@ -6,7 +6,7 @@
       rounded="lg"
     >
         <template v-slot:activator="{ on, attrs }">
-            <v-avatar
+          <v-avatar
             v-bind="attrs"
             v-on="on"
             size="34"
@@ -35,12 +35,15 @@
               persistent-hint
             ></v-switch>
           </v-list-item>
-          <v-list-item to="/settings">
+          <v-list-item to="/about">
+            <v-list-item-title>О сервисе</v-list-item-title>
+          </v-list-item> 
+          <!-- <v-list-item to="/settings">
             <v-list-item-title>Настройки</v-list-item-title>
-          </v-list-item>
-          <v-list-item @click="logout">
+          </v-list-item> -->
+          <!-- <v-list-item @click="logout">
             <v-list-item-title>Выход</v-list-item-title>
-          </v-list-item>
+          </v-list-item> -->
         </v-list>
       </v-menu>
 </template>

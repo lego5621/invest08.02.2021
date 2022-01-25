@@ -24,25 +24,24 @@
               </v-icon>
           </v-list-item-avatar>
           <strong class="subtitle-1 align-self-center" >
-            <p class="caption mb-0 text--disabled">Название</p>
+            <p class="caption mb-0 text--secondary">Название</p>
             <p class=" mb-0">{{ description.name }}</p>
           </strong> 
         </div>  
         <strong class="align-self-center mr-10 subtitle-1">
-          <p class="caption mb-0 text--disabled">Рекомендация</p>
+          <p class="caption mb-0 text--secondary">Рекомендация</p>
           <!-- <p v-if="description.profitPercentage >= 10" class="mb-0">Накапливать</p>
           <p v-else-if="description.profitPercentage < 10 && description.profitPercentage > 0" class="mb-0">Держать</p>
           <p v-else class="mb-0">Сокращать</p> -->
-          <p v-if="description.profitPercentage < 0 && description.recommendation =='Покупать'" class="mb-0">Пересмотр...</p>
-          <p class="mb-0" v-else>{{description.recommendation}}</p> 
+          <p class="mb-0" >{{description.recommendation}}</p> 
         </strong>
         <strong class="align-self-center mr-10 subtitle-1 ">
-          <p class="caption mb-0 text--disabled">Прогназируемая цена</p>
-          <p class=" mb-0">Около {{ Math.floor(description.TargetPrice) }} (<span v-if="description.profitPercentage> 0">+</span>{{ description.profitPercentage }}%)</p>
+          <p class="caption mb-0 text--secondary">Прогназируемая цена</p>
+          <p class=" mb-0">Около {{ Math.floor(description.TargetPrice) }}<span class="text--disabled">&#36;</span> (<span v-if="description.profitPercentage> 0">+</span>{{ description.profitPercentage }}%)</p>
         </strong>
         <strong class="align-self-center subtitle-1">
-          <p class="caption mb-0 text--disabled">Цена</p>
-          <p class=" mb-0">{{ Math.floor(description.historicalPrice) }}</p>
+          <p class="caption mb-0 text--secondary">Цена</p>
+          <p class=" mb-0">{{ Math.floor(description.historicalPrice) }}<span class="text--disabled">&#36;</span></p>
         </strong>
       </div>
       <div class=" mt-2 mb-2 lHeight">

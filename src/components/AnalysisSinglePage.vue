@@ -25,19 +25,23 @@
 
           <!-- <News/> -->
 
-          <!-- <Dividend/>
-          <DebtRatio/> -->
+          <!-- <Dividend/>-->
+          <!-- <DebtRatio/>  -->
 
           <!-- <ROE/> -->
           <!-- <Stocks/> -->
           <!-- <About/> -->
+          <Info/>
           <Earnings/>
-          <Upgrades/>
-          <Idea/>
-          <DebtRatio/>
+          <!-- <Upgrades/> -->
+          <!-- <Idea/> -->
+          <!--<DebtRatio/>-->
           <Dividend/>
 
-          <!-- <Conclusion/> -->
+          <!--<Conclusion/>-->
+
+          <!-- <Recom/>  -->
+
 
         </v-container>
       </v-col>
@@ -67,6 +71,14 @@
   import Conclusion from '@/components/singlePageBloсk/conclusion'
   import Idea from '@/components/singlePageBloсk/idea'
 
+  import Recom from '@/components/singlePageBloсk/recom'
+  import Info from '@/components/singlePageBloсk/infoRecom'
+
+
+
+
+
+
 
 
   import store from '@/store/index'
@@ -94,7 +106,11 @@ export default {
     DebtRatio,
     ROE,
     Conclusion,
-    Idea
+    Idea,
+
+    Recom,
+    Info,
+
   },
   name: 'ReportingSingle',
   created:function (){

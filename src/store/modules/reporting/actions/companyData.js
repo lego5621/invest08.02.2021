@@ -1,8 +1,8 @@
 import axios from 'axios'
 import router from '@/router/index.js';
 export default async function({ commit }, id) {
-    let url =`http://localhost:3000/api/v1/company/${id}`
-    // let url =`https://serene-brushlands-48720.herokuapp.com/api/v1/company/${id}`
+    // let url =`http://localhost:3000/api/v1/company/${id}`
+    let url =`https://serene-brushlands-48720.herokuapp.com/api/v1/company/${id}`
 
     
     axios.get(url)
@@ -10,11 +10,16 @@ export default async function({ commit }, id) {
             const Statements =  res.data
 
             const historicalPrice = Statements.historicalPrice.map(function(Statements) {
-                return Statements.adjClose.toFixed(1)
+                return parseFloat(Statements.adjClose).toFixed(1)
+            });
+
+            const historicalPriceData = Statements.historicalPrice.map(function(Statements) {
+                return Statements.date
             });
 
             const targetPrice = Statements.historicalPrice.map(function(Statements) {
-                return Statements.adjTargetPrice.toFixed(1);
+                return parseFloat(Statements.adjTargetPrice).toFixed(1)||0
+                // .toFixed(1)
             });
 
             const revenue = Statements.statementAll.map(function(Statements) {
@@ -54,12 +59,12 @@ export default async function({ commit }, id) {
                 return Statements.year
             })
 
-            if(Statements.statementPrognosis[0].revenue){
+            if(Statements.statementPrognosis[0].revenue && Statements.statementPrognosis[0].earnings ){
                 year.push('Прогноз '+Statements.statementPrognosis[0].year)
                 revenue.push(Statements.statementPrognosis[0].revenue)
                 earnings.push(Statements.statementPrognosis[0].earnings)
             }
-            if(Statements.statementPrognosis[1].revenue){
+            if(Statements.statementPrognosis[1].revenue && Statements.statementPrognosis[1].earnings ){
                 year.push('Прогноз '+Statements.statementPrognosis[1].year)
                 revenue.push(Statements.statementPrognosis[1].revenue)
                 earnings.push(Statements.statementPrognosis[1].earnings)
@@ -77,10 +82,19 @@ export default async function({ commit }, id) {
             //description.otherFactors = Statements.otherFactors
             description.analystsGrade = Statements.analystsGrade
 
+            description.historicalPriceData = historicalPriceData
+
             //description.city = Statements.city
             description.country = Statements.country
             description.sector = Statements.sector
             description.recommendation = Statements.recommendation
+            description.minRecommendation = Statements.minRecommendation
+            description.maxRecommendation = Statements.maxRecommendation
+            description.website = Statements.website
+            description.ticker = Statements.ticker.toUpperCase()
+            description.recommendationAnalCaunt = Statements.recommendationAnalCaunt
+
+
             //description.site = Statements.site
             //description.overallRisk = Statements.overallRisk
 
@@ -88,8 +102,11 @@ export default async function({ commit }, id) {
             stocksCaunt
 
             commit('stocksCaunt', stocksCaunt)
+            commit('idea', Statements.idea)
+
 
             commit('targetPrice', targetPrice)
+            commit('historicalPriceData', historicalPriceData)
             commit('revenue', revenue)
             commit('earnings', earnings)
             commit('debtRatio', debtRatio)
@@ -98,6 +115,7 @@ export default async function({ commit }, id) {
             commit('year', year)
             commit('recommendationTrend', Statements.recommendationTrend)
         }).catch(err => { 
+            console.log(err)
             if(err.response.status == 404){
                 router.push({ name: '404' });
             }

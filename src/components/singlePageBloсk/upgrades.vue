@@ -11,7 +11,7 @@
         <h1>Рекомендации инвест домов</h1>
       </v-col>
       <v-expand-transition>
-      <v-col cols="12" sm="8" class="pa-3 mt-sm-0 mb-5">
+     <v-col cols="12" sm="8" class="pa-3 mt-sm-0 mb-5">
         <v-simple-table class="a"  :class="{ active: isActive }">
           <template v-slot:default>
             <thead>
@@ -34,17 +34,24 @@
               >
                 <td class="bacMain">{{item.firm}}</td>
                 <td class="bacMain">{{item.date}}</td>
-                <td class="bacMain">{{item.toGrade}}</td>
+                <td class="bacMain">
+                  <span  v-bind:class="colorAnal(item.toGrade)">
+                    {{item.toGrade}}
+                  </span>
+                </td>
               </tr>
             </tbody>
           </template>
         </v-simple-table>
 
-        <p  class="text-center but goodNumColor" v-show="!isActive" v-on:click="isActive =!isActive">
+        <p  class="text-center but goodNumColor mb-1" v-show="!isActive" v-on:click="isActive =!isActive">
           Еще
         </p>
+        <p class="text-right mt-2">
+          <a href="#">Подробнее о рекомендациях</a>
+        </p>
       </v-col>
-              </v-expand-transition>
+      </v-expand-transition>
     </v-row>
   </v-card>
 </template>
@@ -53,6 +60,7 @@
   
 <script>
 import { mapGetters } from "vuex"
+import moment from 'moment'
 import store from '@/store/index'
 
  export default {
@@ -62,7 +70,16 @@ import store from '@/store/index'
 
 
   methods:{
-
+    colorAnal(prog) {
+      if(prog == 'Buy' || prog == 'Outperform' || prog == 'Overweight'){
+        return "bay"
+      }else if(prog == 'Sell' || prog == 'Underweight'){
+        return "sell"
+      }
+      else{
+        return
+      }
+    }
   },
 
   data: () => ({
@@ -78,6 +95,7 @@ import store from '@/store/index'
 </script>
 
 <style lang="css" scoped>
+
   td{
     height: 38px !important;
   }
@@ -96,6 +114,13 @@ import store from '@/store/index'
     cursor: pointer;
   }
 
+  .bay{
+    color: #1c86c7;
+  }
+
+  .sell{
+    color: #e46065 ;
+  }
 
 </style>
 

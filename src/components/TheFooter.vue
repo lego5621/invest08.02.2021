@@ -40,7 +40,7 @@
                             cols="12"
                             rounded="lg"
                         >
-                            {{ new Date().getFullYear() }} — <strong>Invest. Все права защищены.</strong>
+                            {{ new Date().getFullYear() }} — <strong>StockAdvisor. Все права защищены.</strong>
                         </v-col>
                     </v-row>
                 </v-footer>

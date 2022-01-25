@@ -8,10 +8,10 @@ import VueApexCharts from 'vue-apexcharts'
 import Axios from 'axios'
 
 Vue.prototype.$http = Axios;
-const token = localStorage.getItem('Token')
-if (token) {
-  Vue.prototype.$http.defaults.headers.common['Authorization'] = `Token ${token}`
-}
+// const token = localStorage.getItem('Token')
+// if (token) {
+//   Vue.prototype.$http.defaults.headers.common['Authorization'] = `Token ${token}`
+// }
 
 //я делаю запрос не Axios
 

@@ -26,7 +26,7 @@
      
               </v-col>
               <v-col cols="12" sm="6" class="pa-3 mt-sm-0 mb-5 wrapPos pb-11">
-                <h1>Фундаментальный разбор компании Газпром</h1>
+                <h1>Пример статьи для блога</h1>
                 <div class="">
                   <v-list-item-avatar
                       size="32"

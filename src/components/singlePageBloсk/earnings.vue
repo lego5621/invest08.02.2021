@@ -8,7 +8,6 @@
     <!-- <v-row v-if="!Object.keys(this.$store.state.reporting.description).length == 0"> -->
     <v-row>
       <v-col cols="12" sm="4" class="pa-3 mt-sm-0 mb-5">
-        <!-- <h1>Прогноз чистой прибыли</h1> -->
         <h1>Бизнес компании</h1>
       </v-col>
       <v-col cols="12" sm="8" class="pa-3 mt-sm-0 mb-5">
@@ -18,8 +17,16 @@
           elevation="0"
         >
           <div>
-            <apexchart id="test" width="100%" height="300px" type="bar" :options="chartOptions" :series="earnings"></apexchart>
-            <p class="caption mb-0 text--disabled text-right">*чистая прибыль компании</p>
+            <!-- <div class="d-flex justify-end">
+              <a class="mr-5 " href="javascript:void(0)" v-on:click="changeChart(1)">Чистая прибыль</a>
+              <a class="mr-5 " href="javascript:void(0)" v-on:click="changeChart(0)">Выручка</a>
+            </div> -->
+            <v-tabs background-color="transparent">
+              <v-tab v-on:click="changeChart(1)">Чистая прибыль</v-tab>
+              <v-tab v-on:click="changeChart(0)">Выручка</v-tab>
+            </v-tabs>
+            <apexchart ref="chart1" id="test" width="100%" height="300px" type="bar" :options="chartOptions" :series="earnings"></apexchart>
+            <!-- <p class="caption mb-0 text--disabled text-right">*чистая прибыль компании</p> -->
           </div>
         </v-card>
         <div v-if="earnings[0].data.length !== 0">
@@ -56,17 +63,25 @@ import store from '@/store/index'
 
 
   methods:{
-
+    changeChart:function(p){
+      if(p==1){
+        this.$refs.chart1.updateSeries(
+          this.earnings
+        )
+      }else{
+       this.$refs.chart1.updateSeries(
+         this.revenue
+        )
+      }
+    },
   },
 
-  data: () => ({
-    series: [{
-        name: "",
-        data: [12, 9]
-    }],
+  data: () => ({  
+    v:'',
   }),
 
   computed: {
+
     chartOptions:function(){
       const theme = localStorage.getItem("dark_theme");
       let settingObj ={
@@ -258,7 +273,8 @@ import store from '@/store/index'
       'yearRevenueEarning',
       'earnings',
       'dividendsPaidYear',
-      'description'
+      'description',
+      'revenue'
     ]),
   }
 }
