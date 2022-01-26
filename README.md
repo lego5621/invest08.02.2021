@@ -1,4 +1,9 @@
-# invest
+# Front часть проекта StockAdvisor
+
+Сайт писался для себя, никакого Code style-а нет от слова совсем, постоянно появлялись новые идеи, вообщем мне стыдно )
+
+![Alt text](https://i.ibb.co/93hyXjB/Screenshot-from-2022-01-26-10-50-13.png "Главная StockAdvisor")
+
 
 ## Project setup
 ```
@@ -10,10 +15,3 @@ npm install
 npm run serve
 ```
 
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
